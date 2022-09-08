@@ -1,3 +1,3 @@
-﻿AUTH_URL,USERNAME,PASSWORD,API_URL,TEACHER_ID,COURSE_ID,COURSE_OFFER_ID,INVOICE_SCHEDULE,ORGANIZATION_ID
-https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyD7oMsXvjTMB0S3Xwbm0wV0ycQvE8AZiig,adminv3@gmail.com,Test@123,https://qa-api.mousiki.io/api/v1/,560,12484910,12484911,WEEKLY,12052853
-https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyD7oMsXvjTMB0S3Xwbm0wV0ycQvE8AZiig,teacherv3@gmail.com,Test@123,https://qa-api.mousiki.io/api/v1/,52,12424127,12424128,WEEKLY,12052862
+﻿API_URL,TEACHER_ID,COURSE_ID,COURSE_OFFER_ID,INVOICE_SCHEDULE,ORGANIZATION_ID
+https://qa-api.mousiki.io/api/v1/,560,12484910,12484911,WEEKLY,12052853
+https://qa-api.mousiki.io/api/v1/,52,12424127,12424128,WEEKLY,12052862

@@ -1,3 +1,5 @@
 ﻿AUTH_URL,USERNAME,PASSWORD
 https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyD7oMsXvjTMB0S3Xwbm0wV0ycQvE8AZiig,adminv3@gmail.com,Test@123
 https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyD7oMsXvjTMB0S3Xwbm0wV0ycQvE8AZiig,teacherv3@gmail.com,Test@123
+https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyD7oMsXvjTMB0S3Xwbm0wV0ycQvE8AZiig,parentv3@gmail.com,Test@123
+https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyD7oMsXvjTMB0S3Xwbm0wV0ycQvE8AZiig,studentv3@gmail.com,Test@123
