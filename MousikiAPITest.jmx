@@ -23,6 +23,25 @@
       <stringProp name="TestPlan.user_define_classpath"></stringProp>
     </TestPlan>
     <hashTree>
+      <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="JDBC Connection Configuration" enabled="true">
+        <boolProp name="autocommit">true</boolProp>
+        <stringProp name="checkQuery"></stringProp>
+        <stringProp name="connectionAge">5000</stringProp>
+        <stringProp name="connectionProperties"></stringProp>
+        <stringProp name="dataSource">mousikiqadb</stringProp>
+        <stringProp name="dbUrl">jdbc:mysql://mousikiqa-rds.cmpy4o83a7f1.us-east-2.rds.amazonaws.com:3306/mousikiqa</stringProp>
+        <stringProp name="driver">com.mysql.jdbc.Driver</stringProp>
+        <stringProp name="initQuery"></stringProp>
+        <boolProp name="keepAlive">true</boolProp>
+        <stringProp name="password">qRVRza:qP8dknBg</stringProp>
+        <stringProp name="poolMax">0</stringProp>
+        <boolProp name="preinit">false</boolProp>
+        <stringProp name="timeout">10000</stringProp>
+        <stringProp name="transactionIsolation">DEFAULT</stringProp>
+        <stringProp name="trimInterval">60000</stringProp>
+        <stringProp name="username">mouqaadm</stringProp>
+      </JDBCDataSource>
+      <hashTree/>
       <SetupThreadGroup guiclass="SetupThreadGroupGui" testclass="SetupThreadGroup" testname="setUp Thread Group" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
@@ -160,6 +179,56 @@
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
+        <JDBCPreProcessor guiclass="TestBeanGUI" testclass="JDBCPreProcessor" testname="Getorgidcourseid" enabled="true">
+          <stringProp name="dataSource">mousikiqadb</stringProp>
+          <stringProp name="query">SELECT b.default_org as ORG_ID, a.id as COURSE_ID, c.id as COURSE_OFFER_ID FROM mousikiqa.course_master a, mousikiqa.user b, mousikiqa.course_offer c where a.course_name LIKE &quot;Testcourse:%&quot; and b.email = &quot;${USER_ID}&quot; and a.org_id = b.default_org and c.course_id = a.id LIMIT 1</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
+          <stringProp name="resultVariable">dbvalue</stringProp>
+          <stringProp name="variableNames">ORG_ID,COURSE_ID,COURSE_OFFER_ID</stringProp>
+        </JDBCPreProcessor>
+        <hashTree/>
+        <JDBCPreProcessor guiclass="TestBeanGUI" testclass="JDBCPreProcessor" testname="GetTeacherID" enabled="true">
+          <stringProp name="dataSource">mousikiqadb</stringProp>
+          <stringProp name="query">SELECT d.id as TEACHER_ID from mousikiqa.teacher d, mousikiqa.user b where d.org_id=b.default_org and b.email = &apos;${USER_ID}&apos; and d.first_name LIKE (&apos;test%&apos;) and d.active = 1</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
+          <stringProp name="resultVariable">dbvalue</stringProp>
+          <stringProp name="variableNames">TEACHER_ID</stringProp>
+        </JDBCPreProcessor>
+        <hashTree/>
+        <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+          <stringProp name="scriptLanguage">groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="script">String currentdt = &quot;${__timeShift(MM/dd/yyyy,,,,)}&quot;;
+log.info(&quot;date format: &quot; + currentdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;));
+vars.put(&quot;CURRENTDT&quot;, currentdt);
+
+String tomorrowdt = &quot;${__timeShift(MM/dd/yyyy,,P1D,,)}&quot;;
+log.info(&quot;incremented date format: &quot; + tomorrowdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;));
+vars.put(&quot;TOMORROWDT&quot;, tomorrowdt);
+
+String nextweekdt = &quot;${__timeShift(MM/dd/yyyy,,P7D,,)}&quot;;
+log.info(&quot;incremented 7 date format: &quot; + nextweekdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;));
+vars.put(&quot;WEEKDT&quot;, nextweekdt);
+
+String nextmonthdt = &quot;${__timeShift(MM/dd/yyyy,,P33D,,)}&quot;;
+log.info(&quot;incremented 33 date format: &quot; + nextmonthdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;));
+vars.put(&quot;MONTHDT&quot;, nextmonthdt);
+
+log.info(&quot;User id: &quot; + &quot;${USER_ID}&quot;);</stringProp>
+        </JSR223PreProcessor>
+        <hashTree/>
         <WhileController guiclass="WhileControllerGui" testclass="WhileController" testname="While Controller" enabled="true">
           <stringProp name="WhileController.condition">${AUTH_URL}</stringProp>
         </WhileController>
@@ -432,10 +501,10 @@
 		&quot;id&quot;: &quot;${STUDENT_ID}&quot;&#xd;
 	},&#xd;
 	&quot;teacher&quot;: {&#xd;
-		&quot;id&quot;: ${TEACHER_ID}&#xd;
+		&quot;id&quot;: ${TEACHER_ID_1}&#xd;
 	},&#xd;
 	&quot;courseOffer&quot;: {&#xd;
-		&quot;id&quot;: ${COURSE_OFFER_ID}&#xd;
+		&quot;id&quot;: ${COURSE_OFFER_ID_1}&#xd;
 	},&#xd;
 	&quot;kpiCategory&quot;: null,&#xd;
 	&quot;notes&quot;: &quot;&quot;,&#xd;
@@ -516,13 +585,13 @@
 			&quot;id&quot;: ${STUDENT_ID}&#xd;
 		},&#xd;
 		&quot;teacher&quot;: {&#xd;
-			&quot;id&quot;: ${TEACHER_ID}&#xd;
+			&quot;id&quot;: ${TEACHER_ID_1}&#xd;
 		},&#xd;
 		&quot;courseOffer&quot;: {&#xd;
-			&quot;id&quot;: ${COURSE_OFFER_ID}&#xd;
+			&quot;id&quot;: ${COURSE_OFFER_ID_1}&#xd;
 		},&#xd;
 		&quot;organization&quot;: {&#xd;
-			&quot;id&quot;: ${ORGANIZATION_ID}&#xd;
+			&quot;id&quot;: ${ORG_ID_1}&#xd;
 		},&#xd;
 		&quot;kpiCategory&quot;: null,&#xd;
 		&quot;invoicingSchedule&quot;: &quot;${INVOICE_SCHEDULE}&quot;,&#xd;
@@ -531,11 +600,11 @@
 		&quot;sendInvoiceToCustomer&quot;: false,&#xd;
 		&quot;id&quot;: ${ENROLLMENT_ID}&#xd;
 	},&#xd;
-	&quot;courseId&quot;: ${COURSE_ID},&#xd;
+	&quot;courseId&quot;: ${COURSE_ID_1},&#xd;
 	&quot;repeat&quot;: false,&#xd;
 	&quot;notes&quot;: &quot;&quot;,&#xd;
-	&quot;startDate&quot;: &quot;09/24/2022&quot;,&#xd;
-	&quot;endDate&quot;: &quot;09/24/2022&quot;,&#xd;
+	&quot;startDate&quot;: &quot;${MONTHDT}&quot;,&#xd;
+	&quot;endDate&quot;: &quot;${MONTHDT}&quot;,&#xd;
 	&quot;startTime&quot;: &quot;21:00&quot;,&#xd;
 	&quot;endTime&quot;: &quot;21:15&quot;&#xd;
 }</stringProp>
@@ -1053,9 +1122,22 @@
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
+        <JDBCPreProcessor guiclass="TestBeanGUI" testclass="JDBCPreProcessor" testname="GetTeacherID" enabled="true">
+          <stringProp name="dataSource">mousikiqadb</stringProp>
+          <stringProp name="query">SELECT d.id as TEACHER_ID from mousikiqa.teacher d, mousikiqa.user b where d.org_id=b.default_org and b.email = &apos;${USER_ID}&apos; and d.first_name LIKE (&apos;test%&apos;) and d.active = 1</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
+          <stringProp name="resultVariable">dbvalue</stringProp>
+          <stringProp name="variableNames">TEACHER_ID</stringProp>
+        </JDBCPreProcessor>
+        <hashTree/>
         <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
           <stringProp name="scriptLanguage">groovy</stringProp>
-          <stringProp name="parameters"></stringProp>
+          <stringProp name="parameters">${TEACHER_ID_1} ${counter_value}</stringProp>
           <stringProp name="filename"></stringProp>
           <stringProp name="cacheKey">true</stringProp>
           <stringProp name="script">String currentdt = &quot;${__timeShift(MM/dd/yyyy,,,,)}&quot;;
@@ -1072,7 +1154,24 @@ vars.put(&quot;WEEKDT&quot;, nextweekdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;
 
 String nextmonthdt = &quot;${__timeShift(MM/dd/yyyy,,P33D,,)}&quot;;
 log.info(&quot;incremented 33 date format: &quot; + nextmonthdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;));
-vars.put(&quot;MONTHDT&quot;, nextmonthdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;));</stringProp>
+vars.put(&quot;MONTHDT&quot;, nextmonthdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;));
+
+log.info(&quot;teacher id-&quot; + args[0]);
+String temp = args[0];
+log.info(&quot;counter value:&quot; + args[1]);
+if(args[1]==&quot;0&quot;){
+	if(temp.length()==15){
+		temp = &quot;&quot;;
+		vars.put(&quot;NEW_TEACHER_ID&quot;, &quot;&quot;);
+	}else{
+		vars.put(&quot;NEW_TEACHER_ID&quot;, &quot;teacher/&quot; + temp);
+	}
+}else{
+	temp = &quot;&quot;;
+	vars.put(&quot;NEW_TEACHER_ID&quot;, &quot;&quot;);
+}
+
+log.info(&quot;NEW Teacher ID:&quot; + &quot;teacher/&quot; + temp);</stringProp>
         </JSR223PreProcessor>
         <hashTree/>
         <WhileController guiclass="WhileControllerGui" testclass="WhileController" testname="While Controller" enabled="true">
@@ -1109,7 +1208,7 @@ vars.put(&quot;MONTHDT&quot;, nextmonthdt.replaceAll(&quot;/&quot;,&quot;%2F&quo
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">${API_URL}schedules/${TEACHER_ID}?eventTypes=class_schedule,availability&amp;startDate=${CURRENTDT}&amp;endDate=${TOMORROWDT}</stringProp>
+            <stringProp name="HTTPSampler.path">${API_URL}schedules/${NEW_TEACHER_ID}?eventTypes=class_schedule,availability&amp;startDate=${CURRENTDT}&amp;endDate=${TOMORROWDT}</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1154,7 +1253,7 @@ vars.put(&quot;MONTHDT&quot;, nextmonthdt.replaceAll(&quot;/&quot;,&quot;%2F&quo
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">${API_URL}schedules/${TEACHER_ID}?eventTypes=class_schedule,availability&amp;startDate=${CURRENTDT}&amp;endDate=${WEEKDT}</stringProp>
+            <stringProp name="HTTPSampler.path">${API_URL}schedules/${NEW_TEACHER_ID}?eventTypes=class_schedule,availability&amp;startDate=${CURRENTDT}&amp;endDate=${WEEKDT}</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1199,7 +1298,7 @@ vars.put(&quot;MONTHDT&quot;, nextmonthdt.replaceAll(&quot;/&quot;,&quot;%2F&quo
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">${API_URL}schedules/${TEACHER_ID}?eventTypes=class_schedule,availability&amp;startDate=${CURRENTDT}&amp;endDate=${MONTHDT}</stringProp>
+            <stringProp name="HTTPSampler.path">${API_URL}schedules/${NEW_TEACHER_ID}?eventTypes=class_schedule,availability&amp;startDate=${CURRENTDT}&amp;endDate=${MONTHDT}</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1437,6 +1536,46 @@ vars.put(&quot;MONTHDT&quot;, nextmonthdt.replaceAll(&quot;/&quot;,&quot;%2F&quo
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
+        <JDBCPreProcessor guiclass="TestBeanGUI" testclass="JDBCPreProcessor" testname="Getorgid" enabled="true">
+          <stringProp name="dataSource">mousikiqadb</stringProp>
+          <stringProp name="query">SELECT default_org FROM mousikiqa.user where email=&apos;${USER_ID}&apos;</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
+          <stringProp name="resultVariable">dbvalue</stringProp>
+          <stringProp name="variableNames">ORG_ID</stringProp>
+        </JDBCPreProcessor>
+        <hashTree/>
+        <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+          <stringProp name="scriptLanguage">groovy</stringProp>
+          <stringProp name="parameters">${FROMDT} ${TODT} ${ORG_ID_1}</stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="script">String currentdt = args[0];
+log.info(&quot;From date format: &quot; + currentdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;));
+vars.put(&quot;FROMDT&quot;, currentdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;));
+
+String tomorrowdt = args[1];
+log.info(&quot;To date format: &quot; + tomorrowdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;));
+vars.put(&quot;TODT&quot;, tomorrowdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;));
+
+log.info(&quot;org id-&quot; + args[2]);
+String temp = args[2];
+log.info(&quot;length:&quot; + temp.length());
+
+if(temp.length()==11){
+	temp = &quot;&quot;;
+	vars.put(&quot;NEWORG&quot;, &quot;&quot;);
+}else{
+	vars.put(&quot;NEWORG&quot;, temp);
+}
+
+log.info(&quot;NEW ORG ID:&quot; + temp);</stringProp>
+        </JSR223PreProcessor>
+        <hashTree/>
         <WhileController guiclass="WhileControllerGui" testclass="WhileController" testname="While Controller" enabled="true">
           <stringProp name="WhileController.condition">${AUTH_URL}</stringProp>
         </WhileController>
@@ -1463,20 +1602,6 @@ vars.put(&quot;MONTHDT&quot;, nextmonthdt.replaceAll(&quot;/&quot;,&quot;%2F&quo
             <stringProp name="variableNames"></stringProp>
           </CSVDataSet>
           <hashTree/>
-          <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
-            <stringProp name="scriptLanguage">groovy</stringProp>
-            <stringProp name="parameters">${FROMDT} ${TODT}</stringProp>
-            <stringProp name="filename"></stringProp>
-            <stringProp name="cacheKey">true</stringProp>
-            <stringProp name="script">String currentdt = args[0];
-log.info(&quot;From date format: &quot; + currentdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;));
-vars.put(&quot;FROMDT&quot;, currentdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;));
-
-String tomorrowdt = args[1];
-log.info(&quot;To date format: &quot; + tomorrowdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;));
-vars.put(&quot;TODT&quot;, tomorrowdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;));</stringProp>
-          </JSR223PreProcessor>
-          <hashTree/>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Reports_OpenInvoices" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
               <collectionProp name="Arguments.arguments"/>
@@ -1485,7 +1610,7 @@ vars.put(&quot;TODT&quot;, tomorrowdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;))
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">${API_URL}${ORG_ID}/invoices?reportPeriod=Custom&amp;fromDate=${FROMDT}&amp;toDate=${TODT}&amp;status=OPEN,PARTIALLY_PAID,OVER_DUE&amp;orderBy=desc&amp;sortOrder=date</stringProp>
+            <stringProp name="HTTPSampler.path">${API_URL}${NEWORG}/invoices?reportPeriod=Custom&amp;fromDate=${FROMDT}&amp;toDate=${TODT}&amp;status=OPEN,PARTIALLY_PAID,OVER_DUE&amp;orderBy=desc&amp;sortOrder=date</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1530,7 +1655,7 @@ vars.put(&quot;TODT&quot;, tomorrowdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;))
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">${API_URL}${ORG_ID}/invoices?reportPeriod=Custom&amp;fromDate=${FROMDT}&amp;toDate=${TODT}&amp;status=OVER_DUE&amp;orderBy=desc&amp;sortOrder=date</stringProp>
+            <stringProp name="HTTPSampler.path">${API_URL}${NEWORG}/invoices?reportPeriod=Custom&amp;fromDate=${FROMDT}&amp;toDate=${TODT}&amp;status=OVER_DUE&amp;orderBy=desc&amp;sortOrder=date</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1575,7 +1700,7 @@ vars.put(&quot;TODT&quot;, tomorrowdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;))
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">${API_URL}${ORG_ID}/invoices?reportPeriod=Custom&amp;fromDate=${FROMDT}&amp;toDate=${TODT}&amp;status=PARTIALLY_PAID&amp;orderBy=desc&amp;sortOrder=date</stringProp>
+            <stringProp name="HTTPSampler.path">${API_URL}${NEWORG}/invoices?reportPeriod=Custom&amp;fromDate=${FROMDT}&amp;toDate=${TODT}&amp;status=PARTIALLY_PAID&amp;orderBy=desc&amp;sortOrder=date</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1620,7 +1745,7 @@ vars.put(&quot;TODT&quot;, tomorrowdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;))
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">${API_URL}${ORG_ID}/invoices?reportPeriod=Custom&amp;fromDate=${FROMDT}&amp;toDate=${TODT}&amp;status=CANCELLED&amp;orderBy=desc&amp;sortOrder=date</stringProp>
+            <stringProp name="HTTPSampler.path">${API_URL}${NEWORG}/invoices?reportPeriod=Custom&amp;fromDate=${FROMDT}&amp;toDate=${TODT}&amp;status=CANCELLED&amp;orderBy=desc&amp;sortOrder=date</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1665,7 +1790,7 @@ vars.put(&quot;TODT&quot;, tomorrowdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;))
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">${API_URL}${ORG_ID}/invoices?reportPeriod=Custom&amp;fromDate=${FROMDT}&amp;toDate=${TODT}&amp;status=PAID&amp;orderBy=desc&amp;sortOrder=date</stringProp>
+            <stringProp name="HTTPSampler.path">${API_URL}${NEWORG}/invoices?reportPeriod=Custom&amp;fromDate=${FROMDT}&amp;toDate=${TODT}&amp;status=PAID&amp;orderBy=desc&amp;sortOrder=date</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1922,8 +2047,49 @@ vars.put(&quot;WEEKDT&quot;, nextweekdt);
 
 String nextmonthdt = &quot;${__timeShift(MM/dd/yyyy,,P33D,,)}&quot;;
 log.info(&quot;incremented 33 date format: &quot; + nextmonthdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;));
-vars.put(&quot;MONTHDT&quot;, nextmonthdt);</stringProp>
+vars.put(&quot;MONTHDT&quot;, nextmonthdt);
+
+log.info(&quot;User id: &quot; + &quot;${USER_ID}&quot;);</stringProp>
         </JSR223PreProcessor>
+        <hashTree/>
+        <JDBCPreProcessor guiclass="TestBeanGUI" testclass="JDBCPreProcessor" testname="Getorgidcourseid" enabled="true">
+          <stringProp name="dataSource">mousikiqadb</stringProp>
+          <stringProp name="query">SELECT b.default_org as ORG_ID, a.id as COURSE_ID, c.id as COURSE_OFFER_ID FROM mousikiqa.course_master a, mousikiqa.user b, mousikiqa.course_offer c where a.course_name LIKE &quot;Testcourse:%&quot; and b.email = &quot;${USER_ID}&quot; and a.org_id = b.default_org and c.course_id = a.id LIMIT 1</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
+          <stringProp name="resultVariable">dbvalue</stringProp>
+          <stringProp name="variableNames">ORG_ID,COURSE_ID,COURSE_OFFER_ID</stringProp>
+        </JDBCPreProcessor>
+        <hashTree/>
+        <JDBCPreProcessor guiclass="TestBeanGUI" testclass="JDBCPreProcessor" testname="GetTeacherID" enabled="true">
+          <stringProp name="dataSource">mousikiqadb</stringProp>
+          <stringProp name="query">SELECT d.id as TEACHER_ID from mousikiqa.teacher d, mousikiqa.user b where d.org_id=b.default_org and b.email = &apos;${USER_ID}&apos; and d.first_name LIKE (&apos;test%&apos;) and d.active = 1</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
+          <stringProp name="resultVariable">dbvalue</stringProp>
+          <stringProp name="variableNames">TEACHER_ID</stringProp>
+        </JDBCPreProcessor>
+        <hashTree/>
+        <JDBCPreProcessor guiclass="TestBeanGUI" testclass="JDBCPreProcessor" testname="GetStudentID" enabled="true">
+          <stringProp name="dataSource">mousikiqadb</stringProp>
+          <stringProp name="query">SELECT e.id as STUDENT_ID, e.first_name as First_Name, e.last_name as Last_Name, b.default_org as ORG_ID from mousikiqa.student e, mousikiqa.user b where e.org_id=b.default_org and b.email = &apos;${USER_ID}&apos; and e.first_name LIKE (&apos;FN%&apos;) and e.active = 1;</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
+          <stringProp name="resultVariable">dbvalue</stringProp>
+          <stringProp name="variableNames">STUDENT_ID</stringProp>
+        </JDBCPreProcessor>
         <hashTree/>
         <WhileController guiclass="WhileControllerGui" testclass="WhileController" testname="While Controller" enabled="true">
           <stringProp name="WhileController.condition">${AUTH_URL}</stringProp>
@@ -1951,6 +2117,96 @@ vars.put(&quot;MONTHDT&quot;, nextmonthdt);</stringProp>
             <stringProp name="variableNames"></stringProp>
           </CSVDataSet>
           <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="MyClasses_GetactiveSchedules" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">${API_URL}schedules/status/active?page=1</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Encoding" elementType="Header">
+                  <stringProp name="Header.name">Accept-Encoding</stringProp>
+                  <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Language" elementType="Header">
+                  <stringProp name="Header.name">Accept-Language</stringProp>
+                  <stringProp name="Header.value">en-US,en;q=0.9</stringProp>
+                </elementProp>
+                <elementProp name="Authorization" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">Bearer ${__property(bearertoken_${counter_value})}</stringProp>
+                </elementProp>
+                <elementProp name="Connection" elementType="Header">
+                  <stringProp name="Header.name">Connection</stringProp>
+                  <stringProp name="Header.value">keep-alive</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="MyClasses_GetinactiveSchedules" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">${API_URL}schedules/status/inactive?page=1</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Encoding" elementType="Header">
+                  <stringProp name="Header.name">Accept-Encoding</stringProp>
+                  <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Language" elementType="Header">
+                  <stringProp name="Header.name">Accept-Language</stringProp>
+                  <stringProp name="Header.value">en-US,en;q=0.9</stringProp>
+                </elementProp>
+                <elementProp name="Authorization" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">Bearer ${__property(bearertoken_${counter_value})}</stringProp>
+                </elementProp>
+                <elementProp name="Connection" elementType="Header">
+                  <stringProp name="Header.name">Connection</stringProp>
+                  <stringProp name="Header.value">keep-alive</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="MyClasses_NewGroupClass" enabled="true">
             <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
@@ -1959,13 +2215,13 @@ vars.put(&quot;MONTHDT&quot;, nextmonthdt);</stringProp>
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
 	&quot;teacher&quot;: {&#xd;
-		&quot;id&quot;: ${TEACHER_ID}&#xd;
+		&quot;id&quot;: ${TEACHER_ID_1}&#xd;
 	},&#xd;
 	&quot;courseOffer&quot;: {&#xd;
-		&quot;id&quot;: ${COURSE_OFFER_ID}&#xd;
+		&quot;id&quot;: ${COURSE_OFFER_ID_1}&#xd;
 	},&#xd;
 	&quot;organization&quot;: {&#xd;
-		&quot;id&quot;: ${ORG_ID}&#xd;
+		&quot;id&quot;: ${ORG_ID_1}&#xd;
 	},&#xd;
 	&quot;startDate&quot;: &quot;${TOMORROWDT}&quot;,&#xd;
 	&quot;endDate&quot;: &quot;${TOMORROWDT}&quot;,&#xd;
@@ -2097,13 +2353,13 @@ vars.put(&quot;MONTHDT&quot;, nextmonthdt);</stringProp>
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
 	&quot;teacher&quot;: {&#xd;
-		&quot;id&quot;: ${TEACHER_ID}&#xd;
+		&quot;id&quot;: ${TEACHER_ID_1}&#xd;
 	},&#xd;
 	&quot;courseOffer&quot;: {&#xd;
-		&quot;id&quot;: ${COURSE_OFFER_ID}&#xd;
+		&quot;id&quot;: ${COURSE_OFFER_ID_1}&#xd;
 	},&#xd;
 	&quot;organization&quot;: {&#xd;
-		&quot;id&quot;: ${ORG_ID}&#xd;
+		&quot;id&quot;: ${ORG_ID_1}&#xd;
 	},&#xd;
 	&quot;startDate&quot;: &quot;${TOMORROWDT}&quot;,&#xd;
 	&quot;endDate&quot;: &quot;${TOMORROWDT}&quot;,&#xd;
@@ -2236,16 +2492,16 @@ vars.put(&quot;MONTHDT&quot;, nextmonthdt);</stringProp>
                   <stringProp name="Argument.value">{&#xd;
 	&quot;classEnrollment&quot;: {&#xd;
 		&quot;student&quot;: {&#xd;
-			&quot;id&quot;: ${STUDENT_ID}&#xd;
+			&quot;id&quot;: ${STUDENT_ID_1}&#xd;
 		},&#xd;
 		&quot;teacher&quot;: {&#xd;
-			&quot;id&quot;: ${TEACHER_ID}&#xd;
+			&quot;id&quot;: ${TEACHER_ID_1}&#xd;
 		},&#xd;
 		&quot;courseOffer&quot;: {&#xd;
-			&quot;id&quot;: ${COURSE_OFFER_ID}&#xd;
+			&quot;id&quot;: ${COURSE_OFFER_ID_1}&#xd;
 		},&#xd;
 		&quot;organization&quot;: {&#xd;
-			&quot;id&quot;: ${ORG_ID}&#xd;
+			&quot;id&quot;: ${ORG_ID_1}&#xd;
 		},&#xd;
 		&quot;kpiCategory&quot;: null,&#xd;
 		&quot;invoicingSchedule&quot;: &quot;WEEKLY&quot;,&#xd;
@@ -2253,7 +2509,7 @@ vars.put(&quot;MONTHDT&quot;, nextmonthdt);</stringProp>
 		&quot;autoInvoice&quot;: false,&#xd;
 		&quot;sendInvoiceToCustomer&quot;: false&#xd;
 	},&#xd;
-	&quot;courseId&quot;: ${COURSE_ID},&#xd;
+	&quot;courseId&quot;: ${COURSE_ID_1},&#xd;
 	&quot;repeat&quot;: false,&#xd;
 	&quot;notes&quot;: &quot;&quot;,&#xd;
 	&quot;startDate&quot;: &quot;${MONTHDT}&quot;,&#xd;
@@ -2383,16 +2639,16 @@ vars.put(&quot;MONTHDT&quot;, nextmonthdt);</stringProp>
                   <stringProp name="Argument.value">{&#xd;
 	&quot;classEnrollment&quot;: {&#xd;
 		&quot;student&quot;: {&#xd;
-			&quot;id&quot;: ${STUDENT_ID}&#xd;
+			&quot;id&quot;: ${STUDENT_ID_1}&#xd;
 		},&#xd;
 		&quot;teacher&quot;: {&#xd;
-			&quot;id&quot;: ${TEACHER_ID}&#xd;
+			&quot;id&quot;: ${TEACHER_ID_1}&#xd;
 		},&#xd;
 		&quot;courseOffer&quot;: {&#xd;
-			&quot;id&quot;: ${COURSE_OFFER_ID}&#xd;
+			&quot;id&quot;: ${COURSE_OFFER_ID_1}&#xd;
 		},&#xd;
 		&quot;organization&quot;: {&#xd;
-			&quot;id&quot;: ${ORG_ID}&#xd;
+			&quot;id&quot;: ${ORG_ID_1}&#xd;
 		},&#xd;
 		&quot;kpiCategory&quot;: null,&#xd;
 		&quot;invoicingSchedule&quot;: &quot;WEEKLY&quot;,&#xd;
@@ -2400,13 +2656,13 @@ vars.put(&quot;MONTHDT&quot;, nextmonthdt);</stringProp>
 		&quot;autoInvoice&quot;: false,&#xd;
 		&quot;sendInvoiceToCustomer&quot;: false&#xd;
 	},&#xd;
-	&quot;courseId&quot;: ${COURSE_ID},&#xd;
+	&quot;courseId&quot;: ${COURSE_ID_1},&#xd;
 	&quot;repeat&quot;: false,&#xd;
 	&quot;notes&quot;: &quot;&quot;,&#xd;
 	&quot;startDate&quot;: &quot;${MONTHDT}&quot;,&#xd;
 	&quot;endDate&quot;: &quot;${MONTHDT}&quot;,&#xd;
-	&quot;startTime&quot;: &quot;22:00&quot;,&#xd;
-	&quot;endTime&quot;: &quot;22:15&quot;,&#xd;
+	&quot;startTime&quot;: &quot;23:00&quot;,&#xd;
+	&quot;endTime&quot;: &quot;23:15&quot;,&#xd;
 	&quot;id&quot;: ${ONEONONECLASS_ID}&#xd;
 }</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
