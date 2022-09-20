@@ -1,5 +1,5 @@
-﻿API_URL,USER_ID,FROMDT,TODT
-https://qa-api.mousiki.io/api/v1/organization/,qsa@msupport.io,06/28/2021,04/28/2023
-https://qa-api.mousiki.io/api/v1/organization/,u4qxmcLRaG@gmail.com,06/28/2021,04/28/2023
-https://qa-api.mousiki.io/api/v1/users,parentv3@gmail.com,06/28/2021,04/28/2023
-https://qa-api.mousiki.io/api/v1/users,studentv3@gmail.com,06/28/2021,04/28/2023
+﻿API_URL,FROMDT,TODT
+https://qa-api.mousiki.io/api/v1/organization/,06/28/2021,04/28/2023
+https://qa-api.mousiki.io/api/v1/organization/,06/28/2021,04/28/2023
+https://qa-api.mousiki.io/api/v1/users,06/28/2021,04/28/2023
+https://qa-api.mousiki.io/api/v1/users,06/28/2021,04/28/2023

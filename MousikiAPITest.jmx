@@ -119,7 +119,8 @@
             </JSONPostProcessor>
             <hashTree/>
             <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
-              <stringProp name="BeanShellAssertion.query">${__setProperty(bearertoken_${counter_value},${token})}</stringProp>
+              <stringProp name="BeanShellAssertion.query">${__setProperty(bearertoken_${counter_value},${token})}
+${__setProperty(USER_ID_${counter_value},${USERNAME})}</stringProp>
               <stringProp name="BeanShellAssertion.filename"></stringProp>
               <stringProp name="BeanShellAssertion.parameters"></stringProp>
               <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
@@ -181,7 +182,7 @@
       <hashTree>
         <JDBCPreProcessor guiclass="TestBeanGUI" testclass="JDBCPreProcessor" testname="Getorgidcourseid" enabled="true">
           <stringProp name="dataSource">mousikiqadb</stringProp>
-          <stringProp name="query">SELECT b.default_org as ORG_ID, a.id as COURSE_ID, c.id as COURSE_OFFER_ID FROM mousikiqa.course_master a, mousikiqa.user b, mousikiqa.course_offer c where a.course_name LIKE &quot;Testcourse:%&quot; and b.email = &quot;${USER_ID}&quot; and a.org_id = b.default_org and c.course_id = a.id LIMIT 1</stringProp>
+          <stringProp name="query">SELECT b.default_org as ORG_ID, a.id as COURSE_ID, c.id as COURSE_OFFER_ID FROM mousikiqa.course_master a, mousikiqa.user b, mousikiqa.course_offer c where a.course_name LIKE &quot;Testcourse:%&quot; and b.email = &quot;${__property(USER_ID_${counter_value})}&quot; and a.org_id = b.default_org and c.course_id = a.id LIMIT 1</stringProp>
           <stringProp name="queryArguments"></stringProp>
           <stringProp name="queryArgumentsTypes"></stringProp>
           <stringProp name="queryTimeout"></stringProp>
@@ -194,7 +195,7 @@
         <hashTree/>
         <JDBCPreProcessor guiclass="TestBeanGUI" testclass="JDBCPreProcessor" testname="GetTeacherID" enabled="true">
           <stringProp name="dataSource">mousikiqadb</stringProp>
-          <stringProp name="query">SELECT d.id as TEACHER_ID from mousikiqa.teacher d, mousikiqa.user b where d.org_id=b.default_org and b.email = &apos;${USER_ID}&apos; and d.first_name LIKE (&apos;test%&apos;) and d.active = 1</stringProp>
+          <stringProp name="query">SELECT d.id as TEACHER_ID from mousikiqa.teacher d, mousikiqa.user b where d.org_id=b.default_org and b.email = &apos;${__property(USER_ID_${counter_value})}&apos; and d.first_name LIKE (&apos;test%&apos;) and d.active = 1</stringProp>
           <stringProp name="queryArguments"></stringProp>
           <stringProp name="queryArgumentsTypes"></stringProp>
           <stringProp name="queryTimeout"></stringProp>
@@ -1134,6 +1135,130 @@ log.info(&quot;User id: &quot; + &quot;${USER_ID}&quot;);</stringProp>
             </HeaderManager>
             <hashTree/>
           </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="MyStudent_InactiveEnrollment" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+	&quot;active&quot;: false&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">${API_URL}enrollments/${ENROLLMENT_ID}</stringProp>
+            <stringProp name="HTTPSampler.method">PATCH</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Encoding" elementType="Header">
+                  <stringProp name="Header.name">Accept-Encoding</stringProp>
+                  <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Language" elementType="Header">
+                  <stringProp name="Header.name">Accept-Language</stringProp>
+                  <stringProp name="Header.value">en-US,en;q=0.9</stringProp>
+                </elementProp>
+                <elementProp name="Authorization" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">Bearer ${__property(bearertoken_${counter_value})}</stringProp>
+                </elementProp>
+                <elementProp name="Connection" elementType="Header">
+                  <stringProp name="Header.name">Connection</stringProp>
+                  <stringProp name="Header.value">keep-alive</stringProp>
+                </elementProp>
+                <elementProp name="Content-Length" elementType="Header">
+                  <stringProp name="Header.name">Content-Length</stringProp>
+                  <stringProp name="Header.value">419</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="MyStudent_activeEnrollment" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+	&quot;active&quot;: true&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">${API_URL}enrollments/${ENROLLMENT_ID}</stringProp>
+            <stringProp name="HTTPSampler.method">PATCH</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Encoding" elementType="Header">
+                  <stringProp name="Header.name">Accept-Encoding</stringProp>
+                  <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Language" elementType="Header">
+                  <stringProp name="Header.name">Accept-Language</stringProp>
+                  <stringProp name="Header.value">en-US,en;q=0.9</stringProp>
+                </elementProp>
+                <elementProp name="Authorization" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">Bearer ${__property(bearertoken_${counter_value})}</stringProp>
+                </elementProp>
+                <elementProp name="Connection" elementType="Header">
+                  <stringProp name="Header.name">Connection</stringProp>
+                  <stringProp name="Header.value">keep-alive</stringProp>
+                </elementProp>
+                <elementProp name="Content-Length" elementType="Header">
+                  <stringProp name="Header.name">Content-Length</stringProp>
+                  <stringProp name="Header.value">419</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="MyStudent_DeleteEnrollment" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
               <collectionProp name="Arguments.arguments"/>
@@ -1144,6 +1269,130 @@ log.info(&quot;User id: &quot; + &quot;${USER_ID}&quot;);</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
             <stringProp name="HTTPSampler.path">${API_URL}enrollments/${ENROLLMENT_ID}</stringProp>
             <stringProp name="HTTPSampler.method">DELETE</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Encoding" elementType="Header">
+                  <stringProp name="Header.name">Accept-Encoding</stringProp>
+                  <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Language" elementType="Header">
+                  <stringProp name="Header.name">Accept-Language</stringProp>
+                  <stringProp name="Header.value">en-US,en;q=0.9</stringProp>
+                </elementProp>
+                <elementProp name="Authorization" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">Bearer ${__property(bearertoken_${counter_value})}</stringProp>
+                </elementProp>
+                <elementProp name="Connection" elementType="Header">
+                  <stringProp name="Header.name">Connection</stringProp>
+                  <stringProp name="Header.value">keep-alive</stringProp>
+                </elementProp>
+                <elementProp name="Content-Length" elementType="Header">
+                  <stringProp name="Header.name">Content-Length</stringProp>
+                  <stringProp name="Header.value">419</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="MyStudent_InactiveStudent" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+	&quot;isActive&quot;: false&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">${API_URL}student/${STUDENT_ID}</stringProp>
+            <stringProp name="HTTPSampler.method">PATCH</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Encoding" elementType="Header">
+                  <stringProp name="Header.name">Accept-Encoding</stringProp>
+                  <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Language" elementType="Header">
+                  <stringProp name="Header.name">Accept-Language</stringProp>
+                  <stringProp name="Header.value">en-US,en;q=0.9</stringProp>
+                </elementProp>
+                <elementProp name="Authorization" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">Bearer ${__property(bearertoken_${counter_value})}</stringProp>
+                </elementProp>
+                <elementProp name="Connection" elementType="Header">
+                  <stringProp name="Header.name">Connection</stringProp>
+                  <stringProp name="Header.value">keep-alive</stringProp>
+                </elementProp>
+                <elementProp name="Content-Length" elementType="Header">
+                  <stringProp name="Header.name">Content-Length</stringProp>
+                  <stringProp name="Header.value">419</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="MyStudent_activeStudent" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+	&quot;isActive&quot;: true&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">${API_URL}student/${STUDENT_ID}</stringProp>
+            <stringProp name="HTTPSampler.method">PATCH</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
             <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
@@ -1537,7 +1786,7 @@ log.info(&quot;User id: &quot; + &quot;${USER_ID}&quot;);</stringProp>
       <hashTree>
         <JDBCPreProcessor guiclass="TestBeanGUI" testclass="JDBCPreProcessor" testname="GetTeacherID" enabled="true">
           <stringProp name="dataSource">mousikiqadb</stringProp>
-          <stringProp name="query">SELECT d.id as TEACHER_ID from mousikiqa.teacher d, mousikiqa.user b where d.org_id=b.default_org and b.email = &apos;${USER_ID}&apos; and d.first_name LIKE (&apos;test%&apos;) and d.active = 1</stringProp>
+          <stringProp name="query">SELECT d.id as TEACHER_ID from mousikiqa.teacher d, mousikiqa.user b where d.org_id=b.default_org and b.email = &apos;${__property(USER_ID_${counter_value})}&apos; and d.first_name LIKE (&apos;test%&apos;) and d.active = 1</stringProp>
           <stringProp name="queryArguments"></stringProp>
           <stringProp name="queryArgumentsTypes"></stringProp>
           <stringProp name="queryTimeout"></stringProp>
@@ -1951,7 +2200,7 @@ log.info(&quot;NEW Teacher ID:&quot; + &quot;teacher/&quot; + temp);</stringProp
       <hashTree>
         <JDBCPreProcessor guiclass="TestBeanGUI" testclass="JDBCPreProcessor" testname="Getorgid" enabled="true">
           <stringProp name="dataSource">mousikiqadb</stringProp>
-          <stringProp name="query">SELECT default_org FROM mousikiqa.user where email=&apos;${USER_ID}&apos;</stringProp>
+          <stringProp name="query">SELECT default_org FROM mousikiqa.user where email=&apos;${__property(USER_ID_${counter_value})}&apos;</stringProp>
           <stringProp name="queryArguments"></stringProp>
           <stringProp name="queryArgumentsTypes"></stringProp>
           <stringProp name="queryTimeout"></stringProp>
@@ -2441,69 +2690,6 @@ log.info(&quot;NEW ORG ID:&quot; + temp);</stringProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
-        <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
-          <stringProp name="scriptLanguage">groovy</stringProp>
-          <stringProp name="parameters"></stringProp>
-          <stringProp name="filename"></stringProp>
-          <stringProp name="cacheKey">true</stringProp>
-          <stringProp name="script">String currentdt = &quot;${__timeShift(MM/dd/yyyy,,,,)}&quot;;
-log.info(&quot;date format: &quot; + currentdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;));
-vars.put(&quot;CURRENTDT&quot;, currentdt);
-
-String tomorrowdt = &quot;${__timeShift(MM/dd/yyyy,,P1D,,)}&quot;;
-log.info(&quot;incremented date format: &quot; + tomorrowdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;));
-vars.put(&quot;TOMORROWDT&quot;, tomorrowdt);
-
-String nextweekdt = &quot;${__timeShift(MM/dd/yyyy,,P7D,,)}&quot;;
-log.info(&quot;incremented 7 date format: &quot; + nextweekdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;));
-vars.put(&quot;WEEKDT&quot;, nextweekdt);
-
-String nextmonthdt = &quot;${__timeShift(MM/dd/yyyy,,P33D,,)}&quot;;
-log.info(&quot;incremented 33 date format: &quot; + nextmonthdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;));
-vars.put(&quot;MONTHDT&quot;, nextmonthdt);
-
-log.info(&quot;User id: &quot; + &quot;${USER_ID}&quot;);</stringProp>
-        </JSR223PreProcessor>
-        <hashTree/>
-        <JDBCPreProcessor guiclass="TestBeanGUI" testclass="JDBCPreProcessor" testname="Getorgidcourseid" enabled="true">
-          <stringProp name="dataSource">mousikiqadb</stringProp>
-          <stringProp name="query">SELECT b.default_org as ORG_ID, a.id as COURSE_ID, c.id as COURSE_OFFER_ID FROM mousikiqa.course_master a, mousikiqa.user b, mousikiqa.course_offer c where a.course_name LIKE &quot;Testcourse:%&quot; and b.email = &quot;${USER_ID}&quot; and a.org_id = b.default_org and c.course_id = a.id LIMIT 1</stringProp>
-          <stringProp name="queryArguments"></stringProp>
-          <stringProp name="queryArgumentsTypes"></stringProp>
-          <stringProp name="queryTimeout"></stringProp>
-          <stringProp name="queryType">Select Statement</stringProp>
-          <stringProp name="resultSetHandler">Store as String</stringProp>
-          <stringProp name="resultSetMaxRows"></stringProp>
-          <stringProp name="resultVariable">dbvalue</stringProp>
-          <stringProp name="variableNames">ORG_ID,COURSE_ID,COURSE_OFFER_ID</stringProp>
-        </JDBCPreProcessor>
-        <hashTree/>
-        <JDBCPreProcessor guiclass="TestBeanGUI" testclass="JDBCPreProcessor" testname="GetTeacherID" enabled="true">
-          <stringProp name="dataSource">mousikiqadb</stringProp>
-          <stringProp name="query">SELECT d.id as TEACHER_ID from mousikiqa.teacher d, mousikiqa.user b where d.org_id=b.default_org and b.email = &apos;${USER_ID}&apos; and d.first_name LIKE (&apos;test%&apos;) and d.active = 1</stringProp>
-          <stringProp name="queryArguments"></stringProp>
-          <stringProp name="queryArgumentsTypes"></stringProp>
-          <stringProp name="queryTimeout"></stringProp>
-          <stringProp name="queryType">Select Statement</stringProp>
-          <stringProp name="resultSetHandler">Store as String</stringProp>
-          <stringProp name="resultSetMaxRows"></stringProp>
-          <stringProp name="resultVariable">dbvalue</stringProp>
-          <stringProp name="variableNames">TEACHER_ID</stringProp>
-        </JDBCPreProcessor>
-        <hashTree/>
-        <JDBCPreProcessor guiclass="TestBeanGUI" testclass="JDBCPreProcessor" testname="GetStudentID" enabled="true">
-          <stringProp name="dataSource">mousikiqadb</stringProp>
-          <stringProp name="query">SELECT e.id as STUDENT_ID, e.first_name as First_Name, e.last_name as Last_Name, b.default_org as ORG_ID from mousikiqa.student e, mousikiqa.user b where e.org_id=b.default_org and b.email = &apos;${USER_ID}&apos; and e.first_name LIKE (&apos;FN%&apos;) and e.active = 1;</stringProp>
-          <stringProp name="queryArguments"></stringProp>
-          <stringProp name="queryArgumentsTypes"></stringProp>
-          <stringProp name="queryTimeout"></stringProp>
-          <stringProp name="queryType">Select Statement</stringProp>
-          <stringProp name="resultSetHandler">Store as String</stringProp>
-          <stringProp name="resultSetMaxRows"></stringProp>
-          <stringProp name="resultVariable">dbvalue</stringProp>
-          <stringProp name="variableNames">STUDENT_ID</stringProp>
-        </JDBCPreProcessor>
-        <hashTree/>
         <WhileController guiclass="WhileControllerGui" testclass="WhileController" testname="While Controller" enabled="true">
           <stringProp name="WhileController.condition">${AUTH_URL}</stringProp>
         </WhileController>
@@ -2704,6 +2890,70 @@ log.info(&quot;User id: &quot; + &quot;${USER_ID}&quot;);</stringProp>
               <stringProp name="JSONPostProcessor.defaultValues">NULL</stringProp>
             </JSONPostProcessor>
             <hashTree/>
+            <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">String currentdt = &quot;${__timeShift(MM/dd/yyyy,,,,)}&quot;;
+log.info(&quot;date format: &quot; + currentdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;));
+vars.put(&quot;CURRENTDT&quot;, currentdt);
+
+String tomorrowdt = &quot;${__timeShift(MM/dd/yyyy,,P1D,,)}&quot;;
+log.info(&quot;incremented date format: &quot; + tomorrowdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;));
+vars.put(&quot;TOMORROWDT&quot;, tomorrowdt);
+
+String nextweekdt = &quot;${__timeShift(MM/dd/yyyy,,P7D,,)}&quot;;
+log.info(&quot;incremented 7 date format: &quot; + nextweekdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;));
+vars.put(&quot;WEEKDT&quot;, nextweekdt);
+
+String nextmonthdt = &quot;${__timeShift(MM/dd/yyyy,,P33D,,)}&quot;;
+log.info(&quot;incremented 33 date format: &quot; + nextmonthdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;));
+vars.put(&quot;MONTHDT&quot;, nextmonthdt);
+
+log.info(&quot;Counter value: &quot; + &quot;${counter_value}&quot;);
+log.info(&quot;User id: &quot; + &quot;${__property(USER_ID_${counter_value})}&quot;);</stringProp>
+            </JSR223PreProcessor>
+            <hashTree/>
+            <JDBCPreProcessor guiclass="TestBeanGUI" testclass="JDBCPreProcessor" testname="Getorgidcourseid" enabled="true">
+              <stringProp name="dataSource">mousikiqadb</stringProp>
+              <stringProp name="query">SELECT b.default_org as ORG_ID, a.id as COURSE_ID, c.id as COURSE_OFFER_ID FROM mousikiqa.course_master a, mousikiqa.user b, mousikiqa.course_offer c where a.course_name LIKE &quot;Testcourse:%&quot; and b.email = &quot;${__property(USER_ID_${counter_value})}&quot; and a.org_id = b.default_org and c.course_id = a.id LIMIT 1</stringProp>
+              <stringProp name="queryArguments"></stringProp>
+              <stringProp name="queryArgumentsTypes"></stringProp>
+              <stringProp name="queryTimeout"></stringProp>
+              <stringProp name="queryType">Select Statement</stringProp>
+              <stringProp name="resultSetHandler">Store as String</stringProp>
+              <stringProp name="resultSetMaxRows"></stringProp>
+              <stringProp name="resultVariable">dbvalue</stringProp>
+              <stringProp name="variableNames">ORG_ID,COURSE_ID,COURSE_OFFER_ID</stringProp>
+            </JDBCPreProcessor>
+            <hashTree/>
+            <JDBCPreProcessor guiclass="TestBeanGUI" testclass="JDBCPreProcessor" testname="GetTeacherID" enabled="true">
+              <stringProp name="dataSource">mousikiqadb</stringProp>
+              <stringProp name="query">SELECT d.id as TEACHER_ID from mousikiqa.teacher d, mousikiqa.user b where d.org_id=b.default_org and b.email = &apos;${__property(USER_ID_${counter_value})}&apos; and d.first_name LIKE (&apos;test%&apos;) and d.active = 1</stringProp>
+              <stringProp name="queryArguments"></stringProp>
+              <stringProp name="queryArgumentsTypes"></stringProp>
+              <stringProp name="queryTimeout"></stringProp>
+              <stringProp name="queryType">Select Statement</stringProp>
+              <stringProp name="resultSetHandler">Store as String</stringProp>
+              <stringProp name="resultSetMaxRows"></stringProp>
+              <stringProp name="resultVariable">dbvalue</stringProp>
+              <stringProp name="variableNames">TEACHER_ID</stringProp>
+            </JDBCPreProcessor>
+            <hashTree/>
+            <JDBCPreProcessor guiclass="TestBeanGUI" testclass="JDBCPreProcessor" testname="GetStudentID" enabled="true">
+              <stringProp name="dataSource">mousikiqadb</stringProp>
+              <stringProp name="query">SELECT e.id as STUDENT_ID, e.first_name as First_Name, e.last_name as Last_Name, b.default_org as ORG_ID from mousikiqa.student e, mousikiqa.user b where e.org_id=b.default_org and b.email = &apos;${__property(USER_ID_${counter_value})}&apos; and e.first_name LIKE (&apos;FN%&apos;) and e.active = 1;</stringProp>
+              <stringProp name="queryArguments"></stringProp>
+              <stringProp name="queryArgumentsTypes"></stringProp>
+              <stringProp name="queryTimeout"></stringProp>
+              <stringProp name="queryType">Select Statement</stringProp>
+              <stringProp name="resultSetHandler">Store as String</stringProp>
+              <stringProp name="resultSetMaxRows"></stringProp>
+              <stringProp name="resultVariable">dbvalue</stringProp>
+              <stringProp name="variableNames">STUDENT_ID</stringProp>
+            </JDBCPreProcessor>
+            <hashTree/>
           </hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="MyClasses_GetGroupClassDetails" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
@@ -2841,6 +3091,70 @@ log.info(&quot;User id: &quot; + &quot;${USER_ID}&quot;);</stringProp>
               <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
               <stringProp name="JSONPostProcessor.defaultValues">NULL</stringProp>
             </JSONPostProcessor>
+            <hashTree/>
+            <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">String currentdt = &quot;${__timeShift(MM/dd/yyyy,,,,)}&quot;;
+log.info(&quot;date format: &quot; + currentdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;));
+vars.put(&quot;CURRENTDT&quot;, currentdt);
+
+String tomorrowdt = &quot;${__timeShift(MM/dd/yyyy,,P1D,,)}&quot;;
+log.info(&quot;incremented date format: &quot; + tomorrowdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;));
+vars.put(&quot;TOMORROWDT&quot;, tomorrowdt);
+
+String nextweekdt = &quot;${__timeShift(MM/dd/yyyy,,P7D,,)}&quot;;
+log.info(&quot;incremented 7 date format: &quot; + nextweekdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;));
+vars.put(&quot;WEEKDT&quot;, nextweekdt);
+
+String nextmonthdt = &quot;${__timeShift(MM/dd/yyyy,,P33D,,)}&quot;;
+log.info(&quot;incremented 33 date format: &quot; + nextmonthdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;));
+vars.put(&quot;MONTHDT&quot;, nextmonthdt);
+
+log.info(&quot;Counter value: &quot; + &quot;${counter_value}&quot;);
+log.info(&quot;User id: &quot; + &quot;${__property(USER_ID_${counter_value})}&quot;);</stringProp>
+            </JSR223PreProcessor>
+            <hashTree/>
+            <JDBCPreProcessor guiclass="TestBeanGUI" testclass="JDBCPreProcessor" testname="Getorgidcourseid" enabled="true">
+              <stringProp name="dataSource">mousikiqadb</stringProp>
+              <stringProp name="query">SELECT b.default_org as ORG_ID, a.id as COURSE_ID, c.id as COURSE_OFFER_ID FROM mousikiqa.course_master a, mousikiqa.user b, mousikiqa.course_offer c where a.course_name LIKE &quot;Testcourse:%&quot; and b.email = &quot;${__property(USER_ID_${counter_value})}&quot; and a.org_id = b.default_org and c.course_id = a.id LIMIT 1</stringProp>
+              <stringProp name="queryArguments"></stringProp>
+              <stringProp name="queryArgumentsTypes"></stringProp>
+              <stringProp name="queryTimeout"></stringProp>
+              <stringProp name="queryType">Select Statement</stringProp>
+              <stringProp name="resultSetHandler">Store as String</stringProp>
+              <stringProp name="resultSetMaxRows"></stringProp>
+              <stringProp name="resultVariable">dbvalue</stringProp>
+              <stringProp name="variableNames">ORG_ID,COURSE_ID,COURSE_OFFER_ID</stringProp>
+            </JDBCPreProcessor>
+            <hashTree/>
+            <JDBCPreProcessor guiclass="TestBeanGUI" testclass="JDBCPreProcessor" testname="GetTeacherID" enabled="true">
+              <stringProp name="dataSource">mousikiqadb</stringProp>
+              <stringProp name="query">SELECT d.id as TEACHER_ID from mousikiqa.teacher d, mousikiqa.user b where d.org_id=b.default_org and b.email = &apos;${__property(USER_ID_${counter_value})}&apos; and d.first_name LIKE (&apos;test%&apos;) and d.active = 1</stringProp>
+              <stringProp name="queryArguments"></stringProp>
+              <stringProp name="queryArgumentsTypes"></stringProp>
+              <stringProp name="queryTimeout"></stringProp>
+              <stringProp name="queryType">Select Statement</stringProp>
+              <stringProp name="resultSetHandler">Store as String</stringProp>
+              <stringProp name="resultSetMaxRows"></stringProp>
+              <stringProp name="resultVariable">dbvalue</stringProp>
+              <stringProp name="variableNames">TEACHER_ID</stringProp>
+            </JDBCPreProcessor>
+            <hashTree/>
+            <JDBCPreProcessor guiclass="TestBeanGUI" testclass="JDBCPreProcessor" testname="GetStudentID" enabled="true">
+              <stringProp name="dataSource">mousikiqadb</stringProp>
+              <stringProp name="query">SELECT e.id as STUDENT_ID, e.first_name as First_Name, e.last_name as Last_Name, b.default_org as ORG_ID from mousikiqa.student e, mousikiqa.user b where e.org_id=b.default_org and b.email = &apos;${__property(USER_ID_${counter_value})}&apos; and e.first_name LIKE (&apos;FN%&apos;) and e.active = 1;</stringProp>
+              <stringProp name="queryArguments"></stringProp>
+              <stringProp name="queryArgumentsTypes"></stringProp>
+              <stringProp name="queryTimeout"></stringProp>
+              <stringProp name="queryType">Select Statement</stringProp>
+              <stringProp name="resultSetHandler">Store as String</stringProp>
+              <stringProp name="resultSetMaxRows"></stringProp>
+              <stringProp name="resultVariable">dbvalue</stringProp>
+              <stringProp name="variableNames">STUDENT_ID</stringProp>
+            </JDBCPreProcessor>
             <hashTree/>
           </hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="MyClasses_DeleteGroupClass" enabled="true">
@@ -2989,6 +3303,70 @@ log.info(&quot;User id: &quot; + &quot;${USER_ID}&quot;);</stringProp>
               <stringProp name="JSONPostProcessor.defaultValues">NULL</stringProp>
             </JSONPostProcessor>
             <hashTree/>
+            <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">String currentdt = &quot;${__timeShift(MM/dd/yyyy,,,,)}&quot;;
+log.info(&quot;date format: &quot; + currentdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;));
+vars.put(&quot;CURRENTDT&quot;, currentdt);
+
+String tomorrowdt = &quot;${__timeShift(MM/dd/yyyy,,P1D,,)}&quot;;
+log.info(&quot;incremented date format: &quot; + tomorrowdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;));
+vars.put(&quot;TOMORROWDT&quot;, tomorrowdt);
+
+String nextweekdt = &quot;${__timeShift(MM/dd/yyyy,,P7D,,)}&quot;;
+log.info(&quot;incremented 7 date format: &quot; + nextweekdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;));
+vars.put(&quot;WEEKDT&quot;, nextweekdt);
+
+String nextmonthdt = &quot;${__timeShift(MM/dd/yyyy,,P33D,,)}&quot;;
+log.info(&quot;incremented 33 date format: &quot; + nextmonthdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;));
+vars.put(&quot;MONTHDT&quot;, nextmonthdt);
+
+log.info(&quot;Counter value: &quot; + &quot;${counter_value}&quot;);
+log.info(&quot;User id: &quot; + &quot;${__property(USER_ID_${counter_value})}&quot;);</stringProp>
+            </JSR223PreProcessor>
+            <hashTree/>
+            <JDBCPreProcessor guiclass="TestBeanGUI" testclass="JDBCPreProcessor" testname="Getorgidcourseid" enabled="true">
+              <stringProp name="dataSource">mousikiqadb</stringProp>
+              <stringProp name="query">SELECT b.default_org as ORG_ID, a.id as COURSE_ID, c.id as COURSE_OFFER_ID FROM mousikiqa.course_master a, mousikiqa.user b, mousikiqa.course_offer c where a.course_name LIKE &quot;Testcourse:%&quot; and b.email = &quot;${__property(USER_ID_${counter_value})}&quot; and a.org_id = b.default_org and c.course_id = a.id LIMIT 1</stringProp>
+              <stringProp name="queryArguments"></stringProp>
+              <stringProp name="queryArgumentsTypes"></stringProp>
+              <stringProp name="queryTimeout"></stringProp>
+              <stringProp name="queryType">Select Statement</stringProp>
+              <stringProp name="resultSetHandler">Store as String</stringProp>
+              <stringProp name="resultSetMaxRows"></stringProp>
+              <stringProp name="resultVariable">dbvalue</stringProp>
+              <stringProp name="variableNames">ORG_ID,COURSE_ID,COURSE_OFFER_ID</stringProp>
+            </JDBCPreProcessor>
+            <hashTree/>
+            <JDBCPreProcessor guiclass="TestBeanGUI" testclass="JDBCPreProcessor" testname="GetTeacherID" enabled="true">
+              <stringProp name="dataSource">mousikiqadb</stringProp>
+              <stringProp name="query">SELECT d.id as TEACHER_ID from mousikiqa.teacher d, mousikiqa.user b where d.org_id=b.default_org and b.email = &apos;${__property(USER_ID_${counter_value})}&apos; and d.first_name LIKE (&apos;test%&apos;) and d.active = 1</stringProp>
+              <stringProp name="queryArguments"></stringProp>
+              <stringProp name="queryArgumentsTypes"></stringProp>
+              <stringProp name="queryTimeout"></stringProp>
+              <stringProp name="queryType">Select Statement</stringProp>
+              <stringProp name="resultSetHandler">Store as String</stringProp>
+              <stringProp name="resultSetMaxRows"></stringProp>
+              <stringProp name="resultVariable">dbvalue</stringProp>
+              <stringProp name="variableNames">TEACHER_ID</stringProp>
+            </JDBCPreProcessor>
+            <hashTree/>
+            <JDBCPreProcessor guiclass="TestBeanGUI" testclass="JDBCPreProcessor" testname="GetStudentID" enabled="true">
+              <stringProp name="dataSource">mousikiqadb</stringProp>
+              <stringProp name="query">SELECT e.id as STUDENT_ID, e.first_name as First_Name, e.last_name as Last_Name, b.default_org as ORG_ID from mousikiqa.student e, mousikiqa.user b where e.org_id=b.default_org and b.email = &apos;${__property(USER_ID_${counter_value})}&apos; and e.first_name LIKE (&apos;FN%&apos;) and e.active = 1;</stringProp>
+              <stringProp name="queryArguments"></stringProp>
+              <stringProp name="queryArgumentsTypes"></stringProp>
+              <stringProp name="queryTimeout"></stringProp>
+              <stringProp name="queryType">Select Statement</stringProp>
+              <stringProp name="resultSetHandler">Store as String</stringProp>
+              <stringProp name="resultSetMaxRows"></stringProp>
+              <stringProp name="resultVariable">dbvalue</stringProp>
+              <stringProp name="variableNames">STUDENT_ID</stringProp>
+            </JDBCPreProcessor>
+            <hashTree/>
           </hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="MyClasses_GetOneonOneClassDetails" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
@@ -3136,6 +3514,327 @@ log.info(&quot;User id: &quot; + &quot;${USER_ID}&quot;);</stringProp>
               <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
               <stringProp name="JSONPostProcessor.defaultValues">NULL</stringProp>
             </JSONPostProcessor>
+            <hashTree/>
+            <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">String currentdt = &quot;${__timeShift(MM/dd/yyyy,,,,)}&quot;;
+log.info(&quot;date format: &quot; + currentdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;));
+vars.put(&quot;CURRENTDT&quot;, currentdt);
+
+String tomorrowdt = &quot;${__timeShift(MM/dd/yyyy,,P1D,,)}&quot;;
+log.info(&quot;incremented date format: &quot; + tomorrowdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;));
+vars.put(&quot;TOMORROWDT&quot;, tomorrowdt);
+
+String nextweekdt = &quot;${__timeShift(MM/dd/yyyy,,P7D,,)}&quot;;
+log.info(&quot;incremented 7 date format: &quot; + nextweekdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;));
+vars.put(&quot;WEEKDT&quot;, nextweekdt);
+
+String nextmonthdt = &quot;${__timeShift(MM/dd/yyyy,,P33D,,)}&quot;;
+log.info(&quot;incremented 33 date format: &quot; + nextmonthdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;));
+vars.put(&quot;MONTHDT&quot;, nextmonthdt);
+
+log.info(&quot;Counter value: &quot; + &quot;${counter_value}&quot;);
+log.info(&quot;User id: &quot; + &quot;${__property(USER_ID_${counter_value})}&quot;);</stringProp>
+            </JSR223PreProcessor>
+            <hashTree/>
+            <JDBCPreProcessor guiclass="TestBeanGUI" testclass="JDBCPreProcessor" testname="Getorgidcourseid" enabled="true">
+              <stringProp name="dataSource">mousikiqadb</stringProp>
+              <stringProp name="query">SELECT b.default_org as ORG_ID, a.id as COURSE_ID, c.id as COURSE_OFFER_ID FROM mousikiqa.course_master a, mousikiqa.user b, mousikiqa.course_offer c where a.course_name LIKE &quot;Testcourse:%&quot; and b.email = &quot;${__property(USER_ID_${counter_value})}&quot; and a.org_id = b.default_org and c.course_id = a.id LIMIT 1</stringProp>
+              <stringProp name="queryArguments"></stringProp>
+              <stringProp name="queryArgumentsTypes"></stringProp>
+              <stringProp name="queryTimeout"></stringProp>
+              <stringProp name="queryType">Select Statement</stringProp>
+              <stringProp name="resultSetHandler">Store as String</stringProp>
+              <stringProp name="resultSetMaxRows"></stringProp>
+              <stringProp name="resultVariable">dbvalue</stringProp>
+              <stringProp name="variableNames">ORG_ID,COURSE_ID,COURSE_OFFER_ID</stringProp>
+            </JDBCPreProcessor>
+            <hashTree/>
+            <JDBCPreProcessor guiclass="TestBeanGUI" testclass="JDBCPreProcessor" testname="GetTeacherID" enabled="true">
+              <stringProp name="dataSource">mousikiqadb</stringProp>
+              <stringProp name="query">SELECT d.id as TEACHER_ID from mousikiqa.teacher d, mousikiqa.user b where d.org_id=b.default_org and b.email = &apos;${__property(USER_ID_${counter_value})}&apos; and d.first_name LIKE (&apos;test%&apos;) and d.active = 1</stringProp>
+              <stringProp name="queryArguments"></stringProp>
+              <stringProp name="queryArgumentsTypes"></stringProp>
+              <stringProp name="queryTimeout"></stringProp>
+              <stringProp name="queryType">Select Statement</stringProp>
+              <stringProp name="resultSetHandler">Store as String</stringProp>
+              <stringProp name="resultSetMaxRows"></stringProp>
+              <stringProp name="resultVariable">dbvalue</stringProp>
+              <stringProp name="variableNames">TEACHER_ID</stringProp>
+            </JDBCPreProcessor>
+            <hashTree/>
+            <JDBCPreProcessor guiclass="TestBeanGUI" testclass="JDBCPreProcessor" testname="GetStudentID" enabled="true">
+              <stringProp name="dataSource">mousikiqadb</stringProp>
+              <stringProp name="query">SELECT e.id as STUDENT_ID, e.first_name as First_Name, e.last_name as Last_Name, b.default_org as ORG_ID from mousikiqa.student e, mousikiqa.user b where e.org_id=b.default_org and b.email = &apos;${__property(USER_ID_${counter_value})}&apos; and e.first_name LIKE (&apos;FN%&apos;) and e.active = 1;</stringProp>
+              <stringProp name="queryArguments"></stringProp>
+              <stringProp name="queryArgumentsTypes"></stringProp>
+              <stringProp name="queryTimeout"></stringProp>
+              <stringProp name="queryType">Select Statement</stringProp>
+              <stringProp name="resultSetHandler">Store as String</stringProp>
+              <stringProp name="resultSetMaxRows"></stringProp>
+              <stringProp name="resultVariable">dbvalue</stringProp>
+              <stringProp name="variableNames">STUDENT_ID</stringProp>
+            </JDBCPreProcessor>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="MyClasses_DeactivateOneononeClass" enabled="false">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+	&quot;isActive&quot;: false&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">${API_URL}schedules/${ONEONONECLASS_ID}</stringProp>
+            <stringProp name="HTTPSampler.method">PATCH</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Encoding" elementType="Header">
+                  <stringProp name="Header.name">Accept-Encoding</stringProp>
+                  <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Language" elementType="Header">
+                  <stringProp name="Header.name">Accept-Language</stringProp>
+                  <stringProp name="Header.value">en-US,en;q=0.9</stringProp>
+                </elementProp>
+                <elementProp name="Authorization" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">Bearer ${__property(bearertoken_${counter_value})}</stringProp>
+                </elementProp>
+                <elementProp name="Connection" elementType="Header">
+                  <stringProp name="Header.name">Connection</stringProp>
+                  <stringProp name="Header.value">keep-alive</stringProp>
+                </elementProp>
+                <elementProp name="Content-Length" elementType="Header">
+                  <stringProp name="Header.name">Content-Length</stringProp>
+                  <stringProp name="Header.value">419</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">GROUPCLASS_ID</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">NULL</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">String currentdt = &quot;${__timeShift(MM/dd/yyyy,,,,)}&quot;;
+log.info(&quot;date format: &quot; + currentdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;));
+vars.put(&quot;CURRENTDT&quot;, currentdt);
+
+String tomorrowdt = &quot;${__timeShift(MM/dd/yyyy,,P1D,,)}&quot;;
+log.info(&quot;incremented date format: &quot; + tomorrowdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;));
+vars.put(&quot;TOMORROWDT&quot;, tomorrowdt);
+
+String nextweekdt = &quot;${__timeShift(MM/dd/yyyy,,P7D,,)}&quot;;
+log.info(&quot;incremented 7 date format: &quot; + nextweekdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;));
+vars.put(&quot;WEEKDT&quot;, nextweekdt);
+
+String nextmonthdt = &quot;${__timeShift(MM/dd/yyyy,,P33D,,)}&quot;;
+log.info(&quot;incremented 33 date format: &quot; + nextmonthdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;));
+vars.put(&quot;MONTHDT&quot;, nextmonthdt);
+
+log.info(&quot;Counter value: &quot; + &quot;${counter_value}&quot;);
+log.info(&quot;User id: &quot; + &quot;${__property(USER_ID_${counter_value})}&quot;);</stringProp>
+            </JSR223PreProcessor>
+            <hashTree/>
+            <JDBCPreProcessor guiclass="TestBeanGUI" testclass="JDBCPreProcessor" testname="Getorgidcourseid" enabled="true">
+              <stringProp name="dataSource">mousikiqadb</stringProp>
+              <stringProp name="query">SELECT b.default_org as ORG_ID, a.id as COURSE_ID, c.id as COURSE_OFFER_ID FROM mousikiqa.course_master a, mousikiqa.user b, mousikiqa.course_offer c where a.course_name LIKE &quot;Testcourse:%&quot; and b.email = &quot;${__property(USER_ID_${counter_value})}&quot; and a.org_id = b.default_org and c.course_id = a.id LIMIT 1</stringProp>
+              <stringProp name="queryArguments"></stringProp>
+              <stringProp name="queryArgumentsTypes"></stringProp>
+              <stringProp name="queryTimeout"></stringProp>
+              <stringProp name="queryType">Select Statement</stringProp>
+              <stringProp name="resultSetHandler">Store as String</stringProp>
+              <stringProp name="resultSetMaxRows"></stringProp>
+              <stringProp name="resultVariable">dbvalue</stringProp>
+              <stringProp name="variableNames">ORG_ID,COURSE_ID,COURSE_OFFER_ID</stringProp>
+            </JDBCPreProcessor>
+            <hashTree/>
+            <JDBCPreProcessor guiclass="TestBeanGUI" testclass="JDBCPreProcessor" testname="GetTeacherID" enabled="true">
+              <stringProp name="dataSource">mousikiqadb</stringProp>
+              <stringProp name="query">SELECT d.id as TEACHER_ID from mousikiqa.teacher d, mousikiqa.user b where d.org_id=b.default_org and b.email = &apos;${__property(USER_ID_${counter_value})}&apos; and d.first_name LIKE (&apos;test%&apos;) and d.active = 1</stringProp>
+              <stringProp name="queryArguments"></stringProp>
+              <stringProp name="queryArgumentsTypes"></stringProp>
+              <stringProp name="queryTimeout"></stringProp>
+              <stringProp name="queryType">Select Statement</stringProp>
+              <stringProp name="resultSetHandler">Store as String</stringProp>
+              <stringProp name="resultSetMaxRows"></stringProp>
+              <stringProp name="resultVariable">dbvalue</stringProp>
+              <stringProp name="variableNames">TEACHER_ID</stringProp>
+            </JDBCPreProcessor>
+            <hashTree/>
+            <JDBCPreProcessor guiclass="TestBeanGUI" testclass="JDBCPreProcessor" testname="GetStudentID" enabled="true">
+              <stringProp name="dataSource">mousikiqadb</stringProp>
+              <stringProp name="query">SELECT e.id as STUDENT_ID, e.first_name as First_Name, e.last_name as Last_Name, b.default_org as ORG_ID from mousikiqa.student e, mousikiqa.user b where e.org_id=b.default_org and b.email = &apos;${__property(USER_ID_${counter_value})}&apos; and e.first_name LIKE (&apos;FN%&apos;) and e.active = 1;</stringProp>
+              <stringProp name="queryArguments"></stringProp>
+              <stringProp name="queryArgumentsTypes"></stringProp>
+              <stringProp name="queryTimeout"></stringProp>
+              <stringProp name="queryType">Select Statement</stringProp>
+              <stringProp name="resultSetHandler">Store as String</stringProp>
+              <stringProp name="resultSetMaxRows"></stringProp>
+              <stringProp name="resultVariable">dbvalue</stringProp>
+              <stringProp name="variableNames">STUDENT_ID</stringProp>
+            </JDBCPreProcessor>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="MyClasses_activateOneonOneClass" enabled="false">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">${API_URL}teachers/${TEACHER_ID}/activate</stringProp>
+            <stringProp name="HTTPSampler.method">PATCH</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Encoding" elementType="Header">
+                  <stringProp name="Header.name">Accept-Encoding</stringProp>
+                  <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Language" elementType="Header">
+                  <stringProp name="Header.name">Accept-Language</stringProp>
+                  <stringProp name="Header.value">en-US,en;q=0.9</stringProp>
+                </elementProp>
+                <elementProp name="Authorization" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">Bearer ${__property(bearertoken_${counter_value})}</stringProp>
+                </elementProp>
+                <elementProp name="Connection" elementType="Header">
+                  <stringProp name="Header.name">Connection</stringProp>
+                  <stringProp name="Header.value">keep-alive</stringProp>
+                </elementProp>
+                <elementProp name="Content-Length" elementType="Header">
+                  <stringProp name="Header.name">Content-Length</stringProp>
+                  <stringProp name="Header.value">419</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">GROUPCLASS_ID</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">NULL</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">String currentdt = &quot;${__timeShift(MM/dd/yyyy,,,,)}&quot;;
+log.info(&quot;date format: &quot; + currentdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;));
+vars.put(&quot;CURRENTDT&quot;, currentdt);
+
+String tomorrowdt = &quot;${__timeShift(MM/dd/yyyy,,P1D,,)}&quot;;
+log.info(&quot;incremented date format: &quot; + tomorrowdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;));
+vars.put(&quot;TOMORROWDT&quot;, tomorrowdt);
+
+String nextweekdt = &quot;${__timeShift(MM/dd/yyyy,,P7D,,)}&quot;;
+log.info(&quot;incremented 7 date format: &quot; + nextweekdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;));
+vars.put(&quot;WEEKDT&quot;, nextweekdt);
+
+String nextmonthdt = &quot;${__timeShift(MM/dd/yyyy,,P33D,,)}&quot;;
+log.info(&quot;incremented 33 date format: &quot; + nextmonthdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;));
+vars.put(&quot;MONTHDT&quot;, nextmonthdt);
+
+log.info(&quot;Counter value: &quot; + &quot;${counter_value}&quot;);
+log.info(&quot;User id: &quot; + &quot;${__property(USER_ID_${counter_value})}&quot;);</stringProp>
+            </JSR223PreProcessor>
+            <hashTree/>
+            <JDBCPreProcessor guiclass="TestBeanGUI" testclass="JDBCPreProcessor" testname="Getorgidcourseid" enabled="true">
+              <stringProp name="dataSource">mousikiqadb</stringProp>
+              <stringProp name="query">SELECT b.default_org as ORG_ID, a.id as COURSE_ID, c.id as COURSE_OFFER_ID FROM mousikiqa.course_master a, mousikiqa.user b, mousikiqa.course_offer c where a.course_name LIKE &quot;Testcourse:%&quot; and b.email = &quot;${__property(USER_ID_${counter_value})}&quot; and a.org_id = b.default_org and c.course_id = a.id LIMIT 1</stringProp>
+              <stringProp name="queryArguments"></stringProp>
+              <stringProp name="queryArgumentsTypes"></stringProp>
+              <stringProp name="queryTimeout"></stringProp>
+              <stringProp name="queryType">Select Statement</stringProp>
+              <stringProp name="resultSetHandler">Store as String</stringProp>
+              <stringProp name="resultSetMaxRows"></stringProp>
+              <stringProp name="resultVariable">dbvalue</stringProp>
+              <stringProp name="variableNames">ORG_ID,COURSE_ID,COURSE_OFFER_ID</stringProp>
+            </JDBCPreProcessor>
+            <hashTree/>
+            <JDBCPreProcessor guiclass="TestBeanGUI" testclass="JDBCPreProcessor" testname="GetTeacherID" enabled="true">
+              <stringProp name="dataSource">mousikiqadb</stringProp>
+              <stringProp name="query">SELECT d.id as TEACHER_ID from mousikiqa.teacher d, mousikiqa.user b where d.org_id=b.default_org and b.email = &apos;${__property(USER_ID_${counter_value})}&apos; and d.first_name LIKE (&apos;test%&apos;) and d.active = 1</stringProp>
+              <stringProp name="queryArguments"></stringProp>
+              <stringProp name="queryArgumentsTypes"></stringProp>
+              <stringProp name="queryTimeout"></stringProp>
+              <stringProp name="queryType">Select Statement</stringProp>
+              <stringProp name="resultSetHandler">Store as String</stringProp>
+              <stringProp name="resultSetMaxRows"></stringProp>
+              <stringProp name="resultVariable">dbvalue</stringProp>
+              <stringProp name="variableNames">TEACHER_ID</stringProp>
+            </JDBCPreProcessor>
+            <hashTree/>
+            <JDBCPreProcessor guiclass="TestBeanGUI" testclass="JDBCPreProcessor" testname="GetStudentID" enabled="true">
+              <stringProp name="dataSource">mousikiqadb</stringProp>
+              <stringProp name="query">SELECT e.id as STUDENT_ID, e.first_name as First_Name, e.last_name as Last_Name, b.default_org as ORG_ID from mousikiqa.student e, mousikiqa.user b where e.org_id=b.default_org and b.email = &apos;${__property(USER_ID_${counter_value})}&apos; and e.first_name LIKE (&apos;FN%&apos;) and e.active = 1;</stringProp>
+              <stringProp name="queryArguments"></stringProp>
+              <stringProp name="queryArgumentsTypes"></stringProp>
+              <stringProp name="queryTimeout"></stringProp>
+              <stringProp name="queryType">Select Statement</stringProp>
+              <stringProp name="resultSetHandler">Store as String</stringProp>
+              <stringProp name="resultSetMaxRows"></stringProp>
+              <stringProp name="resultVariable">dbvalue</stringProp>
+              <stringProp name="variableNames">STUDENT_ID</stringProp>
+            </JDBCPreProcessor>
             <hashTree/>
           </hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="MyClasses_DeleteOneonOneClass" enabled="true">
@@ -4729,6 +5428,1575 @@ log.info(&quot;User id: &quot; + &quot;${USER_ID}&quot;);</stringProp>
               </value>
             </objProp>
             <stringProp name="filename">${CONFIG_PATH}/APIfeedbackoutput.csv</stringProp>
+          </ResultCollector>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="MyAccount Thread Group" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">${__P(threads,1)}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <WhileController guiclass="WhileControllerGui" testclass="WhileController" testname="While Controller" enabled="true">
+          <stringProp name="WhileController.condition">${AUTH_URL}</stringProp>
+        </WhileController>
+        <hashTree>
+          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+            <stringProp name="delimiter">,</stringProp>
+            <stringProp name="fileEncoding"></stringProp>
+            <stringProp name="filename">${CONFIG_PATH}/Datasheets/APIMyAccounts.csv</stringProp>
+            <boolProp name="ignoreFirstLine">false</boolProp>
+            <boolProp name="quotedData">false</boolProp>
+            <boolProp name="recycle">false</boolProp>
+            <stringProp name="shareMode">shareMode.thread</stringProp>
+            <boolProp name="stopThread">true</boolProp>
+            <stringProp name="variableNames"></stringProp>
+          </CSVDataSet>
+          <hashTree/>
+          <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="Counter" enabled="true">
+            <stringProp name="CounterConfig.start">0</stringProp>
+            <stringProp name="CounterConfig.end"></stringProp>
+            <stringProp name="CounterConfig.incr">1</stringProp>
+            <stringProp name="CounterConfig.name">counter_value</stringProp>
+            <stringProp name="CounterConfig.format"></stringProp>
+            <boolProp name="CounterConfig.per_user">true</boolProp>
+            <boolProp name="CounterConfig.reset_on_tg_iteration">true</boolProp>
+          </CounterConfig>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="MyAccount_PreferencesUpdate" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+	&quot;defaultTimezone&quot;: &quot;America/New_York&quot;,&#xd;
+	&quot;dateFormat&quot;: &quot;dd-MM-yyyy&quot;,&#xd;
+	&quot;currency&quot;: &quot;INR&quot;,&#xd;
+	&quot;coreCalendarHoursFrom&quot;: &quot;09:00&quot;,&#xd;
+	&quot;coreCalendarHoursTo&quot;: &quot;18:00&quot;,&#xd;
+	&quot;pushNotificationPreference&quot;: false,&#xd;
+	&quot;receive24hrsClassRemainder&quot;: true,&#xd;
+	&quot;receive1hrClassRemainder&quot;: true,&#xd;
+	&quot;sendCommunicationEmails&quot;: false,&#xd;
+	&quot;pageSize&quot;: &quot;40&quot;&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">${API_URL}users/account/preferences</stringProp>
+            <stringProp name="HTTPSampler.method">PATCH</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Encoding" elementType="Header">
+                  <stringProp name="Header.name">Accept-Encoding</stringProp>
+                  <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Language" elementType="Header">
+                  <stringProp name="Header.name">Accept-Language</stringProp>
+                  <stringProp name="Header.value">en-US,en;q=0.9</stringProp>
+                </elementProp>
+                <elementProp name="Authorization" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">Bearer ${__property(bearertoken_${counter_value})}</stringProp>
+                </elementProp>
+                <elementProp name="Connection" elementType="Header">
+                  <stringProp name="Header.name">Connection</stringProp>
+                  <stringProp name="Header.value">keep-alive</stringProp>
+                </elementProp>
+                <elementProp name="Content-Length" elementType="Header">
+                  <stringProp name="Header.name">Content-Length</stringProp>
+                  <stringProp name="Header.value">419</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="InviteFriends" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">[&#xd;
+	{&#xd;
+		&quot;email&quot;: &quot;${__RandomString(6,abcdefghijklmnopqrstuvwxyz)}@gmail.com&quot;&#xd;
+	}&#xd;
+]</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">${API_URL}users/invitation/email</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Encoding" elementType="Header">
+                  <stringProp name="Header.name">Accept-Encoding</stringProp>
+                  <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Language" elementType="Header">
+                  <stringProp name="Header.name">Accept-Language</stringProp>
+                  <stringProp name="Header.value">en-US,en;q=0.9</stringProp>
+                </elementProp>
+                <elementProp name="Authorization" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">Bearer ${__property(bearertoken_${counter_value})}</stringProp>
+                </elementProp>
+                <elementProp name="Connection" elementType="Header">
+                  <stringProp name="Header.name">Connection</stringProp>
+                  <stringProp name="Header.value">keep-alive</stringProp>
+                </elementProp>
+                <elementProp name="Content-Length" elementType="Header">
+                  <stringProp name="Header.name">Content-Length</stringProp>
+                  <stringProp name="Header.value">419</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">FEEDBACK_ID</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">NULL</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+          </hashTree>
+          <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <url>true</url>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+            <stringProp name="filename"></stringProp>
+          </ResultCollector>
+          <hashTree/>
+          <ResultCollector guiclass="TableVisualizer" testclass="ResultCollector" testname="View Results in Table" enabled="true">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <url>true</url>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+            <stringProp name="filename"></stringProp>
+          </ResultCollector>
+          <hashTree/>
+          <ResultCollector guiclass="StatGraphVisualizer" testclass="ResultCollector" testname="Aggregate Graph" enabled="true">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <url>true</url>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+            <stringProp name="filename"></stringProp>
+          </ResultCollector>
+          <hashTree/>
+          <ResultCollector guiclass="RespTimeGraphVisualizer" testclass="ResultCollector" testname="Response Time Graph" enabled="true">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <url>true</url>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+            <stringProp name="filename"></stringProp>
+          </ResultCollector>
+          <hashTree/>
+          <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>true</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <url>true</url>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+            <stringProp name="filename">${CONFIG_PATH}/APImyaccountoutput.csv</stringProp>
+          </ResultCollector>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="MyTeacher Thread Group" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">${__P(threads,1)}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <WhileController guiclass="WhileControllerGui" testclass="WhileController" testname="While Controller" enabled="true">
+          <stringProp name="WhileController.condition">${AUTH_URL}</stringProp>
+        </WhileController>
+        <hashTree>
+          <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="Counter" enabled="true">
+            <stringProp name="CounterConfig.start">0</stringProp>
+            <stringProp name="CounterConfig.end"></stringProp>
+            <stringProp name="CounterConfig.incr">1</stringProp>
+            <stringProp name="CounterConfig.name">counter_value</stringProp>
+            <stringProp name="CounterConfig.format"></stringProp>
+            <boolProp name="CounterConfig.per_user">true</boolProp>
+            <boolProp name="CounterConfig.reset_on_tg_iteration">true</boolProp>
+          </CounterConfig>
+          <hashTree/>
+          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+            <stringProp name="delimiter">,</stringProp>
+            <stringProp name="fileEncoding"></stringProp>
+            <stringProp name="filename">${CONFIG_PATH}/Datasheets/APIMyTeacher.csv</stringProp>
+            <boolProp name="ignoreFirstLine">false</boolProp>
+            <boolProp name="quotedData">false</boolProp>
+            <boolProp name="recycle">false</boolProp>
+            <stringProp name="shareMode">shareMode.thread</stringProp>
+            <boolProp name="stopThread">true</boolProp>
+            <stringProp name="variableNames"></stringProp>
+          </CSVDataSet>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="MyTeachers_GetactiveTeachers" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">${API_URL}teachers/active?page=1</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Encoding" elementType="Header">
+                  <stringProp name="Header.name">Accept-Encoding</stringProp>
+                  <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Language" elementType="Header">
+                  <stringProp name="Header.name">Accept-Language</stringProp>
+                  <stringProp name="Header.value">en-US,en;q=0.9</stringProp>
+                </elementProp>
+                <elementProp name="Authorization" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">Bearer ${__property(bearertoken_${counter_value})}</stringProp>
+                </elementProp>
+                <elementProp name="Connection" elementType="Header">
+                  <stringProp name="Header.name">Connection</stringProp>
+                  <stringProp name="Header.value">keep-alive</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="MyTeachers_GetinactiveSchedules" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">${API_URL}teachers/inactive?page=1</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Encoding" elementType="Header">
+                  <stringProp name="Header.name">Accept-Encoding</stringProp>
+                  <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Language" elementType="Header">
+                  <stringProp name="Header.name">Accept-Language</stringProp>
+                  <stringProp name="Header.value">en-US,en;q=0.9</stringProp>
+                </elementProp>
+                <elementProp name="Authorization" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">Bearer ${__property(bearertoken_${counter_value})}</stringProp>
+                </elementProp>
+                <elementProp name="Connection" elementType="Header">
+                  <stringProp name="Header.name">Connection</stringProp>
+                  <stringProp name="Header.value">keep-alive</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="MyTeacher_SubscriptionValidation" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">${SUBSCRIPTIONAPI_URL}org/subscription/validation?action=addTeacher</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Encoding" elementType="Header">
+                  <stringProp name="Header.name">Accept-Encoding</stringProp>
+                  <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Language" elementType="Header">
+                  <stringProp name="Header.name">Accept-Language</stringProp>
+                  <stringProp name="Header.value">en-US,en;q=0.9</stringProp>
+                </elementProp>
+                <elementProp name="Authorization" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">Bearer ${__property(bearertoken_${counter_value})}</stringProp>
+                </elementProp>
+                <elementProp name="Connection" elementType="Header">
+                  <stringProp name="Header.name">Connection</stringProp>
+                  <stringProp name="Header.value">keep-alive</stringProp>
+                </elementProp>
+                <elementProp name="Content-Length" elementType="Header">
+                  <stringProp name="Header.name">Content-Length</stringProp>
+                  <stringProp name="Header.value">419</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="MyTeachers_NewTeacher" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+	&quot;firstName&quot;: &quot;${__RandomString(6,abcdefghijklmnopqrstuvwxyz, TEACHER_FN)}&quot;,&#xd;
+	&quot;lastName&quot;: &quot;${__RandomString(6,abcdefghijklmnopqrstuvwxyz, TEACHER_FN)}&quot;,&#xd;
+	&quot;gender&quot;: &quot;male&quot;,&#xd;
+	&quot;phoneNumber&quot;: {&#xd;
+		&quot;number&quot;: &quot;+1 (976) 866-8756&quot;,&#xd;
+		&quot;isoCode&quot;: &quot;us&quot;&#xd;
+	},&#xd;
+	&quot;dateOfBirth&quot;: &quot;09/02/2014&quot;,&#xd;
+	&quot;address&quot;: {&#xd;
+		&quot;address1&quot;: &quot;Tester Road&quot;,&#xd;
+		&quot;address2&quot;: &quot;tesft&quot;,&#xd;
+		&quot;city&quot;: &quot;chicago&quot;,&#xd;
+		&quot;zip&quot;: &quot;60004&quot;,&#xd;
+		&quot;state&quot;: &quot;Washington&quot;,&#xd;
+		&quot;country&quot;: &quot;US&quot;&#xd;
+	},&#xd;
+	&quot;email&quot;: &quot;sdfsdfsd@gmail.com&quot;,&#xd;
+	&quot;instruments&quot;: [&#xd;
+		{&#xd;
+			&quot;id&quot;: &quot;1&quot;&#xd;
+		}&#xd;
+	],&#xd;
+	&quot;profilePhoto&quot;: &quot;&quot;,&#xd;
+	&quot;communicationPreferences&quot;: {&#xd;
+		&quot;email&quot;: true,&#xd;
+		&quot;phone&quot;: false,&#xd;
+		&quot;text&quot;: false&#xd;
+	},&#xd;
+	&quot;active&quot;: true&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">${API_URL}teacher</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Encoding" elementType="Header">
+                  <stringProp name="Header.name">Accept-Encoding</stringProp>
+                  <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Language" elementType="Header">
+                  <stringProp name="Header.name">Accept-Language</stringProp>
+                  <stringProp name="Header.value">en-US,en;q=0.9</stringProp>
+                </elementProp>
+                <elementProp name="Authorization" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">Bearer ${__property(bearertoken_${counter_value})}</stringProp>
+                </elementProp>
+                <elementProp name="Connection" elementType="Header">
+                  <stringProp name="Header.name">Connection</stringProp>
+                  <stringProp name="Header.value">keep-alive</stringProp>
+                </elementProp>
+                <elementProp name="Content-Length" elementType="Header">
+                  <stringProp name="Header.name">Content-Length</stringProp>
+                  <stringProp name="Header.value">419</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">TEACHER_ID</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">NULL</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="MyTeachers_NewTeacherAvailabilty" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+	&quot;startDate&quot;: &quot;${CURRENTDT}&quot;,&#xd;
+	&quot;endDate&quot;: &quot;${WEEKDT}&quot;,&#xd;
+	&quot;startTime&quot;: &quot;12:00&quot;,&#xd;
+	&quot;endTime&quot;: &quot;18:00&quot;,&#xd;
+	&quot;days&quot;: {&#xd;
+		&quot;Sunday&quot;: true,&#xd;
+		&quot;Monday&quot;: true,&#xd;
+		&quot;Tuesday&quot;: true,&#xd;
+		&quot;Wednesday&quot;: true,&#xd;
+		&quot;Thursday&quot;: true,&#xd;
+		&quot;Friday&quot;: true,&#xd;
+		&quot;Saturday&quot;: true&#xd;
+	},&#xd;
+	&quot;notes&quot;: &quot;&quot;,&#xd;
+	&quot;teacher&quot;: {&#xd;
+		&quot;id&quot;: &quot;${TEACHER_ID}&quot;&#xd;
+	}&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">${API_URL}availabilities</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Encoding" elementType="Header">
+                  <stringProp name="Header.name">Accept-Encoding</stringProp>
+                  <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Language" elementType="Header">
+                  <stringProp name="Header.name">Accept-Language</stringProp>
+                  <stringProp name="Header.value">en-US,en;q=0.9</stringProp>
+                </elementProp>
+                <elementProp name="Authorization" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">Bearer ${__property(bearertoken_${counter_value})}</stringProp>
+                </elementProp>
+                <elementProp name="Connection" elementType="Header">
+                  <stringProp name="Header.name">Connection</stringProp>
+                  <stringProp name="Header.value">keep-alive</stringProp>
+                </elementProp>
+                <elementProp name="Content-Length" elementType="Header">
+                  <stringProp name="Header.name">Content-Length</stringProp>
+                  <stringProp name="Header.value">419</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">TEACHER_AVAILABILITY_ID</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">NULL</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">String currentdt = &quot;${__timeShift(MM/dd/yyyy,,,,)}&quot;;
+log.info(&quot;date format: &quot; + currentdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;));
+vars.put(&quot;CURRENTDT&quot;, currentdt);
+
+String tomorrowdt = &quot;${__timeShift(MM/dd/yyyy,,P1D,,)}&quot;;
+log.info(&quot;incremented date format: &quot; + tomorrowdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;));
+vars.put(&quot;TOMORROWDT&quot;, tomorrowdt);
+
+String nextweekdt = &quot;${__timeShift(MM/dd/yyyy,,P7D,,)}&quot;;
+log.info(&quot;incremented 7 date format: &quot; + nextweekdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;));
+vars.put(&quot;WEEKDT&quot;, nextweekdt);
+
+String nextmonthdt = &quot;${__timeShift(MM/dd/yyyy,,P33D,,)}&quot;;
+log.info(&quot;incremented 33 date format: &quot; + nextmonthdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;));
+vars.put(&quot;MONTHDT&quot;, nextmonthdt);
+
+log.info(&quot;Counter value: &quot; + &quot;${counter_value}&quot;);
+log.info(&quot;User id: &quot; + &quot;${__property(USER_ID_${counter_value})}&quot;);</stringProp>
+            </JSR223PreProcessor>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="MyTeachers_GetTeacherDetails" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">${API_URL}teacher/${TEACHER_ID}</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Encoding" elementType="Header">
+                  <stringProp name="Header.name">Accept-Encoding</stringProp>
+                  <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Language" elementType="Header">
+                  <stringProp name="Header.name">Accept-Language</stringProp>
+                  <stringProp name="Header.value">en-US,en;q=0.9</stringProp>
+                </elementProp>
+                <elementProp name="Authorization" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">Bearer ${__property(bearertoken_${counter_value})}</stringProp>
+                </elementProp>
+                <elementProp name="Connection" elementType="Header">
+                  <stringProp name="Header.name">Connection</stringProp>
+                  <stringProp name="Header.value">keep-alive</stringProp>
+                </elementProp>
+                <elementProp name="Content-Length" elementType="Header">
+                  <stringProp name="Header.name">Content-Length</stringProp>
+                  <stringProp name="Header.value">419</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="MyTeachers_GetTeacherAvailabilityDetails" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">${API_URL}availabilities/teacher/${TEACHER_ID}</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Encoding" elementType="Header">
+                  <stringProp name="Header.name">Accept-Encoding</stringProp>
+                  <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Language" elementType="Header">
+                  <stringProp name="Header.name">Accept-Language</stringProp>
+                  <stringProp name="Header.value">en-US,en;q=0.9</stringProp>
+                </elementProp>
+                <elementProp name="Authorization" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">Bearer ${__property(bearertoken_${counter_value})}</stringProp>
+                </elementProp>
+                <elementProp name="Connection" elementType="Header">
+                  <stringProp name="Header.name">Connection</stringProp>
+                  <stringProp name="Header.value">keep-alive</stringProp>
+                </elementProp>
+                <elementProp name="Content-Length" elementType="Header">
+                  <stringProp name="Header.name">Content-Length</stringProp>
+                  <stringProp name="Header.value">419</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="MyTeachers_DeleteAvailability" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">${API_URL}availabilities/${TEACHER_AVAILABILITY_ID}</stringProp>
+            <stringProp name="HTTPSampler.method">DELETE</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Encoding" elementType="Header">
+                  <stringProp name="Header.name">Accept-Encoding</stringProp>
+                  <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Language" elementType="Header">
+                  <stringProp name="Header.name">Accept-Language</stringProp>
+                  <stringProp name="Header.value">en-US,en;q=0.9</stringProp>
+                </elementProp>
+                <elementProp name="Authorization" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">Bearer ${__property(bearertoken_${counter_value})}</stringProp>
+                </elementProp>
+                <elementProp name="Connection" elementType="Header">
+                  <stringProp name="Header.name">Connection</stringProp>
+                  <stringProp name="Header.value">keep-alive</stringProp>
+                </elementProp>
+                <elementProp name="Content-Length" elementType="Header">
+                  <stringProp name="Header.name">Content-Length</stringProp>
+                  <stringProp name="Header.value">419</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="MyTeachers_UpdateTeacher" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+	&quot;id&quot;: ${TEACHER_ID},&#xd;
+	&quot;firstName&quot;: &quot;${__RandomString(6,abcdefghijklmnopqrstuvwxyz, TEACHER_FN)}&quot;,&#xd;
+	&quot;lastName&quot;: &quot;${__RandomString(6,abcdefghijklmnopqrstuvwxyz, TEACHER_FN)}&quot;,&#xd;
+	&quot;gender&quot;: &quot;male&quot;,&#xd;
+	&quot;phoneNumber&quot;: {&#xd;
+		&quot;number&quot;: &quot;+1 (976) 866-8756&quot;,&#xd;
+		&quot;isoCode&quot;: &quot;us&quot;&#xd;
+	},&#xd;
+	&quot;dateOfBirth&quot;: &quot;09/02/2014&quot;,&#xd;
+	&quot;address&quot;: {&#xd;
+		&quot;address1&quot;: &quot;Tester Road&quot;,&#xd;
+		&quot;address2&quot;: &quot;tesft&quot;,&#xd;
+		&quot;city&quot;: &quot;chicago&quot;,&#xd;
+		&quot;zip&quot;: &quot;60004&quot;,&#xd;
+		&quot;state&quot;: &quot;Washington&quot;,&#xd;
+		&quot;country&quot;: &quot;US&quot;&#xd;
+	},&#xd;
+	&quot;email&quot;: &quot;sdfsdfsd@gmail.com&quot;,&#xd;
+	&quot;instruments&quot;: [&#xd;
+		{&#xd;
+			&quot;id&quot;: &quot;1&quot;&#xd;
+		}&#xd;
+	],&#xd;
+	&quot;profilePhoto&quot;: &quot;&quot;,&#xd;
+	&quot;communicationPreferences&quot;: {&#xd;
+		&quot;email&quot;: true,&#xd;
+		&quot;phone&quot;: false,&#xd;
+		&quot;text&quot;: false&#xd;
+	},&#xd;
+	&quot;active&quot;: true,&#xd;
+	&quot;type&quot;: &quot;status&quot;&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">${API_URL}teacher</stringProp>
+            <stringProp name="HTTPSampler.method">PUT</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Encoding" elementType="Header">
+                  <stringProp name="Header.name">Accept-Encoding</stringProp>
+                  <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Language" elementType="Header">
+                  <stringProp name="Header.name">Accept-Language</stringProp>
+                  <stringProp name="Header.value">en-US,en;q=0.9</stringProp>
+                </elementProp>
+                <elementProp name="Authorization" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">Bearer ${__property(bearertoken_${counter_value})}</stringProp>
+                </elementProp>
+                <elementProp name="Connection" elementType="Header">
+                  <stringProp name="Header.name">Connection</stringProp>
+                  <stringProp name="Header.value">keep-alive</stringProp>
+                </elementProp>
+                <elementProp name="Content-Length" elementType="Header">
+                  <stringProp name="Header.name">Content-Length</stringProp>
+                  <stringProp name="Header.value">419</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">GROUPCLASS_ID</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">NULL</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">String currentdt = &quot;${__timeShift(MM/dd/yyyy,,,,)}&quot;;
+log.info(&quot;date format: &quot; + currentdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;));
+vars.put(&quot;CURRENTDT&quot;, currentdt);
+
+String tomorrowdt = &quot;${__timeShift(MM/dd/yyyy,,P1D,,)}&quot;;
+log.info(&quot;incremented date format: &quot; + tomorrowdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;));
+vars.put(&quot;TOMORROWDT&quot;, tomorrowdt);
+
+String nextweekdt = &quot;${__timeShift(MM/dd/yyyy,,P7D,,)}&quot;;
+log.info(&quot;incremented 7 date format: &quot; + nextweekdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;));
+vars.put(&quot;WEEKDT&quot;, nextweekdt);
+
+String nextmonthdt = &quot;${__timeShift(MM/dd/yyyy,,P33D,,)}&quot;;
+log.info(&quot;incremented 33 date format: &quot; + nextmonthdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;));
+vars.put(&quot;MONTHDT&quot;, nextmonthdt);
+
+log.info(&quot;Counter value: &quot; + &quot;${counter_value}&quot;);
+log.info(&quot;User id: &quot; + &quot;${__property(USER_ID_${counter_value})}&quot;);</stringProp>
+            </JSR223PreProcessor>
+            <hashTree/>
+            <JDBCPreProcessor guiclass="TestBeanGUI" testclass="JDBCPreProcessor" testname="Getorgidcourseid" enabled="true">
+              <stringProp name="dataSource">mousikiqadb</stringProp>
+              <stringProp name="query">SELECT b.default_org as ORG_ID, a.id as COURSE_ID, c.id as COURSE_OFFER_ID FROM mousikiqa.course_master a, mousikiqa.user b, mousikiqa.course_offer c where a.course_name LIKE &quot;Testcourse:%&quot; and b.email = &quot;${__property(USER_ID_${counter_value})}&quot; and a.org_id = b.default_org and c.course_id = a.id LIMIT 1</stringProp>
+              <stringProp name="queryArguments"></stringProp>
+              <stringProp name="queryArgumentsTypes"></stringProp>
+              <stringProp name="queryTimeout"></stringProp>
+              <stringProp name="queryType">Select Statement</stringProp>
+              <stringProp name="resultSetHandler">Store as String</stringProp>
+              <stringProp name="resultSetMaxRows"></stringProp>
+              <stringProp name="resultVariable">dbvalue</stringProp>
+              <stringProp name="variableNames">ORG_ID,COURSE_ID,COURSE_OFFER_ID</stringProp>
+            </JDBCPreProcessor>
+            <hashTree/>
+            <JDBCPreProcessor guiclass="TestBeanGUI" testclass="JDBCPreProcessor" testname="GetTeacherID" enabled="true">
+              <stringProp name="dataSource">mousikiqadb</stringProp>
+              <stringProp name="query">SELECT d.id as TEACHER_ID from mousikiqa.teacher d, mousikiqa.user b where d.org_id=b.default_org and b.email = &apos;${__property(USER_ID_${counter_value})}&apos; and d.first_name LIKE (&apos;test%&apos;) and d.active = 1</stringProp>
+              <stringProp name="queryArguments"></stringProp>
+              <stringProp name="queryArgumentsTypes"></stringProp>
+              <stringProp name="queryTimeout"></stringProp>
+              <stringProp name="queryType">Select Statement</stringProp>
+              <stringProp name="resultSetHandler">Store as String</stringProp>
+              <stringProp name="resultSetMaxRows"></stringProp>
+              <stringProp name="resultVariable">dbvalue</stringProp>
+              <stringProp name="variableNames">TEACHER_ID</stringProp>
+            </JDBCPreProcessor>
+            <hashTree/>
+            <JDBCPreProcessor guiclass="TestBeanGUI" testclass="JDBCPreProcessor" testname="GetStudentID" enabled="true">
+              <stringProp name="dataSource">mousikiqadb</stringProp>
+              <stringProp name="query">SELECT e.id as STUDENT_ID, e.first_name as First_Name, e.last_name as Last_Name, b.default_org as ORG_ID from mousikiqa.student e, mousikiqa.user b where e.org_id=b.default_org and b.email = &apos;${__property(USER_ID_${counter_value})}&apos; and e.first_name LIKE (&apos;FN%&apos;) and e.active = 1;</stringProp>
+              <stringProp name="queryArguments"></stringProp>
+              <stringProp name="queryArgumentsTypes"></stringProp>
+              <stringProp name="queryTimeout"></stringProp>
+              <stringProp name="queryType">Select Statement</stringProp>
+              <stringProp name="resultSetHandler">Store as String</stringProp>
+              <stringProp name="resultSetMaxRows"></stringProp>
+              <stringProp name="resultVariable">dbvalue</stringProp>
+              <stringProp name="variableNames">STUDENT_ID</stringProp>
+            </JDBCPreProcessor>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="MyTeachers_DeactivateTeacher" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">${API_URL}teachers/${TEACHER_ID}/deactivate</stringProp>
+            <stringProp name="HTTPSampler.method">PATCH</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Encoding" elementType="Header">
+                  <stringProp name="Header.name">Accept-Encoding</stringProp>
+                  <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Language" elementType="Header">
+                  <stringProp name="Header.name">Accept-Language</stringProp>
+                  <stringProp name="Header.value">en-US,en;q=0.9</stringProp>
+                </elementProp>
+                <elementProp name="Authorization" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">Bearer ${__property(bearertoken_${counter_value})}</stringProp>
+                </elementProp>
+                <elementProp name="Connection" elementType="Header">
+                  <stringProp name="Header.name">Connection</stringProp>
+                  <stringProp name="Header.value">keep-alive</stringProp>
+                </elementProp>
+                <elementProp name="Content-Length" elementType="Header">
+                  <stringProp name="Header.name">Content-Length</stringProp>
+                  <stringProp name="Header.value">419</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">GROUPCLASS_ID</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">NULL</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">String currentdt = &quot;${__timeShift(MM/dd/yyyy,,,,)}&quot;;
+log.info(&quot;date format: &quot; + currentdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;));
+vars.put(&quot;CURRENTDT&quot;, currentdt);
+
+String tomorrowdt = &quot;${__timeShift(MM/dd/yyyy,,P1D,,)}&quot;;
+log.info(&quot;incremented date format: &quot; + tomorrowdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;));
+vars.put(&quot;TOMORROWDT&quot;, tomorrowdt);
+
+String nextweekdt = &quot;${__timeShift(MM/dd/yyyy,,P7D,,)}&quot;;
+log.info(&quot;incremented 7 date format: &quot; + nextweekdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;));
+vars.put(&quot;WEEKDT&quot;, nextweekdt);
+
+String nextmonthdt = &quot;${__timeShift(MM/dd/yyyy,,P33D,,)}&quot;;
+log.info(&quot;incremented 33 date format: &quot; + nextmonthdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;));
+vars.put(&quot;MONTHDT&quot;, nextmonthdt);
+
+log.info(&quot;Counter value: &quot; + &quot;${counter_value}&quot;);
+log.info(&quot;User id: &quot; + &quot;${__property(USER_ID_${counter_value})}&quot;);</stringProp>
+            </JSR223PreProcessor>
+            <hashTree/>
+            <JDBCPreProcessor guiclass="TestBeanGUI" testclass="JDBCPreProcessor" testname="Getorgidcourseid" enabled="true">
+              <stringProp name="dataSource">mousikiqadb</stringProp>
+              <stringProp name="query">SELECT b.default_org as ORG_ID, a.id as COURSE_ID, c.id as COURSE_OFFER_ID FROM mousikiqa.course_master a, mousikiqa.user b, mousikiqa.course_offer c where a.course_name LIKE &quot;Testcourse:%&quot; and b.email = &quot;${__property(USER_ID_${counter_value})}&quot; and a.org_id = b.default_org and c.course_id = a.id LIMIT 1</stringProp>
+              <stringProp name="queryArguments"></stringProp>
+              <stringProp name="queryArgumentsTypes"></stringProp>
+              <stringProp name="queryTimeout"></stringProp>
+              <stringProp name="queryType">Select Statement</stringProp>
+              <stringProp name="resultSetHandler">Store as String</stringProp>
+              <stringProp name="resultSetMaxRows"></stringProp>
+              <stringProp name="resultVariable">dbvalue</stringProp>
+              <stringProp name="variableNames">ORG_ID,COURSE_ID,COURSE_OFFER_ID</stringProp>
+            </JDBCPreProcessor>
+            <hashTree/>
+            <JDBCPreProcessor guiclass="TestBeanGUI" testclass="JDBCPreProcessor" testname="GetTeacherID" enabled="true">
+              <stringProp name="dataSource">mousikiqadb</stringProp>
+              <stringProp name="query">SELECT d.id as TEACHER_ID from mousikiqa.teacher d, mousikiqa.user b where d.org_id=b.default_org and b.email = &apos;${__property(USER_ID_${counter_value})}&apos; and d.first_name LIKE (&apos;test%&apos;) and d.active = 1</stringProp>
+              <stringProp name="queryArguments"></stringProp>
+              <stringProp name="queryArgumentsTypes"></stringProp>
+              <stringProp name="queryTimeout"></stringProp>
+              <stringProp name="queryType">Select Statement</stringProp>
+              <stringProp name="resultSetHandler">Store as String</stringProp>
+              <stringProp name="resultSetMaxRows"></stringProp>
+              <stringProp name="resultVariable">dbvalue</stringProp>
+              <stringProp name="variableNames">TEACHER_ID</stringProp>
+            </JDBCPreProcessor>
+            <hashTree/>
+            <JDBCPreProcessor guiclass="TestBeanGUI" testclass="JDBCPreProcessor" testname="GetStudentID" enabled="true">
+              <stringProp name="dataSource">mousikiqadb</stringProp>
+              <stringProp name="query">SELECT e.id as STUDENT_ID, e.first_name as First_Name, e.last_name as Last_Name, b.default_org as ORG_ID from mousikiqa.student e, mousikiqa.user b where e.org_id=b.default_org and b.email = &apos;${__property(USER_ID_${counter_value})}&apos; and e.first_name LIKE (&apos;FN%&apos;) and e.active = 1;</stringProp>
+              <stringProp name="queryArguments"></stringProp>
+              <stringProp name="queryArgumentsTypes"></stringProp>
+              <stringProp name="queryTimeout"></stringProp>
+              <stringProp name="queryType">Select Statement</stringProp>
+              <stringProp name="resultSetHandler">Store as String</stringProp>
+              <stringProp name="resultSetMaxRows"></stringProp>
+              <stringProp name="resultVariable">dbvalue</stringProp>
+              <stringProp name="variableNames">STUDENT_ID</stringProp>
+            </JDBCPreProcessor>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="MyTeachers_activateTeacher" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">${API_URL}teachers/${TEACHER_ID}/activate</stringProp>
+            <stringProp name="HTTPSampler.method">PATCH</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Encoding" elementType="Header">
+                  <stringProp name="Header.name">Accept-Encoding</stringProp>
+                  <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Language" elementType="Header">
+                  <stringProp name="Header.name">Accept-Language</stringProp>
+                  <stringProp name="Header.value">en-US,en;q=0.9</stringProp>
+                </elementProp>
+                <elementProp name="Authorization" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">Bearer ${__property(bearertoken_${counter_value})}</stringProp>
+                </elementProp>
+                <elementProp name="Connection" elementType="Header">
+                  <stringProp name="Header.name">Connection</stringProp>
+                  <stringProp name="Header.value">keep-alive</stringProp>
+                </elementProp>
+                <elementProp name="Content-Length" elementType="Header">
+                  <stringProp name="Header.name">Content-Length</stringProp>
+                  <stringProp name="Header.value">419</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">GROUPCLASS_ID</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">NULL</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">String currentdt = &quot;${__timeShift(MM/dd/yyyy,,,,)}&quot;;
+log.info(&quot;date format: &quot; + currentdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;));
+vars.put(&quot;CURRENTDT&quot;, currentdt);
+
+String tomorrowdt = &quot;${__timeShift(MM/dd/yyyy,,P1D,,)}&quot;;
+log.info(&quot;incremented date format: &quot; + tomorrowdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;));
+vars.put(&quot;TOMORROWDT&quot;, tomorrowdt);
+
+String nextweekdt = &quot;${__timeShift(MM/dd/yyyy,,P7D,,)}&quot;;
+log.info(&quot;incremented 7 date format: &quot; + nextweekdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;));
+vars.put(&quot;WEEKDT&quot;, nextweekdt);
+
+String nextmonthdt = &quot;${__timeShift(MM/dd/yyyy,,P33D,,)}&quot;;
+log.info(&quot;incremented 33 date format: &quot; + nextmonthdt.replaceAll(&quot;/&quot;,&quot;%2F&quot;));
+vars.put(&quot;MONTHDT&quot;, nextmonthdt);
+
+log.info(&quot;Counter value: &quot; + &quot;${counter_value}&quot;);
+log.info(&quot;User id: &quot; + &quot;${__property(USER_ID_${counter_value})}&quot;);</stringProp>
+            </JSR223PreProcessor>
+            <hashTree/>
+            <JDBCPreProcessor guiclass="TestBeanGUI" testclass="JDBCPreProcessor" testname="Getorgidcourseid" enabled="true">
+              <stringProp name="dataSource">mousikiqadb</stringProp>
+              <stringProp name="query">SELECT b.default_org as ORG_ID, a.id as COURSE_ID, c.id as COURSE_OFFER_ID FROM mousikiqa.course_master a, mousikiqa.user b, mousikiqa.course_offer c where a.course_name LIKE &quot;Testcourse:%&quot; and b.email = &quot;${__property(USER_ID_${counter_value})}&quot; and a.org_id = b.default_org and c.course_id = a.id LIMIT 1</stringProp>
+              <stringProp name="queryArguments"></stringProp>
+              <stringProp name="queryArgumentsTypes"></stringProp>
+              <stringProp name="queryTimeout"></stringProp>
+              <stringProp name="queryType">Select Statement</stringProp>
+              <stringProp name="resultSetHandler">Store as String</stringProp>
+              <stringProp name="resultSetMaxRows"></stringProp>
+              <stringProp name="resultVariable">dbvalue</stringProp>
+              <stringProp name="variableNames">ORG_ID,COURSE_ID,COURSE_OFFER_ID</stringProp>
+            </JDBCPreProcessor>
+            <hashTree/>
+            <JDBCPreProcessor guiclass="TestBeanGUI" testclass="JDBCPreProcessor" testname="GetTeacherID" enabled="true">
+              <stringProp name="dataSource">mousikiqadb</stringProp>
+              <stringProp name="query">SELECT d.id as TEACHER_ID from mousikiqa.teacher d, mousikiqa.user b where d.org_id=b.default_org and b.email = &apos;${__property(USER_ID_${counter_value})}&apos; and d.first_name LIKE (&apos;test%&apos;) and d.active = 1</stringProp>
+              <stringProp name="queryArguments"></stringProp>
+              <stringProp name="queryArgumentsTypes"></stringProp>
+              <stringProp name="queryTimeout"></stringProp>
+              <stringProp name="queryType">Select Statement</stringProp>
+              <stringProp name="resultSetHandler">Store as String</stringProp>
+              <stringProp name="resultSetMaxRows"></stringProp>
+              <stringProp name="resultVariable">dbvalue</stringProp>
+              <stringProp name="variableNames">TEACHER_ID</stringProp>
+            </JDBCPreProcessor>
+            <hashTree/>
+            <JDBCPreProcessor guiclass="TestBeanGUI" testclass="JDBCPreProcessor" testname="GetStudentID" enabled="true">
+              <stringProp name="dataSource">mousikiqadb</stringProp>
+              <stringProp name="query">SELECT e.id as STUDENT_ID, e.first_name as First_Name, e.last_name as Last_Name, b.default_org as ORG_ID from mousikiqa.student e, mousikiqa.user b where e.org_id=b.default_org and b.email = &apos;${__property(USER_ID_${counter_value})}&apos; and e.first_name LIKE (&apos;FN%&apos;) and e.active = 1;</stringProp>
+              <stringProp name="queryArguments"></stringProp>
+              <stringProp name="queryArgumentsTypes"></stringProp>
+              <stringProp name="queryTimeout"></stringProp>
+              <stringProp name="queryType">Select Statement</stringProp>
+              <stringProp name="resultSetHandler">Store as String</stringProp>
+              <stringProp name="resultSetMaxRows"></stringProp>
+              <stringProp name="resultVariable">dbvalue</stringProp>
+              <stringProp name="variableNames">STUDENT_ID</stringProp>
+            </JDBCPreProcessor>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="MyTeachers_DeleteTeacher" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">${API_URL}teacher/${TEACHER_ID}</stringProp>
+            <stringProp name="HTTPSampler.method">DELETE</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Encoding" elementType="Header">
+                  <stringProp name="Header.name">Accept-Encoding</stringProp>
+                  <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Language" elementType="Header">
+                  <stringProp name="Header.name">Accept-Language</stringProp>
+                  <stringProp name="Header.value">en-US,en;q=0.9</stringProp>
+                </elementProp>
+                <elementProp name="Authorization" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">Bearer ${__property(bearertoken_${counter_value})}</stringProp>
+                </elementProp>
+                <elementProp name="Connection" elementType="Header">
+                  <stringProp name="Header.name">Connection</stringProp>
+                  <stringProp name="Header.value">keep-alive</stringProp>
+                </elementProp>
+                <elementProp name="Content-Length" elementType="Header">
+                  <stringProp name="Header.name">Content-Length</stringProp>
+                  <stringProp name="Header.value">419</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <url>true</url>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+            <stringProp name="filename"></stringProp>
+          </ResultCollector>
+          <hashTree/>
+          <ResultCollector guiclass="TableVisualizer" testclass="ResultCollector" testname="View Results in Table" enabled="true">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <url>true</url>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+            <stringProp name="filename"></stringProp>
+          </ResultCollector>
+          <hashTree/>
+          <ResultCollector guiclass="StatGraphVisualizer" testclass="ResultCollector" testname="Aggregate Graph" enabled="true">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <url>true</url>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+            <stringProp name="filename"></stringProp>
+          </ResultCollector>
+          <hashTree/>
+          <ResultCollector guiclass="RespTimeGraphVisualizer" testclass="ResultCollector" testname="Response Time Graph" enabled="true">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <url>true</url>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+            <stringProp name="filename"></stringProp>
+          </ResultCollector>
+          <hashTree/>
+          <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>true</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <url>true</url>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+            <stringProp name="filename">${CONFIG_PATH}/APITeacheroutput.csv</stringProp>
           </ResultCollector>
           <hashTree/>
         </hashTree>
