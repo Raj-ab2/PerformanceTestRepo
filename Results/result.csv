@@ -1,147 +1,225 @@
 timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
-1663659149384,779,GetAuthorizationToken,200,OK,setUp Thread Group 1-1,text,true,,2124,361,1,1,https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyD7oMsXvjTMB0S3Xwbm0wV0ycQvE8AZiig,779,0,501
-1663659150234,299,GetAuthorizationToken,200,OK,setUp Thread Group 1-1,text,true,,2134,361,1,1,https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyD7oMsXvjTMB0S3Xwbm0wV0ycQvE8AZiig,295,0,0
-1663659150534,345,GetAuthorizationToken,200,OK,setUp Thread Group 1-1,text,true,,2035,359,1,1,https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyD7oMsXvjTMB0S3Xwbm0wV0ycQvE8AZiig,340,0,0
-1663659150880,324,GetAuthorizationToken,200,OK,setUp Thread Group 1-1,text,true,,2062,360,1,1,https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyD7oMsXvjTMB0S3Xwbm0wV0ycQvE8AZiig,319,0,0
-1663659151265,1716,Courses_GetactiveCourses,200,,Course Thread Group 5-1,text,true,,23248,1282,1,8,https://qa-api.mousiki.io/api/v1/org/courses/active?page=1,1488,0,1192
-1663659151282,1730,MyAccount_PreferencesUpdate,200,,MyAccount Thread Group 7-1,text,true,,1260,1671,1,8,https://qa-api.mousiki.io/api/v1/users/account/preferences,1728,0,1382
-1663659151267,1767,Feedback_GetactiveFeedbacks,200,,Feedback Thread Group 6-1,text,true,,855,1285,1,8,https://qa-api.mousiki.io/api/v1/kpi-categories/active?page=1,1763,0,1404
-1663659151282,1773,MyTeachers_GetactiveTeachers,200,,MyTeacher Thread Group 8-1,text,true,,2833,1279,1,8,https://qa-api.mousiki.io/api/v1/teachers/active?page=1,1773,0,1394
-1663659152982,258,Courses_GetinactiveCourses,200,,Course Thread Group 5-1,text,true,,883,1284,1,8,https://qa-api.mousiki.io/api/v1/org/courses/inactive?page=1,258,0,0
-1663659153034,312,Feedback_GetinactiveFeedbacks,200,,Feedback Thread Group 6-1,text,true,,855,1287,1,8,https://qa-api.mousiki.io/api/v1/kpi-categories/inactive?page=1,311,0,0
-1663659153056,341,MyTeachers_GetinactiveSchedules,200,,MyTeacher Thread Group 8-1,text,true,,864,1281,1,8,https://qa-api.mousiki.io/api/v1/teachers/inactive?page=1,341,0,0
-1663659153242,386,Courses_CreateNewCourse,201,,Course Thread Group 5-1,text,true,,1772,1656,1,8,https://qa-api.mousiki.io/api/v1/org/course,385,0,0
-1663659153346,289,Feedback_CreateNewFeedback,200,,Feedback Thread Group 6-1,text,true,,901,1386,1,8,https://qa-api.mousiki.io/api/v1/kpi-category,289,0,0
-1663659153636,274,Feedback_CreateNewFeedbackKPI,200,,Feedback Thread Group 6-1,text,true,,1023,1379,1,8,https://qa-api.mousiki.io/api/v1/kpi-category/1121/kpi,274,0,0
-1663659153014,932,InviteFriends,200,,MyAccount Thread Group 7-1,,true,,611,1375,1,8,https://qa-api.mousiki.io/api/v1/users/invitation/email,932,0,0
-1663659153629,317,Courses_UpdateCourse,200,,Course Thread Group 5-1,text,true,,1794,1754,1,8,https://qa-api.mousiki.io/api/v1/org/course,317,0,0
-1663659153911,259,Feedback_UpdateFeedback,200,,Feedback Thread Group 6-1,text,true,,1023,1390,1,8,https://qa-api.mousiki.io/api/v1/kpi-category,259,0,0
-1663659153946,254,Courses_GetCourseDetails,200,,Course Thread Group 5-1,text,true,,1787,1308,1,8,https://qa-api.mousiki.io/api/v1/org/course/12567569,254,0,0
-1663659153946,280,MyAccount_PreferencesUpdate,200,,MyAccount Thread Group 7-1,text,true,,1260,1677,1,8,https://qa-api.mousiki.io/api/v1/users/account/preferences,280,0,0
-1663659154170,258,Feedback_UpdateFeedbackKPI,200,,Feedback Thread Group 6-1,text,true,,808,1405,1,8,https://qa-api.mousiki.io/api/v1/kpi-category/kpi,258,0,0
-1663659154200,270,Courses_DeleteCourse,200,,Course Thread Group 5-1,text,true,,1793,1330,1,8,https://qa-api.mousiki.io/api/v1/org/course/12567569,268,0,0
-1663659154226,407,InviteFriends,200,,MyAccount Thread Group 7-1,,true,,611,1381,1,8,https://qa-api.mousiki.io/api/v1/users/invitation/email,407,0,0
-1663659154428,286,Feedback_GetFeedbackDetails,200,,Feedback Thread Group 6-1,text,true,,1045,1306,1,8,https://qa-api.mousiki.io/api/v1/kpi-category/1121,286,0,0
-1663659154469,286,Courses_GetactiveCourses,200,,Course Thread Group 5-1,text,true,,22136,1288,1,8,https://qa-api.mousiki.io/api/v1/org/courses/active?page=1,282,0,0
-1663659154633,256,MyAccount_PreferencesUpdate,200,,MyAccount Thread Group 7-1,text,true,,1260,1643,1,8,https://qa-api.mousiki.io/api/v1/users/account/preferences,256,0,0
-1663659151267,3718,MyClasses_GetactiveSchedules,200,,Schedules Thread Group 4-1,text,true,,57985,1287,1,8,https://qa-api.mousiki.io/api/v1/schedules/status/active?page=1,3231,0,1425
-1663659154714,275,Feedback_DeleteFeedbackKPI,200,,Feedback Thread Group 6-1,text,true,,667,1337,1,8,https://qa-api.mousiki.io/api/v1/kpi-category/1121/kpi/1397,275,0,0
-1663659154755,250,Courses_GetinactiveCourses,200,,Course Thread Group 5-1,text,true,,885,1290,1,8,https://qa-api.mousiki.io/api/v1/org/courses/inactive?page=1,250,0,0
-1663659153398,1704,MyTeacher_SubscriptionValidation,200,,MyTeacher Thread Group 8-1,text,true,,298,1347,1,8,https://qa-subscription.api.mousiki.io/api/v1/org/subscription/validation?action=addTeacher,1704,0,982
-1663659154890,361,InviteFriends,200,,MyAccount Thread Group 7-1,,true,,611,1347,1,8,https://qa-api.mousiki.io/api/v1/users/invitation/email,361,0,0
-1663659154990,275,Feedback_DeleteFeedback,200,,Feedback Thread Group 6-1,text,true,,898,1328,1,8,https://qa-api.mousiki.io/api/v1/kpi-category/1121,275,0,0
-1663659155005,329,Courses_CreateNewCourse,201,,Course Thread Group 5-1,text,true,,1687,1662,1,8,https://qa-api.mousiki.io/api/v1/org/course,329,0,0
-1663659154984,453,MyClasses_GetinactiveSchedules,200,,Schedules Thread Group 4-1,text,true,,7038,1289,1,8,https://qa-api.mousiki.io/api/v1/schedules/status/inactive?page=1,452,0,0
-1663659155251,275,MyAccount_PreferencesUpdate,200,,MyAccount Thread Group 7-1,text,true,,1260,1647,1,8,https://qa-api.mousiki.io/api/v1/users/account/preferences,275,0,0
-1663659155266,270,Feedback_GetactiveFeedbacks,200,,Feedback Thread Group 6-1,text,true,,1597,1291,1,8,https://qa-api.mousiki.io/api/v1/kpi-categories/active?page=1,270,0,0
-1663659155101,528,MyTeachers_NewTeacher,201,,MyTeacher Thread Group 8-1,text,true,,1742,1870,1,8,https://qa-api.mousiki.io/api/v1/teacher,528,0,0
-1663659155335,356,Courses_UpdateCourse,200,,Course Thread Group 5-1,text,true,,1695,1760,1,8,https://qa-api.mousiki.io/api/v1/org/course,356,0,0
-1663659155536,267,Feedback_GetinactiveFeedbacks,200,,Feedback Thread Group 6-1,text,true,,855,1293,1,8,https://qa-api.mousiki.io/api/v1/kpi-categories/inactive?page=1,267,0,0
-1663659155526,381,InviteFriends,200,,MyAccount Thread Group 7-1,,true,,611,1351,1,8,https://qa-api.mousiki.io/api/v1/users/invitation/email,381,0,0
-1663659155692,315,Courses_GetCourseDetails,200,,Course Thread Group 5-1,text,true,,1702,1314,1,7,https://qa-api.mousiki.io/api/v1/org/course/12567575,313,0,0
-1663659155803,276,Feedback_CreateNewFeedback,200,,Feedback Thread Group 6-1,text,true,,901,1392,1,7,https://qa-api.mousiki.io/api/v1/kpi-category,276,0,0
-1663659156007,256,Courses_DeleteCourse,200,,Course Thread Group 5-1,text,true,,1694,1336,1,7,https://qa-api.mousiki.io/api/v1/org/course/12567575,256,0,0
-1663659156080,255,Feedback_CreateNewFeedbackKPI,200,,Feedback Thread Group 6-1,text,true,,1023,1385,1,6,https://qa-api.mousiki.io/api/v1/kpi-category/1122/kpi,255,0,0
-1663659156335,254,Feedback_UpdateFeedback,200,,Feedback Thread Group 6-1,text,true,,1023,1396,1,6,https://qa-api.mousiki.io/api/v1/kpi-category,254,0,0
-1663659156589,302,Feedback_UpdateFeedbackKPI,200,,Feedback Thread Group 6-1,text,true,,808,1411,1,6,https://qa-api.mousiki.io/api/v1/kpi-category/kpi,302,0,0
-1663659156892,246,Feedback_GetFeedbackDetails,200,,Feedback Thread Group 6-1,text,true,,1045,1312,1,6,https://qa-api.mousiki.io/api/v1/kpi-category/1122,246,0,0
-1663659157138,270,Feedback_DeleteFeedbackKPI,200,,Feedback Thread Group 6-1,text,true,,667,1343,1,6,https://qa-api.mousiki.io/api/v1/kpi-category/1122/kpi/1398,270,0,0
-1663659157408,266,Feedback_DeleteFeedback,200,,Feedback Thread Group 6-1,text,true,,898,1334,1,6,https://qa-api.mousiki.io/api/v1/kpi-category/1122,266,0,0
-1663659159303,493,MyTeachers_NewTeacherAvailabilty,201,,MyTeacher Thread Group 8-1,text,true,,1080,1637,1,5,https://qa-api.mousiki.io/api/v1/availabilities,492,0,0
-1663659159797,260,MyTeachers_GetTeacherDetails,200,,MyTeacher Thread Group 8-1,text,true,,1742,1300,1,5,https://qa-api.mousiki.io/api/v1/teacher/750,259,0,0
-1663659160057,285,MyTeachers_GetTeacherAvailabilityDetails,200,,MyTeacher Thread Group 8-1,text,true,,1082,1315,1,5,https://qa-api.mousiki.io/api/v1/availabilities/teacher/750,285,0,0
-1663659160342,399,MyTeachers_DeleteAvailability,200,,MyTeacher Thread Group 8-1,text,true,,1078,1329,1,5,https://qa-api.mousiki.io/api/v1/availabilities/496,399,0,0
-1663659159239,1704,MyStudent_GetactiveStudentDetails,200,,Student Thread Group 1-1,text,true,,32273,1279,1,5,https://qa-api.mousiki.io/api/v1/students/active?page=1,1470,0,734
-1663659159307,1797,Reports_OpenInvoices,200,,Accounting Reports Thread Group 3-1,text,true,,1048,1417,1,5,"https://qa-api.mousiki.io/api/v1/organization/12523320/invoices?reportPeriod=Custom&fromDate=06%2F28%2F2021&toDate=04%2F28%2F2023&status=OPEN,PARTIALLY_PAID,OVER_DUE&orderBy=desc&sortOrder=date",1797,0,1430
-1663659159284,1992,MyCalender_dayschedules,200,,MyCalender Thread Group 2-1,text,true,,831,1365,1,5,"https://qa-api.mousiki.io/api/v1/schedules/teacher/669?eventTypes=class_schedule,availability&startDate=09%2F20%2F2022&endDate=09%2F21%2F2022",1992,0,1427
-1663659161347,272,Reports_OverdueInvoices,200,,Accounting Reports Thread Group 3-1,text,true,,1048,1397,1,5,https://qa-api.mousiki.io/api/v1/organization/12523320/invoices?reportPeriod=Custom&fromDate=06%2F28%2F2021&toDate=04%2F28%2F2023&status=OVER_DUE&orderBy=desc&sortOrder=date,271,0,0
-1663659161405,357,MyStudent_GetinactiveStudentDetails,200,,Student Thread Group 1-1,text,true,,866,1281,1,5,https://qa-api.mousiki.io/api/v1/students/inactive?page=1,357,0,0
-1663659161523,433,MyCalender_weekschedules,200,,MyCalender Thread Group 2-1,text,true,,831,1365,1,5,"https://qa-api.mousiki.io/api/v1/schedules/teacher/669?eventTypes=class_schedule,availability&startDate=09%2F20%2F2022&endDate=09%2F27%2F2022",433,0,0
-1663659161860,278,Reports_PartiallyPaidInvoices,200,,Accounting Reports Thread Group 3-1,text,true,,1048,1403,1,5,https://qa-api.mousiki.io/api/v1/organization/12523320/invoices?reportPeriod=Custom&fromDate=06%2F28%2F2021&toDate=04%2F28%2F2023&status=PARTIALLY_PAID&orderBy=desc&sortOrder=date,278,0,0
-1663659162379,286,Reports_CancelledInvoices,200,,Accounting Reports Thread Group 3-1,text,true,,1048,1398,1,5,https://qa-api.mousiki.io/api/v1/organization/12523320/invoices?reportPeriod=Custom&fromDate=06%2F28%2F2021&toDate=04%2F28%2F2023&status=CANCELLED&orderBy=desc&sortOrder=date,286,0,0
-1663659162216,544,MyStudent_CreateNewStudent,201,,Student Thread Group 1-1,text,true,,1781,1839,1,5,https://qa-api.mousiki.io/api/v1/student,543,0,0
-1663659162907,536,Reports_PaidInvoices,200,,Accounting Reports Thread Group 3-1,text,true,,7562,1393,1,5,https://qa-api.mousiki.io/api/v1/organization/12523320/invoices?reportPeriod=Custom&fromDate=06%2F28%2F2021&toDate=04%2F28%2F2023&status=PAID&orderBy=desc&sortOrder=date,535,0,0
-1663659163214,256,MyStudent_GetStudentDetails,200,,Student Thread Group 1-1,text,true,,1781,1301,1,5,https://qa-api.mousiki.io/api/v1/student/5784,256,0,0
-1663659162202,1337,MyCalender_monthschedules,200,,MyCalender Thread Group 2-1,text,true,,68018,1365,1,5,"https://qa-api.mousiki.io/api/v1/schedules/teacher/669?eventTypes=class_schedule,availability&startDate=09%2F20%2F2022&endDate=10%2F23%2F2022",897,0,0
-1663659163926,965,MyStudent_CreateNewEnrollment,201,,Student Thread Group 1-1,text,true,,1677,1583,1,5,https://qa-api.mousiki.io/api/v1/enrollments,965,0,0
-1663659163685,1292,Reports_OpenInvoices,200,,Accounting Reports Thread Group 3-1,text,true,,39139,1423,1,5,"https://qa-api.mousiki.io/api/v1/organization/12468911/invoices?reportPeriod=Custom&fromDate=06%2F28%2F2021&toDate=04%2F28%2F2023&status=OPEN,PARTIALLY_PAID,OVER_DUE&orderBy=desc&sortOrder=date",1044,0,0
-1663659163785,1537,MyCalender_dayschedules,200,,MyCalender Thread Group 2-1,text,true,,68493,1360,1,5,"https://qa-api.mousiki.io/api/v1/schedules/?eventTypes=class_schedule,availability&startDate=09%2F20%2F2022&endDate=09%2F21%2F2022",1315,0,0
-1663659164994,430,MyClasses_NewGroupClass,201,,Schedules Thread Group 4-1,text,true,,1920,1650,1,5,https://qa-api.mousiki.io/api/v1/group-schedules,430,0,0
-1663659165425,318,MyClasses_GetGroupClassDetails,200,,Schedules Thread Group 4-1,text,true,,1884,1313,1,5,https://qa-api.mousiki.io/api/v1/group-schedules/12567589,318,0,0
-1663659165350,599,MyStudent_CreateNewSchedule,201,,Student Thread Group 1-1,text,true,,2171,1836,1,5,https://qa-api.mousiki.io/api/v1/classes/schedule,599,0,0
-1663659165217,1348,Reports_OverdueInvoices,200,,Accounting Reports Thread Group 3-1,text,true,,38979,1403,1,5,https://qa-api.mousiki.io/api/v1/organization/12468911/invoices?reportPeriod=Custom&fromDate=06%2F28%2F2021&toDate=04%2F28%2F2023&status=OVER_DUE&orderBy=desc&sortOrder=date,1104,0,0
-1663659166270,309,MyTeachers_UpdateTeacher,200,,MyTeacher Thread Group 8-1,text,true,,1742,1902,1,5,https://qa-api.mousiki.io/api/v1/teacher,308,0,0
-1663659166455,587,MyClasses_UpdateGroupClass,200,,Schedules Thread Group 4-1,text,true,,1927,1658,1,5,https://qa-api.mousiki.io/api/v1/group-schedules/12567589,587,0,0
-1663659166806,323,Reports_PartiallyPaidInvoices,200,,Accounting Reports Thread Group 3-1,text,true,,1062,1409,1,5,https://qa-api.mousiki.io/api/v1/organization/12468911/invoices?reportPeriod=Custom&fromDate=06%2F28%2F2021&toDate=04%2F28%2F2023&status=PARTIALLY_PAID&orderBy=desc&sortOrder=date,323,0,0
-1663659166637,1090,Invoice_CreateNewInvoice,201,,Student Thread Group 1-1,text,true,,4895,1518,1,5,https://qa-api.mousiki.io/api/v1/accounts/invoice-classes,970,0,0
-1663659167043,760,MyClasses_DeleteGroupClass,200,,Schedules Thread Group 4-1,text,true,,1943,1329,1,5,https://qa-api.mousiki.io/api/v1/schedules/12567589,759,0,0
-1663659167259,642,MyTeachers_DeactivateTeacher,200,,MyTeacher Thread Group 8-1,text,true,,1743,1333,1,5,https://qa-api.mousiki.io/api/v1/teachers/750/deactivate,642,0,0
-1663659167370,937,Reports_CancelledInvoices,200,,Accounting Reports Thread Group 3-1,text,true,,30270,1404,1,5,https://qa-api.mousiki.io/api/v1/organization/12468911/invoices?reportPeriod=Custom&fromDate=06%2F28%2F2021&toDate=04%2F28%2F2023&status=CANCELLED&orderBy=desc&sortOrder=date,934,0,0
-1663659168182,430,Invoice_GetInvoiceDetails,200,,Student Thread Group 1-1,text,true,,4895,1306,1,5,https://qa-api.mousiki.io/api/v1/invoices/12567605,342,0,0
-1663659168584,357,MyTeachers_activateTeacher,200,,MyTeacher Thread Group 8-1,text,true,,1742,1331,1,5,https://qa-api.mousiki.io/api/v1/teachers/750/activate,356,0,0
-1663659168510,702,MyClasses_NewOneonOneClass,201,,Schedules Thread Group 4-1,text,true,,2107,1818,1,5,https://qa-api.mousiki.io/api/v1/classes/schedule,702,0,0
-1663659168941,311,MyTeachers_DeleteTeacher,200,,MyTeacher Thread Group 8-1,text,true,,1741,1322,1,5,https://qa-api.mousiki.io/api/v1/teacher/750,311,0,0
-1663659165568,3798,MyCalender_weekschedules,200,,MyCalender Thread Group 2-1,text,true,,364274,1360,1,4,"https://qa-api.mousiki.io/api/v1/schedules/?eventTypes=class_schedule,availability&startDate=09%2F20%2F2022&endDate=09%2F27%2F2022",3356,0,0
-1663659168547,921,Reports_PaidInvoices,200,,Accounting Reports Thread Group 3-1,text,true,,50093,1399,1,4,https://qa-api.mousiki.io/api/v1/organization/12468911/invoices?reportPeriod=Custom&fromDate=06%2F28%2F2021&toDate=04%2F28%2F2023&status=PAID&orderBy=desc&sortOrder=date,911,0,0
-1663659169212,304,MyClasses_GetOneonOneClassDetails,200,,Schedules Thread Group 4-1,text,true,,2035,1314,1,4,https://qa-api.mousiki.io/api/v1/classes/schedule/12567607,304,0,0
-1663659169292,345,Invoice_UpdateInvoice,200,,Student Thread Group 1-1,text,true,,4882,1557,1,4,https://qa-api.mousiki.io/api/v1/accounts/invoice-classes,321,0,0
-1663659170090,633,Invoice_ReceivePaymentInvoice,201,,Student Thread Group 1-1,text,true,,5046,1440,1,4,https://qa-api.mousiki.io/api/v1/invoices/12567605/receive-payment,511,0,0
-1663659170222,1087,MyClasses_UpdateOneonOneClass,200,,Schedules Thread Group 4-1,text,true,,2014,1837,1,4,https://qa-api.mousiki.io/api/v1/classes/schedule,1083,0,0
-1663659171178,360,Invoice_SendInvoice,200,,Student Thread Group 1-1,text,true,,669,1339,1,4,https://qa-api.mousiki.io/api/v1/invoices/12567605/send-invoice,360,0,0
-1663659171310,736,MyClasses_DeleteOneonOneClass,200,,Schedules Thread Group 4-1,text,true,,2105,1329,1,4,https://qa-api.mousiki.io/api/v1/schedules/12567607,736,0,0
-1663659171992,246,Invoice_PrintInvoice,200,,Student Thread Group 1-1,,true,,305,1314,1,4,https://qa-api.mousiki.io/api/v1/invoices/12567605/pdf,246,0,0
-1663659169708,2534,Reports_OpenInvoices,200,,Accounting Reports Thread Group 3-1,text,true,,58213,1373,1,4,"https://qa-api.mousiki.io/api/v1/users/invoices?reportPeriod=Custom&fromDate=06%2F28%2F2021&toDate=04%2F28%2F2023&status=OPEN,PARTIALLY_PAID,OVER_DUE&orderBy=desc&sortOrder=date",2517,0,0
-1663659172484,721,Reports_OverdueInvoices,200,,Accounting Reports Thread Group 3-1,text,true,,4734,1353,1,4,https://qa-api.mousiki.io/api/v1/users/invoices?reportPeriod=Custom&fromDate=06%2F28%2F2021&toDate=04%2F28%2F2023&status=OVER_DUE&orderBy=desc&sortOrder=date,720,0,0
-1663659172699,604,MyStudent_DeleteSchedule,200,,Student Thread Group 1-1,text,true,,2176,1329,1,4,https://qa-api.mousiki.io/api/v1/schedules/12567594,604,0,0
-1663659172046,1687,MyClasses_GetactiveSchedules,200,,Schedules Thread Group 4-1,text,true,,60934,1293,1,4,https://qa-api.mousiki.io/api/v1/schedules/status/active?page=1,1443,0,0
-1663659173757,386,MyStudent_InactiveEnrollment,200,,Student Thread Group 1-1,text,true,,1512,1353,1,4,https://qa-api.mousiki.io/api/v1/enrollments/12567587,386,0,0
-1663659173446,1377,Reports_PartiallyPaidInvoices,200,,Accounting Reports Thread Group 3-1,text,true,,53381,1359,1,4,https://qa-api.mousiki.io/api/v1/users/invoices?reportPeriod=Custom&fromDate=06%2F28%2F2021&toDate=04%2F28%2F2023&status=PARTIALLY_PAID&orderBy=desc&sortOrder=date,1371,0,0
-1663659174598,408,MyStudent_activeEnrollment,200,,Student Thread Group 1-1,text,true,,1526,1352,1,4,https://qa-api.mousiki.io/api/v1/enrollments/12567587,408,0,0
-1663659173733,1689,MyClasses_GetinactiveSchedules,200,,Schedules Thread Group 4-1,text,true,,62619,1295,1,4,https://qa-api.mousiki.io/api/v1/schedules/status/inactive?page=1,1679,0,0
-1663659175464,327,MyStudent_DeleteEnrollment,200,,Student Thread Group 1-1,,true,,611,1331,1,4,https://qa-api.mousiki.io/api/v1/enrollments/12567587,327,0,0
-1663659176129,758,MyClasses_NewGroupClass,201,,Schedules Thread Group 4-1,text,true,,1987,1656,1,4,https://qa-api.mousiki.io/api/v1/group-schedules,758,0,0
-1663659176245,754,MyStudent_InactiveStudent,200,,Student Thread Group 1-1,text,true,,1783,1347,1,4,https://qa-api.mousiki.io/api/v1/student/5784,754,0,0
-1663659176888,417,MyClasses_GetGroupClassDetails,200,,Schedules Thread Group 4-1,text,true,,1944,1319,1,4,https://qa-api.mousiki.io/api/v1/group-schedules/12567621,417,0,0
-1663659177454,463,MyStudent_activeStudent,200,,Student Thread Group 1-1,text,true,,1781,1346,1,4,https://qa-api.mousiki.io/api/v1/student/5784,462,0,0
-1663659175065,4066,Reports_CancelledInvoices,200,,Accounting Reports Thread Group 3-1,text,true,,43833,1354,1,4,https://qa-api.mousiki.io/api/v1/users/invoices?reportPeriod=Custom&fromDate=06%2F28%2F2021&toDate=04%2F28%2F2023&status=CANCELLED&orderBy=desc&sortOrder=date,4043,0,0
-1663659178012,1382,MyClasses_UpdateGroupClass,200,,Schedules Thread Group 4-1,text,true,,1980,1664,1,4,https://qa-api.mousiki.io/api/v1/group-schedules/12567621,1381,0,0
-1663659178372,1151,MyStudent_UpdateStudent,201,,Student Thread Group 1-1,text,true,,1791,1879,1,4,https://qa-api.mousiki.io/api/v1/student,1151,0,0
-1663659179395,602,MyClasses_DeleteGroupClass,200,,Schedules Thread Group 4-1,text,true,,2003,1335,1,4,https://qa-api.mousiki.io/api/v1/schedules/12567621,602,0,0
-1663659179373,986,Reports_PaidInvoices,200,,Accounting Reports Thread Group 3-1,text,true,,26242,1349,1,4,https://qa-api.mousiki.io/api/v1/users/invoices?reportPeriod=Custom&fromDate=06%2F28%2F2021&toDate=04%2F28%2F2023&status=PAID&orderBy=desc&sortOrder=date,985,0,0
-1663659180168,277,MyStudent_DeleteStudent,200,,Student Thread Group 1-1,text,true,,1790,1323,1,4,https://qa-api.mousiki.io/api/v1/student/5784,277,0,0
-1663659180706,806,MyClasses_NewOneonOneClass,201,,Schedules Thread Group 4-1,text,true,,2172,1824,1,4,https://qa-api.mousiki.io/api/v1/classes/schedule,805,0,0
-1663659181513,412,MyClasses_GetOneonOneClassDetails,200,,Schedules Thread Group 4-1,text,true,,2093,1320,1,4,https://qa-api.mousiki.io/api/v1/classes/schedule/12567626,411,0,0
-1663659180602,1510,Reports_OpenInvoices,200,,Accounting Reports Thread Group 3-1,text,true,,15484,1377,1,4,"https://qa-api.mousiki.io/api/v1/users/invoices?reportPeriod=Custom&fromDate=06%2F28%2F2021&toDate=04%2F28%2F2023&status=OPEN,PARTIALLY_PAID,OVER_DUE&orderBy=desc&sortOrder=date",1501,0,0
-1663659182634,794,MyClasses_UpdateOneonOneClass,200,,Schedules Thread Group 4-1,text,true,,2093,1843,1,4,https://qa-api.mousiki.io/api/v1/classes/schedule,794,0,0
-1663659182354,1170,Reports_OverdueInvoices,200,,Accounting Reports Thread Group 3-1,text,true,,10559,1357,1,4,https://qa-api.mousiki.io/api/v1/users/invoices?reportPeriod=Custom&fromDate=06%2F28%2F2021&toDate=04%2F28%2F2023&status=OVER_DUE&orderBy=desc&sortOrder=date,1167,0,0
-1663659183429,695,MyClasses_DeleteOneonOneClass,200,,Schedules Thread Group 4-1,text,true,,2170,1335,1,4,https://qa-api.mousiki.io/api/v1/schedules/12567626,695,0,0
-1663659183767,739,Reports_PartiallyPaidInvoices,200,,Accounting Reports Thread Group 3-1,text,true,,3685,1363,1,3,https://qa-api.mousiki.io/api/v1/users/invoices?reportPeriod=Custom&fromDate=06%2F28%2F2021&toDate=04%2F28%2F2023&status=PARTIALLY_PAID&orderBy=desc&sortOrder=date,739,0,0
-1663659169610,15185,MyCalender_monthschedules,200,,MyCalender Thread Group 2-1,text,true,,2159004,1360,1,3,"https://qa-api.mousiki.io/api/v1/schedules/?eventTypes=class_schedule,availability&startDate=09%2F20%2F2022&endDate=10%2F23%2F2022",14495,0,0
-1663659180899,4333,MyStudent_GetactiveStudentDetails,200,,Student Thread Group 1-1,text,true,,48545,1285,1,3,https://qa-api.mousiki.io/api/v1/students/active?page=1,4099,0,0
-1663659185040,586,MyCalender_dayschedules,200,,MyCalender Thread Group 2-1,text,true,,37168,1326,1,3,"https://qa-api.mousiki.io/api/v1/schedules/?eventTypes=class_schedule,availability&startDate=09%2F20%2F2022&endDate=09%2F21%2F2022",573,0,0
-1663659184747,1371,Reports_CancelledInvoices,200,,Accounting Reports Thread Group 3-1,text,true,,35000,1358,1,3,https://qa-api.mousiki.io/api/v1/users/invoices?reportPeriod=Custom&fromDate=06%2F28%2F2021&toDate=04%2F28%2F2023&status=CANCELLED&orderBy=desc&sortOrder=date,1369,0,0
-1663659185881,777,MyCalender_weekschedules,200,,MyCalender Thread Group 2-1,text,true,,142371,1326,1,3,"https://qa-api.mousiki.io/api/v1/schedules/?eventTypes=class_schedule,availability&startDate=09%2F20%2F2022&endDate=09%2F27%2F2022",770,0,0
-1663659186359,561,Reports_PaidInvoices,200,,Accounting Reports Thread Group 3-1,text,true,,6557,1353,1,3,https://qa-api.mousiki.io/api/v1/users/invoices?reportPeriod=Custom&fromDate=06%2F28%2F2021&toDate=04%2F28%2F2023&status=PAID&orderBy=desc&sortOrder=date,560,0,0
-1663659185708,1705,MyStudent_GetinactiveStudentDetails,200,,Student Thread Group 1-1,text,true,,16321,1287,1,2,https://qa-api.mousiki.io/api/v1/students/inactive?page=1,1705,0,0
-1663659186906,1493,MyCalender_monthschedules,200,,MyCalender Thread Group 2-1,text,true,,464785,1326,1,2,"https://qa-api.mousiki.io/api/v1/schedules/?eventTypes=class_schedule,availability&startDate=09%2F20%2F2022&endDate=10%2F23%2F2022",1441,0,0
-1663659188643,519,MyCalender_dayschedules,200,,MyCalender Thread Group 2-1,text,true,,30763,1330,1,2,"https://qa-api.mousiki.io/api/v1/schedules/?eventTypes=class_schedule,availability&startDate=09%2F20%2F2022&endDate=09%2F21%2F2022",519,0,0
-1663659187867,1414,MyStudent_CreateNewStudent,201,,Student Thread Group 1-1,text,true,,1689,1845,1,2,https://qa-api.mousiki.io/api/v1/student,1414,0,0
-1663659189405,579,MyCalender_weekschedules,200,,MyCalender Thread Group 2-1,text,true,,111974,1330,1,2,"https://qa-api.mousiki.io/api/v1/schedules/?eventTypes=class_schedule,availability&startDate=09%2F20%2F2022&endDate=09%2F27%2F2022",574,0,0
-1663659189732,259,MyStudent_GetStudentDetails,200,,Student Thread Group 1-1,text,true,,1689,1307,1,2,https://qa-api.mousiki.io/api/v1/student/5785,259,0,0
-1663659190789,428,MyStudent_CreateNewEnrollment,201,,Student Thread Group 1-1,text,true,,1737,1589,1,2,https://qa-api.mousiki.io/api/v1/enrollments,427,0,0
-1663659190229,1126,MyCalender_monthschedules,200,,MyCalender Thread Group 2-1,text,true,,332560,1330,1,2,"https://qa-api.mousiki.io/api/v1/schedules/?eventTypes=class_schedule,availability&startDate=09%2F20%2F2022&endDate=10%2F23%2F2022",1118,0,0
-1663659191681,409,MyStudent_CreateNewSchedule,201,,Student Thread Group 1-1,text,true,,2231,1842,1,1,https://qa-api.mousiki.io/api/v1/classes/schedule,409,0,0
-1663659192772,333,Invoice_CreateNewInvoice,201,,Student Thread Group 1-1,text,true,,4900,1524,1,1,https://qa-api.mousiki.io/api/v1/accounts/invoice-classes,302,0,0
-1663659193568,306,Invoice_GetInvoiceDetails,200,,Student Thread Group 1-1,text,true,,4906,1312,1,1,https://qa-api.mousiki.io/api/v1/invoices/12567636,291,0,0
-1663659194669,353,Invoice_UpdateInvoice,200,,Student Thread Group 1-1,text,true,,4893,1563,1,1,https://qa-api.mousiki.io/api/v1/accounts/invoice-classes,337,0,0
-1663659195479,323,Invoice_ReceivePaymentInvoice,201,,Student Thread Group 1-1,text,true,,5052,1446,1,1,https://qa-api.mousiki.io/api/v1/invoices/12567636/receive-payment,302,0,0
-1663659196255,265,Invoice_SendInvoice,200,,Student Thread Group 1-1,text,true,,669,1345,1,1,https://qa-api.mousiki.io/api/v1/invoices/12567636/send-invoice,265,0,0
-1663659196973,239,Invoice_PrintInvoice,200,,Student Thread Group 1-1,,true,,305,1320,1,1,https://qa-api.mousiki.io/api/v1/invoices/12567636/pdf,239,0,0
-1663659197664,424,MyStudent_DeleteSchedule,200,,Student Thread Group 1-1,text,true,,2229,1335,1,1,https://qa-api.mousiki.io/api/v1/schedules/12567634,424,0,0
-1663659198543,295,MyStudent_InactiveEnrollment,200,,Student Thread Group 1-1,text,true,,1572,1359,1,1,https://qa-api.mousiki.io/api/v1/enrollments/12567633,295,0,0
-1663659199295,282,MyStudent_activeEnrollment,200,,Student Thread Group 1-1,text,true,,1586,1358,1,1,https://qa-api.mousiki.io/api/v1/enrollments/12567633,282,0,0
-1663659200034,275,MyStudent_DeleteEnrollment,200,,Student Thread Group 1-1,,true,,611,1337,1,1,https://qa-api.mousiki.io/api/v1/enrollments/12567633,275,0,0
-1663659200763,1407,MyStudent_InactiveStudent,200,,Student Thread Group 1-1,text,true,,1691,1353,1,1,https://qa-api.mousiki.io/api/v1/student/5785,1407,0,0
-1663659202624,1244,MyStudent_activeStudent,200,,Student Thread Group 1-1,text,true,,1689,1352,1,1,https://qa-api.mousiki.io/api/v1/student/5785,1244,0,0
-1663659204322,1240,MyStudent_UpdateStudent,201,,Student Thread Group 1-1,text,true,,1699,1885,1,1,https://qa-api.mousiki.io/api/v1/student,1240,0,0
-1663659206014,273,MyStudent_DeleteStudent,200,,Student Thread Group 1-1,text,true,,1698,1329,1,1,https://qa-api.mousiki.io/api/v1/student/5785,273,0,0
+1663679799051,1160,GetAuthorizationToken,200,OK,setUp Thread Group 1-1,text,true,,2124,361,1,1,https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyD7oMsXvjTMB0S3Xwbm0wV0ycQvE8AZiig,1130,0,790
+1663679800248,342,GetAuthorizationToken,200,OK,setUp Thread Group 1-1,text,true,,2134,361,1,1,https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyD7oMsXvjTMB0S3Xwbm0wV0ycQvE8AZiig,336,0,0
+1663679800591,338,GetAuthorizationToken,200,OK,setUp Thread Group 1-1,text,true,,2035,359,1,1,https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyD7oMsXvjTMB0S3Xwbm0wV0ycQvE8AZiig,333,0,0
+1663679800930,265,GetAuthorizationToken,200,OK,setUp Thread Group 1-1,text,true,,2062,360,1,1,https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyD7oMsXvjTMB0S3Xwbm0wV0ycQvE8AZiig,262,0,0
+1663679801288,1127,Feedback_GetactiveFeedbacks,200,,Feedback Thread Group 6-1,text,true,,1251,1285,1,9,https://qa-api.mousiki.io/api/v1/kpi-categories/active?page=1,1127,0,814
+1663679801289,1184,MyAccount_PreferencesUpdate,200,,MyAccount Thread Group 7-1,text,true,,1260,1671,1,9,https://qa-api.mousiki.io/api/v1/users/account/preferences,1184,0,817
+1663679801289,1240,MyTeachers_GetactiveTeachers,200,,MyTeacher Thread Group 9-1,text,true,,2833,1279,1,9,https://qa-api.mousiki.io/api/v1/teachers/active?page=1,1240,0,836
+1663679802415,265,Feedback_GetinactiveFeedbacks,200,,Feedback Thread Group 6-1,text,true,,855,1287,1,9,https://qa-api.mousiki.io/api/v1/kpi-categories/inactive?page=1,265,0,0
+1663679801288,1456,Courses_GetactiveCourses,200,,Course Thread Group 5-1,text,true,,23145,1282,1,9,https://qa-api.mousiki.io/api/v1/org/courses/active?page=1,1211,0,844
+1663679802529,266,MyTeachers_GetinactiveSchedules,200,,MyTeacher Thread Group 9-1,text,true,,864,1281,1,9,https://qa-api.mousiki.io/api/v1/teachers/inactive?page=1,266,0,0
+1663679802680,268,Feedback_CreateNewFeedback,200,,Feedback Thread Group 6-1,text,true,,901,1386,1,9,https://qa-api.mousiki.io/api/v1/kpi-category,268,0,0
+1663679802744,274,Courses_GetinactiveCourses,200,,Course Thread Group 5-1,text,true,,883,1284,1,9,https://qa-api.mousiki.io/api/v1/org/courses/inactive?page=1,274,0,0
+1663679802949,289,Feedback_CreateNewFeedbackKPI,200,,Feedback Thread Group 6-1,text,true,,1023,1379,1,9,https://qa-api.mousiki.io/api/v1/kpi-category/1128/kpi,289,0,0
+1663679801289,2042,Dashboard_Current,200,,Dashboard Thread Group 8-1,text,true,,7524,1304,1,9,https://qa-api.mousiki.io/api/v1/profile/current,2042,0,819
+1663679802474,922,InviteFriends,200,,MyAccount Thread Group 7-1,,true,,611,1375,1,9,https://qa-api.mousiki.io/api/v1/users/invitation/email,922,0,0
+1663679803018,383,Courses_CreateNewCourse,201,,Course Thread Group 5-1,text,true,,1772,1656,1,9,https://qa-api.mousiki.io/api/v1/org/course,383,0,0
+1663679803239,320,Feedback_UpdateFeedback,200,,Feedback Thread Group 6-1,text,true,,1023,1390,1,9,https://qa-api.mousiki.io/api/v1/kpi-category,320,0,0
+1663679803331,261,Dashboard_Basic,200,,Dashboard Thread Group 8-1,text,true,,815,1306,1,9,https://qa-api.mousiki.io/api/v1/application/basic,261,0,0
+1663679803402,324,Courses_UpdateCourse,200,,Course Thread Group 5-1,text,true,,1794,1754,1,9,https://qa-api.mousiki.io/api/v1/org/course,324,0,0
+1663679803560,275,Feedback_UpdateFeedbackKPI,200,,Feedback Thread Group 6-1,text,true,,808,1405,1,9,https://qa-api.mousiki.io/api/v1/kpi-category/kpi,275,0,0
+1663679802797,1119,MyTeacher_SubscriptionValidation,200,,MyTeacher Thread Group 9-1,text,true,,298,1347,1,9,https://qa-subscription.api.mousiki.io/api/v1/org/subscription/validation?action=addTeacher,1119,0,765
+1663679803593,431,Dashboard_Widget,200,OK,Dashboard Thread Group 8-1,text,true,,3230,1347,1,9,https://jsd-widget.atlassian.com/api/embeddable/5b65887d-915e-4a5d-8933-cccf3878dbaf/widget,431,0,162
+1663679803916,549,MyTeachers_NewTeacher,201,,MyTeacher Thread Group 9-1,text,true,,1742,1870,1,9,https://qa-api.mousiki.io/api/v1/teacher,549,0,0
+1663679804486,476,MyTeachers_NewTeacherAvailabilty,201,,MyTeacher Thread Group 9-1,text,true,,1080,1637,1,9,https://qa-api.mousiki.io/api/v1/availabilities,476,0,0
+1663679801288,3695,MyClasses_GetactiveSchedules,200,,Schedules Thread Group 4-1,text,true,,57854,1287,1,9,https://qa-api.mousiki.io/api/v1/schedules/status/active?page=1,3216,0,841
+1663679804026,1001,Dashboard_Notifications,200,,Dashboard Thread Group 8-1,text,true,,59622,1308,1,9,https://qa-api.mousiki.io/api/v1/users/notifications,530,0,0
+1663679804963,276,MyTeachers_GetTeacherDetails,200,,MyTeacher Thread Group 9-1,text,true,,1742,1300,1,9,https://qa-api.mousiki.io/api/v1/teacher/752,276,0,0
+1663679805027,444,Dashboard_Contacts,200,,Dashboard Thread Group 8-1,text,true,,6426,1297,1,9,https://qa-api.mousiki.io/api/v1/contacts,444,0,0
+1663679805239,292,MyTeachers_GetTeacherAvailabilityDetails,200,,MyTeacher Thread Group 9-1,text,true,,1082,1315,1,9,https://qa-api.mousiki.io/api/v1/availabilities/teacher/752,292,0,0
+1663679804984,576,MyClasses_GetinactiveSchedules,200,,Schedules Thread Group 4-1,text,true,,8457,1289,1,9,https://qa-api.mousiki.io/api/v1/schedules/status/inactive?page=1,576,0,0
+1663679805471,257,Dashboard_InvoiceSummary,200,,Dashboard Thread Group 8-1,text,true,,876,1317,1,9,https://qa-api.mousiki.io/api/v1/report/trends/invoiceSummary,256,0,0
+1663679805532,391,MyTeachers_DeleteAvailability,200,,MyTeacher Thread Group 9-1,text,true,,1078,1329,1,9,https://qa-api.mousiki.io/api/v1/availabilities/498,391,0,0
+1663679805728,273,Dashboard_FeesCollection,200,,Dashboard Thread Group 8-1,text,true,,774,1317,1,9,https://qa-api.mousiki.io/api/v1/report/trends/feesCollection,273,0,0
+1663679806002,724,Dashboard_ClassTrends,200,,Dashboard Thread Group 8-1,text,true,,762,1308,1,9,https://qa-api.mousiki.io/api/v1/report/trends/class,724,0,0
+1663679806726,516,Dashboard_ChatroomUsers,200,,Dashboard Thread Group 8-1,text,true,,1253,1304,1,9,https://qa-api.mousiki.io/api/v1/chatrooms/users,516,0,0
+1663679807242,372,Dashboard_ApplicationUser,200,,Dashboard Thread Group 8-1,text,true,,7694,1305,1,9,https://qa-api.mousiki.io/api/v1/application/user,372,0,0
+1663679806883,1000,Reports_OpenInvoices,200,,Accounting Reports Thread Group 3-1,text,true,,1048,1417,1,9,"https://qa-api.mousiki.io/api/v1/organization/12523320/invoices?reportPeriod=Custom&fromDate=06%2F28%2F2021&toDate=04%2F28%2F2023&status=OPEN,PARTIALLY_PAID,OVER_DUE&orderBy=desc&sortOrder=date",1000,0,696
+1663679806964,1176,MyCalender_dayschedules,200,,MyCalender Thread Group 2-1,text,true,,831,1365,1,9,"https://qa-api.mousiki.io/api/v1/schedules/teacher/669?eventTypes=class_schedule,availability&startDate=09%2F20%2F2022&endDate=09%2F21%2F2022",1176,0,736
+1663679808115,279,Reports_OverdueInvoices,200,,Accounting Reports Thread Group 3-1,text,true,,1048,1397,1,9,https://qa-api.mousiki.io/api/v1/organization/12523320/invoices?reportPeriod=Custom&fromDate=06%2F28%2F2021&toDate=04%2F28%2F2023&status=OVER_DUE&orderBy=desc&sortOrder=date,279,0,0
+1663679808379,490,MyCalender_weekschedules,200,,MyCalender Thread Group 2-1,text,true,,831,1365,1,9,"https://qa-api.mousiki.io/api/v1/schedules/teacher/669?eventTypes=class_schedule,availability&startDate=09%2F20%2F2022&endDate=09%2F27%2F2022",490,0,0
+1663679808625,277,MyAccount_GetCancellationfee,200,,MyAccount Thread Group 7-1,text,true,,963,1321,1,9,https://qa-api.mousiki.io/api/v1/org/12523320/policy/cancellation,277,0,0
+1663679808625,281,Reports_PartiallyPaidInvoices,200,,Accounting Reports Thread Group 3-1,text,true,,1048,1403,1,9,https://qa-api.mousiki.io/api/v1/organization/12523320/invoices?reportPeriod=Custom&fromDate=06%2F28%2F2021&toDate=04%2F28%2F2023&status=PARTIALLY_PAID&orderBy=desc&sortOrder=date,281,0,0
+1663679807197,1869,MyStudent_GetactiveStudentDetails,200,,Student Thread Group 1-1,text,true,,32257,1279,1,9,https://qa-api.mousiki.io/api/v1/students/active?page=1,1646,0,769
+1663679809134,274,MyAccount_PutCancellationfee,200,,MyAccount Thread Group 7-1,text,true,,963,1605,1,9,https://qa-api.mousiki.io/api/v1/org/12523320/policy/cancellation,274,0,0
+1663679809138,277,Reports_CancelledInvoices,200,,Accounting Reports Thread Group 3-1,text,true,,1048,1398,1,9,https://qa-api.mousiki.io/api/v1/organization/12523320/invoices?reportPeriod=Custom&fromDate=06%2F28%2F2021&toDate=04%2F28%2F2023&status=CANCELLED&orderBy=desc&sortOrder=date,277,0,0
+1663679809640,265,MyAccount_GetLatefee,200,,MyAccount Thread Group 7-1,text,true,,1111,1316,1,9,https://qa-api.mousiki.io/api/v1/org/12523320/policy/latefee,265,0,0
+1663679809558,503,MyStudent_GetinactiveStudentDetails,200,,Student Thread Group 1-1,text,true,,866,1281,1,9,https://qa-api.mousiki.io/api/v1/students/inactive?page=1,503,0,0
+1663679809986,295,Feedback_DeactivateFeedbackKPI,200,,Feedback Thread Group 6-1,text,true,,809,1363,1,9,https://qa-api.mousiki.io/api/v1/kpi-category/kpi,294,0,0
+1663679810031,349,Courses_DeactivateCourse,200,,Course Thread Group 5-1,text,true,,1795,1340,1,9,https://qa-api.mousiki.io/api/v1/org/course/12567974/deactivate,348,0,0
+1663679810137,266,MyAccount_PutLatefee,200,,MyAccount Thread Group 7-1,text,true,,1111,1453,1,9,https://qa-api.mousiki.io/api/v1/org/12523320/policy/latefee,266,0,0
+1663679809647,842,Reports_PaidInvoices,200,,Accounting Reports Thread Group 3-1,text,true,,11953,1393,1,9,https://qa-api.mousiki.io/api/v1/organization/12523320/invoices?reportPeriod=Custom&fromDate=06%2F28%2F2021&toDate=04%2F28%2F2023&status=PAID&orderBy=desc&sortOrder=date,615,0,0
+1663679809109,1666,MyCalender_monthschedules,200,,MyCalender Thread Group 2-1,text,true,,68018,1365,1,9,"https://qa-api.mousiki.io/api/v1/schedules/teacher/669?eventTypes=class_schedule,availability&startDate=09%2F20%2F2022&endDate=10%2F23%2F2022",1190,0,0
+1663679810634,260,MyAccount_GetAttendanceSetup,200,,MyAccount Thread Group 7-1,text,true,,752,1312,1,9,https://qa-api.mousiki.io/api/v1/org/12523320/attendance,260,0,0
+1663679810552,641,MyStudent_CreateNewStudent,201,,Student Thread Group 1-1,text,true,,1781,1839,1,9,https://qa-api.mousiki.io/api/v1/student,640,0,0
+1663679810966,307,Feedback_ActivateFeedbackKPI,200,,Feedback Thread Group 6-1,text,true,,808,1362,1,9,https://qa-api.mousiki.io/api/v1/kpi-category/kpi,306,0,0
+1663679811110,396,Courses_ActivateCourse,200,,Course Thread Group 5-1,text,true,,1794,1338,1,9,https://qa-api.mousiki.io/api/v1/org/course/12567974/activate,395,0,0
+1663679811139,425,MyAccount_PutAttendanceSetup,200,,MyAccount Thread Group 7-1,text,true,,752,1440,1,9,https://qa-api.mousiki.io/api/v1/org/12523320/attendance,425,0,0
+1663679811506,270,Courses_GetCourseDetails,200,,Course Thread Group 5-1,text,true,,1794,1308,1,9,https://qa-api.mousiki.io/api/v1/org/course/12567974,269,0,0
+1663679811234,565,MyClasses_NewGroupClass,201,,Schedules Thread Group 4-1,text,true,,1927,1650,1,9,https://qa-api.mousiki.io/api/v1/group-schedules,565,0,0
+1663679811694,360,MyStudent_GetStudentDetails,200,,Student Thread Group 1-1,text,true,,1781,1301,1,9,https://qa-api.mousiki.io/api/v1/student/5788,359,0,0
+1663679810722,1388,Reports_OpenInvoices,200,,Accounting Reports Thread Group 3-1,text,true,,39139,1423,1,9,"https://qa-api.mousiki.io/api/v1/organization/12468911/invoices?reportPeriod=Custom&fromDate=06%2F28%2F2021&toDate=04%2F28%2F2023&status=OPEN,PARTIALLY_PAID,OVER_DUE&orderBy=desc&sortOrder=date",1161,0,0
+1663679811776,369,Courses_DeleteCourse,200,,Course Thread Group 5-1,text,true,,1793,1330,1,9,https://qa-api.mousiki.io/api/v1/org/course/12567974,369,0,0
+1663679811698,482,MyTeachers_UpdateTeacher,200,,MyTeacher Thread Group 9-1,text,true,,1742,1902,1,9,https://qa-api.mousiki.io/api/v1/teacher,482,0,0
+1663679811800,398,MyClasses_GetGroupClassDetails,200,,Schedules Thread Group 4-1,text,true,,1884,1313,1,9,https://qa-api.mousiki.io/api/v1/group-schedules/12567985,398,0,0
+1663679811961,334,Feedback_DeactivateFeedback,200,,Feedback Thread Group 6-1,text,true,,1046,1359,1,9,https://qa-api.mousiki.io/api/v1/kpi-category,334,0,0
+1663679812146,338,Courses_GetactiveCourses,200,,Course Thread Group 5-1,text,true,,22156,1288,1,9,https://qa-api.mousiki.io/api/v1/org/courses/active?page=1,337,0,0
+1663679811015,1748,MyCalender_dayschedules,200,,MyCalender Thread Group 2-1,text,true,,68493,1360,1,9,"https://qa-api.mousiki.io/api/v1/schedules/?eventTypes=class_schedule,availability&startDate=09%2F20%2F2022&endDate=09%2F21%2F2022",1273,0,0
+1663679812484,291,Courses_GetinactiveCourses,200,,Course Thread Group 5-1,text,true,,885,1290,1,9,https://qa-api.mousiki.io/api/v1/org/courses/inactive?page=1,291,0,0
+1663679811796,1083,MyAccount_Subscriptiondetail,200,,MyAccount Thread Group 7-1,text,true,,640,1318,1,9,https://qa-subscription.api.mousiki.io/api/v1/org/subscription,1083,0,745
+1663679812776,581,Courses_CreateNewCourse,201,,Course Thread Group 5-1,text,true,,1680,1662,1,9,https://qa-api.mousiki.io/api/v1/org/course,579,0,0
+1663679812547,947,MyStudent_CreateNewEnrollment,201,,Student Thread Group 1-1,text,true,,1670,1583,1,9,https://qa-api.mousiki.io/api/v1/enrollments,947,0,0
+1663679812986,520,Feedback_ActivateFeedback,200,,Feedback Thread Group 6-1,text,true,,1045,1358,1,9,https://qa-api.mousiki.io/api/v1/kpi-category,520,0,0
+1663679813111,570,MyAccount_SubscriptionReport,200,,MyAccount Thread Group 7-1,text,true,,726,1334,1,9,https://qa-subscription.api.mousiki.io/api/v1/org/subscription/reports?limit=1,570,0,0
+1663679813507,388,Feedback_GetFeedbackDetails,200,,Feedback Thread Group 6-1,text,true,,1045,1306,1,9,https://qa-api.mousiki.io/api/v1/kpi-category/1128,388,0,0
+1663679813358,637,Courses_UpdateCourse,200,,Course Thread Group 5-1,text,true,,1702,1760,1,9,https://qa-api.mousiki.io/api/v1/org/course,637,0,0
+1663679812898,1154,MyTeachers_DeactivateTeacher,200,,MyTeacher Thread Group 9-1,text,true,,1743,1333,1,9,https://qa-api.mousiki.io/api/v1/teachers/752/deactivate,1154,0,0
+1663679812550,1630,Dashboard_ClassSchedule,200,,Dashboard Thread Group 8-1,text,true,,2995,1383,1,9,https://qa-api.mousiki.io/api/v1/schedules/12523320/teachers/?eventTypes=class_schedule&startDate=09/20/2022&endDate=09/21/2022,1630,0,0
+1663679812916,1341,MyClasses_UpdateGroupClass,200,,Schedules Thread Group 4-1,text,true,,1920,1658,1,9,https://qa-api.mousiki.io/api/v1/group-schedules/12567985,1341,0,0
+1663679813912,350,MyAccount_GetInvoiceconfig,200,,MyAccount Thread Group 7-1,text,true,,1775,1323,1,9,https://qa-api.mousiki.io/api/v1/org/12523320/invoice/configuration,350,0,0
+1663679813895,393,Feedback_DeleteFeedbackKPI,200,,Feedback Thread Group 6-1,text,true,,667,1337,1,9,https://qa-api.mousiki.io/api/v1/kpi-category/1128/kpi/1404,393,0,0
+1663679814181,285,Dashboard_CourseTrends,200,,Dashboard Thread Group 8-1,text,true,,4639,1309,1,9,https://qa-api.mousiki.io/api/v1/report/trends/course,285,0,0
+1663679814288,306,Feedback_DeleteFeedback,200,,Feedback Thread Group 6-1,text,true,,898,1328,1,9,https://qa-api.mousiki.io/api/v1/kpi-category/1128,306,0,0
+1663679812342,2429,Reports_OverdueInvoices,200,,Accounting Reports Thread Group 3-1,text,true,,38751,1403,1,9,https://qa-api.mousiki.io/api/v1/organization/12468911/invoices?reportPeriod=Custom&fromDate=06%2F28%2F2021&toDate=04%2F28%2F2023&status=OVER_DUE&orderBy=desc&sortOrder=date,2203,0,0
+1663679813994,807,MyStudent_CreateNewSchedule,201,,Student Thread Group 1-1,text,true,,2171,1836,1,9,https://qa-api.mousiki.io/api/v1/classes/schedule,807,0,0
+1663679814595,302,Feedback_GetactiveFeedbacks,200,,Feedback Thread Group 6-1,text,true,,1597,1291,1,9,https://qa-api.mousiki.io/api/v1/kpi-categories/active?page=1,302,0,0
+1663679814493,459,MyAccount_PutInvoiceconfig,200,,MyAccount Thread Group 7-1,text,true,,1775,2099,1,9,https://qa-api.mousiki.io/api/v1/org/12523320/invoice/configuration,459,0,0
+1663679814724,428,Courses_DeactivateCourse,200,,Course Thread Group 5-1,text,true,,1703,1346,1,9,https://qa-api.mousiki.io/api/v1/org/course/12567994/deactivate,428,0,0
+1663679814467,709,Dashboard_Current,200,,Dashboard Thread Group 8-1,text,true,,7027,1310,1,9,https://qa-api.mousiki.io/api/v1/profile/current,709,0,0
+1663679814897,293,Feedback_GetinactiveFeedbacks,200,,Feedback Thread Group 6-1,text,true,,855,1293,1,9,https://qa-api.mousiki.io/api/v1/kpi-categories/inactive?page=1,293,0,0
+1663679814767,496,MyTeachers_activateTeacher,200,,MyTeacher Thread Group 9-1,text,true,,1742,1331,1,9,https://qa-api.mousiki.io/api/v1/teachers/752/activate,496,0,0
+1663679815003,342,Reports_PartiallyPaidInvoices,200,,Accounting Reports Thread Group 3-1,text,true,,1062,1409,1,9,https://qa-api.mousiki.io/api/v1/organization/12468911/invoices?reportPeriod=Custom&fromDate=06%2F28%2F2021&toDate=04%2F28%2F2023&status=PARTIALLY_PAID&orderBy=desc&sortOrder=date,342,0,0
+1663679815176,249,Dashboard_Basic,200,,Dashboard Thread Group 8-1,text,true,,815,1312,1,9,https://qa-api.mousiki.io/api/v1/application/basic,249,0,0
+1663679815191,268,Feedback_CreateNewFeedback,200,,Feedback Thread Group 6-1,text,true,,901,1392,1,9,https://qa-api.mousiki.io/api/v1/kpi-category,268,0,0
+1663679815184,388,MyAccount_ProfileUpdate,200,,MyAccount Thread Group 7-1,text,true,,7525,4897,1,9,https://qa-api.mousiki.io/api/v1/profile/update,388,0,0
+1663679814969,613,MyClasses_DeactivateGroupClass,200,,Schedules Thread Group 4-1,text,true,,1902,1353,1,9,https://qa-api.mousiki.io/api/v1/schedules/12567985,613,0,0
+1663679815263,336,MyTeachers_DeleteTeacher,200,,MyTeacher Thread Group 9-1,text,true,,1741,1322,1,9,https://qa-api.mousiki.io/api/v1/teacher/752,335,0,0
+1663679815460,279,Feedback_CreateNewFeedbackKPI,200,,Feedback Thread Group 6-1,text,true,,1023,1385,1,8,https://qa-api.mousiki.io/api/v1/kpi-category/1129/kpi,279,0,0
+1663679815573,295,MyAccount_PreferencesUpdate,200,,MyAccount Thread Group 7-1,text,true,,1260,1677,1,8,https://qa-api.mousiki.io/api/v1/users/account/preferences,295,0,0
+1663679815425,663,Dashboard_Widget,200,OK,Dashboard Thread Group 8-1,text,true,,3230,1353,1,8,https://jsd-widget.atlassian.com/api/embeddable/5b65887d-915e-4a5d-8933-cccf3878dbaf/widget,663,0,0
+1663679815740,405,Feedback_UpdateFeedback,200,,Feedback Thread Group 6-1,text,true,,1023,1396,1,8,https://qa-api.mousiki.io/api/v1/kpi-category,405,0,0
+1663679815884,397,Courses_ActivateCourse,200,,Course Thread Group 5-1,text,true,,1695,1344,1,8,https://qa-api.mousiki.io/api/v1/org/course/12567994/activate,397,0,0
+1663679815868,617,InviteFriends,200,,MyAccount Thread Group 7-1,,true,,611,1381,1,8,https://qa-api.mousiki.io/api/v1/users/invitation/email,617,0,0
+1663679816145,344,Feedback_UpdateFeedbackKPI,200,,Feedback Thread Group 6-1,text,true,,808,1411,1,8,https://qa-api.mousiki.io/api/v1/kpi-category/kpi,344,0,0
+1663679816282,305,Courses_GetCourseDetails,200,,Course Thread Group 5-1,text,true,,1702,1314,1,8,https://qa-api.mousiki.io/api/v1/org/course/12567994,305,0,0
+1663679816089,582,Dashboard_Notifications,200,,Dashboard Thread Group 8-1,text,true,,20002,1314,1,8,https://qa-api.mousiki.io/api/v1/users/notifications,582,0,0
+1663679815536,1417,Invoice_CreateNewInvoice,201,,Student Thread Group 1-1,text,true,,4898,1518,1,8,https://qa-api.mousiki.io/api/v1/accounts/invoice-classes,1164,0,0
+1663679816588,370,Courses_DeleteCourse,200,,Course Thread Group 5-1,text,true,,1701,1336,1,8,https://qa-api.mousiki.io/api/v1/org/course/12567994,370,0,0
+1663679816301,877,MyClasses_activateGroupClass,200,,Schedules Thread Group 4-1,text,true,,1900,1352,1,7,https://qa-api.mousiki.io/api/v1/schedules/12567985,874,0,0
+1663679816671,592,Dashboard_Contacts,200,,Dashboard Thread Group 8-1,text,true,,10088,1303,1,7,https://qa-api.mousiki.io/api/v1/contacts,591,0,0
+1663679816718,558,MyAccount_ProfileUpdate,200,,MyAccount Thread Group 7-1,text,true,,7028,4556,1,7,https://qa-api.mousiki.io/api/v1/profile/update,558,0,0
+1663679815576,1828,Reports_CancelledInvoices,200,,Accounting Reports Thread Group 3-1,text,true,,30423,1404,1,7,https://qa-api.mousiki.io/api/v1/organization/12468911/invoices?reportPeriod=Custom&fromDate=06%2F28%2F2021&toDate=04%2F28%2F2023&status=CANCELLED&orderBy=desc&sortOrder=date,1598,0,0
+1663679817173,480,Feedback_DeactivateFeedbackKPI,200,,Feedback Thread Group 6-1,text,true,,809,1369,1,7,https://qa-api.mousiki.io/api/v1/kpi-category/kpi,480,0,0
+1663679817263,397,Dashboard_InvoiceSummary,200,,Dashboard Thread Group 8-1,text,true,,890,1323,1,7,https://qa-api.mousiki.io/api/v1/report/trends/invoiceSummary,397,0,0
+1663679817277,409,MyAccount_PreferencesUpdate,200,,MyAccount Thread Group 7-1,text,true,,1260,1643,1,7,https://qa-api.mousiki.io/api/v1/users/account/preferences,409,0,0
+1663679817660,320,Dashboard_FeesCollection,200,,Dashboard Thread Group 8-1,text,true,,1070,1323,1,7,https://qa-api.mousiki.io/api/v1/report/trends/feesCollection,320,0,0
+1663679817446,543,Invoice_GetInvoiceDetails,200,,Student Thread Group 1-1,text,true,,4891,1306,1,7,https://qa-api.mousiki.io/api/v1/invoices/12568012,429,0,0
+1663679817179,930,MyClasses_DeleteGroupClass,200,,Schedules Thread Group 4-1,text,true,,1936,1329,1,7,https://qa-api.mousiki.io/api/v1/schedules/12567985,930,0,0
+1663679817686,469,InviteFriends,200,,MyAccount Thread Group 7-1,,true,,611,1347,1,7,https://qa-api.mousiki.io/api/v1/users/invitation/email,469,0,0
+1663679818341,321,Feedback_ActivateFeedbackKPI,200,,Feedback Thread Group 6-1,text,true,,808,1368,1,7,https://qa-api.mousiki.io/api/v1/kpi-category/kpi,321,0,0
+1663679818387,366,MyAccount_ProfileUpdate,200,,MyAccount Thread Group 7-1,text,true,,3218,1712,1,7,https://qa-api.mousiki.io/api/v1/profile/update,366,0,0
+1663679817980,802,Dashboard_ClassTrends,200,,Dashboard Thread Group 8-1,text,true,,997,1314,1,7,https://qa-api.mousiki.io/api/v1/report/trends/class,802,0,0
+1663679818754,269,MyAccount_PreferencesUpdate,200,,MyAccount Thread Group 7-1,text,true,,1260,1647,1,7,https://qa-api.mousiki.io/api/v1/users/account/preferences,268,0,0
+1663679817636,1408,Reports_PaidInvoices,200,,Accounting Reports Thread Group 3-1,text,true,,48585,1399,1,7,https://qa-api.mousiki.io/api/v1/organization/12468911/invoices?reportPeriod=Custom&fromDate=06%2F28%2F2021&toDate=04%2F28%2F2023&status=PAID&orderBy=desc&sortOrder=date,1180,0,0
+1663679818726,445,Invoice_UpdateInvoice,200,,Student Thread Group 1-1,text,true,,4891,1557,1,7,https://qa-api.mousiki.io/api/v1/accounts/invoice-classes,395,0,0
+1663679818830,527,MyClasses_NewOneonOneClass,201,,Schedules Thread Group 4-1,text,true,,2107,1818,1,7,https://qa-api.mousiki.io/api/v1/classes/schedule,527,0,0
+1663679819022,379,InviteFriends,200,,MyAccount Thread Group 7-1,,true,,611,1351,1,7,https://qa-api.mousiki.io/api/v1/users/invitation/email,379,0,0
+1663679819344,318,Feedback_DeactivateFeedback,200,,Feedback Thread Group 6-1,text,true,,1046,1365,1,7,https://qa-api.mousiki.io/api/v1/kpi-category,318,0,0
+1663679819356,350,MyClasses_GetOneonOneClassDetails,200,,Schedules Thread Group 4-1,text,true,,2035,1314,1,7,https://qa-api.mousiki.io/api/v1/classes/schedule/12568018,350,0,0
+1663679819633,356,MyAccount_ProfileUpdate,200,,MyAccount Thread Group 7-1,text,true,,3220,1716,1,7,https://qa-api.mousiki.io/api/v1/profile/update,355,0,0
+1663679819661,705,Invoice_ReceivePaymentInvoice,201,,Student Thread Group 1-1,text,true,,5049,1440,1,6,https://qa-api.mousiki.io/api/v1/invoices/12568012/receive-payment,593,0,0
+1663679813002,7515,MyCalender_weekschedules,200,,MyCalender Thread Group 2-1,text,true,,363660,1360,1,6,"https://qa-api.mousiki.io/api/v1/schedules/?eventTypes=class_schedule,availability&startDate=09%2F20%2F2022&endDate=09%2F27%2F2022",5613,0,0
+1663679820345,331,Feedback_ActivateFeedback,200,,Feedback Thread Group 6-1,text,true,,1045,1364,1,6,https://qa-api.mousiki.io/api/v1/kpi-category,331,0,0
+1663679820677,260,Feedback_GetFeedbackDetails,200,,Feedback Thread Group 6-1,text,true,,1045,1312,1,6,https://qa-api.mousiki.io/api/v1/kpi-category/1129,259,0,0
+1663679820422,760,MyClasses_UpdateOneonOneClass,200,,Schedules Thread Group 4-1,text,true,,2014,1837,1,6,https://qa-api.mousiki.io/api/v1/classes/schedule,760,0,0
+1663679820937,609,Feedback_DeleteFeedbackKPI,200,,Feedback Thread Group 6-1,text,true,,667,1343,1,6,https://qa-api.mousiki.io/api/v1/kpi-category/1129/kpi/1405,609,0,0
+1663679820893,666,Invoice_SendInvoice,200,,Student Thread Group 1-1,text,true,,669,1339,1,6,https://qa-api.mousiki.io/api/v1/invoices/12568012/send-invoice,666,0,0
+1663679821546,305,Feedback_DeleteFeedback,200,,Feedback Thread Group 6-1,text,true,,898,1334,1,6,https://qa-api.mousiki.io/api/v1/kpi-category/1129,305,0,0
+1663679822050,246,Invoice_PrintInvoice,200,,Student Thread Group 1-1,,true,,305,1314,1,5,https://qa-api.mousiki.io/api/v1/invoices/12568012/pdf,246,0,0
+1663679819274,3131,Reports_OpenInvoices,200,,Accounting Reports Thread Group 3-1,text,true,,58311,1373,1,5,"https://qa-api.mousiki.io/api/v1/users/invoices?reportPeriod=Custom&fromDate=06%2F28%2F2021&toDate=04%2F28%2F2023&status=OPEN,PARTIALLY_PAID,OVER_DUE&orderBy=desc&sortOrder=date",2896,0,0
+1663679821897,693,MyClasses_DeactivateOneononeClass,200,,Schedules Thread Group 4-1,text,true,,2056,1353,1,5,https://qa-api.mousiki.io/api/v1/schedules/12568018,693,0,0
+1663679822636,560,Reports_OverdueInvoices,200,,Accounting Reports Thread Group 3-1,text,true,,4734,1353,1,5,https://qa-api.mousiki.io/api/v1/users/invoices?reportPeriod=Custom&fromDate=06%2F28%2F2021&toDate=04%2F28%2F2023&status=OVER_DUE&orderBy=desc&sortOrder=date,560,0,0
+1663679822788,643,MyStudent_DeleteSchedule,200,,Student Thread Group 1-1,text,true,,2169,1329,1,5,https://qa-api.mousiki.io/api/v1/schedules/12568002,643,0,0
+1663679823307,408,MyClasses_activateOneonOneClass,200,,Schedules Thread Group 4-1,text,true,,2054,1352,1,5,https://qa-api.mousiki.io/api/v1/schedules/12568018,408,0,0
+1663679823922,440,MyStudent_InactiveEnrollment,200,,Student Thread Group 1-1,text,true,,1512,1353,1,5,https://qa-api.mousiki.io/api/v1/enrollments/12567993,438,0,0
+1663679823715,743,MyClasses_DeleteOneonOneClass,200,,Schedules Thread Group 4-1,text,true,,2105,1329,1,5,https://qa-api.mousiki.io/api/v1/schedules/12568018,743,0,0
+1663679824853,441,MyStudent_activeEnrollment,200,,Student Thread Group 1-1,text,true,,1526,1352,1,5,https://qa-api.mousiki.io/api/v1/enrollments/12567993,440,0,0
+1663679823432,2065,Reports_PartiallyPaidInvoices,200,,Accounting Reports Thread Group 3-1,text,true,,53347,1359,1,5,https://qa-api.mousiki.io/api/v1/users/invoices?reportPeriod=Custom&fromDate=06%2F28%2F2021&toDate=04%2F28%2F2023&status=PARTIALLY_PAID&orderBy=desc&sortOrder=date,1839,0,0
+1663679818782,7170,Dashboard_ChatroomUsers,200,,Dashboard Thread Group 8-1,,true,,611,1310,1,5,https://qa-api.mousiki.io/api/v1/chatrooms/users,7170,0,0
+1663679825786,318,MyStudent_DeleteEnrollment,200,,Student Thread Group 1-1,,true,,611,1331,1,5,https://qa-api.mousiki.io/api/v1/enrollments/12567993,318,0,0
+1663679825952,420,Dashboard_ApplicationUser,200,,Dashboard Thread Group 8-1,text,true,,7215,1311,1,5,https://qa-api.mousiki.io/api/v1/application/user,419,0,0
+1663679826595,808,MyStudent_InactiveStudent,200,,Student Thread Group 1-1,text,true,,1783,1347,1,5,https://qa-api.mousiki.io/api/v1/student/5788,808,0,0
+1663679824460,2961,MyClasses_GetactiveSchedules,200,,Schedules Thread Group 4-1,text,true,,60871,1293,1,5,https://qa-api.mousiki.io/api/v1/schedules/status/active?page=1,2483,0,0
+1663679827894,786,MyStudent_activeStudent,200,,Student Thread Group 1-1,text,true,,1781,1346,1,5,https://qa-api.mousiki.io/api/v1/student/5788,786,0,0
+1663679826597,2476,Dashboard_ClassSchedule,200,,Dashboard Thread Group 8-1,text,true,,102497,1389,1,5,https://qa-api.mousiki.io/api/v1/schedules/12468911/teachers/?eventTypes=class_schedule&startDate=09/20/2022&endDate=09/21/2022,1774,0,0
+1663679829074,320,Dashboard_CourseTrends,200,,Dashboard Thread Group 8-1,text,true,,15665,1315,1,5,https://qa-api.mousiki.io/api/v1/report/trends/course,320,0,0
+1663679829395,378,Dashboard_Current,200,,Dashboard Thread Group 8-1,text,true,,3218,1276,1,5,https://qa-api.mousiki.io/api/v1/profile/current,378,0,0
+1663679825730,4151,Reports_CancelledInvoices,200,,Accounting Reports Thread Group 3-1,text,true,,43750,1354,1,5,https://qa-api.mousiki.io/api/v1/users/invoices?reportPeriod=Custom&fromDate=06%2F28%2F2021&toDate=04%2F28%2F2023&status=CANCELLED&orderBy=desc&sortOrder=date,3926,0,0
+1663679829773,255,Dashboard_Basic,200,,Dashboard Thread Group 8-1,text,true,,815,1278,1,5,https://qa-api.mousiki.io/api/v1/application/basic,255,0,0
+1663679829171,924,MyStudent_UpdateStudent,201,,Student Thread Group 1-1,text,true,,1791,1879,1,5,https://qa-api.mousiki.io/api/v1/student,924,0,0
+1663679830029,283,Dashboard_Widget,200,OK,Dashboard Thread Group 8-1,text,true,,3230,1319,1,5,https://jsd-widget.atlassian.com/api/embeddable/5b65887d-915e-4a5d-8933-cccf3878dbaf/widget,282,0,0
+1663679830312,270,Dashboard_Notifications,200,,Dashboard Thread Group 8-1,text,true,,713,1280,1,5,https://qa-api.mousiki.io/api/v1/users/notifications,270,0,0
+1663679827421,3515,MyClasses_GetinactiveSchedules,200,,Schedules Thread Group 4-1,text,true,,62606,1295,1,5,https://qa-api.mousiki.io/api/v1/schedules/status/inactive?page=1,3275,0,0
+1663679830582,372,Dashboard_Contacts,200,,Dashboard Thread Group 8-1,text,true,,3766,1269,1,5,https://qa-api.mousiki.io/api/v1/contacts,372,0,0
+1663679830586,407,MyStudent_DeleteStudent,200,,Student Thread Group 1-1,text,true,,1790,1323,1,5,https://qa-api.mousiki.io/api/v1/student/5788,407,0,0
+1663679830112,1148,Reports_PaidInvoices,200,,Accounting Reports Thread Group 3-1,text,true,,26298,1349,1,5,https://qa-api.mousiki.io/api/v1/users/invoices?reportPeriod=Custom&fromDate=06%2F28%2F2021&toDate=04%2F28%2F2023&status=PAID&orderBy=desc&sortOrder=date,1143,0,0
+1663679830954,393,Dashboard_InvoiceSummary,200,,Dashboard Thread Group 8-1,text,true,,883,1289,1,5,https://qa-api.mousiki.io/api/v1/report/trends/invoiceSummary,393,0,0
+1663679831347,519,Dashboard_FeesCollection,200,,Dashboard Thread Group 8-1,text,true,,1083,1289,1,5,https://qa-api.mousiki.io/api/v1/report/trends/feesCollection,519,0,0
+1663679831659,524,MyClasses_NewGroupClass,201,,Schedules Thread Group 4-1,text,true,,1987,1656,1,5,https://qa-api.mousiki.io/api/v1/group-schedules,524,0,0
+1663679832183,391,MyClasses_GetGroupClassDetails,200,,Schedules Thread Group 4-1,text,true,,1944,1319,1,5,https://qa-api.mousiki.io/api/v1/group-schedules/12568035,390,0,0
+1663679831493,1455,Reports_OpenInvoices,200,,Accounting Reports Thread Group 3-1,text,true,,15436,1377,1,5,"https://qa-api.mousiki.io/api/v1/users/invoices?reportPeriod=Custom&fromDate=06%2F28%2F2021&toDate=04%2F28%2F2023&status=OPEN,PARTIALLY_PAID,OVER_DUE&orderBy=desc&sortOrder=date",1454,0,0
+1663679831866,1458,Dashboard_ClassTrends,200,,Dashboard Thread Group 8-1,text,true,,1101,1280,1,5,https://qa-api.mousiki.io/api/v1/report/trends/class,1450,0,0
+1663679833293,775,MyClasses_UpdateGroupClass,200,,Schedules Thread Group 4-1,text,true,,1980,1664,1,5,https://qa-api.mousiki.io/api/v1/group-schedules/12568035,775,0,0
+1663679833184,1380,Reports_OverdueInvoices,200,,Accounting Reports Thread Group 3-1,text,true,,10566,1357,1,5,https://qa-api.mousiki.io/api/v1/users/invoices?reportPeriod=Custom&fromDate=06%2F28%2F2021&toDate=04%2F28%2F2023&status=OVER_DUE&orderBy=desc&sortOrder=date,1378,0,0
+1663679834783,600,MyClasses_DeactivateGroupClass,200,,Schedules Thread Group 4-1,text,true,,1962,1359,1,5,https://qa-api.mousiki.io/api/v1/schedules/12568035,600,0,0
+1663679834794,657,Reports_PartiallyPaidInvoices,200,,Accounting Reports Thread Group 3-1,text,true,,3699,1363,1,5,https://qa-api.mousiki.io/api/v1/users/invoices?reportPeriod=Custom&fromDate=06%2F28%2F2021&toDate=04%2F28%2F2023&status=PARTIALLY_PAID&orderBy=desc&sortOrder=date,657,0,0
+1663679836100,465,MyClasses_activateGroupClass,200,,Schedules Thread Group 4-1,text,true,,1960,1358,1,5,https://qa-api.mousiki.io/api/v1/schedules/12568035,465,0,0
+1663679831485,5277,MyStudent_GetactiveStudentDetails,200,,Student Thread Group 1-1,text,true,,48537,1285,1,5,https://qa-api.mousiki.io/api/v1/students/active?page=1,5034,0,0
+1663679836566,587,MyClasses_DeleteGroupClass,200,,Schedules Thread Group 4-1,text,true,,1996,1335,1,5,https://qa-api.mousiki.io/api/v1/schedules/12568035,587,0,0
+1663679835682,2293,Reports_CancelledInvoices,200,,Accounting Reports Thread Group 3-1,text,true,,35229,1358,1,5,https://qa-api.mousiki.io/api/v1/users/invoices?reportPeriod=Custom&fromDate=06%2F28%2F2021&toDate=04%2F28%2F2023&status=CANCELLED&orderBy=desc&sortOrder=date,2067,0,0
+1663679837869,638,MyClasses_NewOneonOneClass,201,,Schedules Thread Group 4-1,text,true,,2165,1824,1,5,https://qa-api.mousiki.io/api/v1/classes/schedule,638,0,0
+1663679838507,379,MyClasses_GetOneonOneClassDetails,200,,Schedules Thread Group 4-1,text,true,,2093,1320,1,5,https://qa-api.mousiki.io/api/v1/classes/schedule/12568038,379,0,0
+1663679838206,847,Reports_PaidInvoices,200,,Accounting Reports Thread Group 3-1,text,true,,6564,1353,1,5,https://qa-api.mousiki.io/api/v1/users/invoices?reportPeriod=Custom&fromDate=06%2F28%2F2021&toDate=04%2F28%2F2023&status=PAID&orderBy=desc&sortOrder=date,845,0,0
+1663679839605,709,MyClasses_UpdateOneonOneClass,200,,Schedules Thread Group 4-1,text,true,,2093,1843,1,4,https://qa-api.mousiki.io/api/v1/classes/schedule,709,0,0
+1663679820758,20399,MyCalender_monthschedules,200,,MyCalender Thread Group 2-1,text,true,,2154917,1360,1,4,"https://qa-api.mousiki.io/api/v1/schedules/?eventTypes=class_schedule,availability&startDate=09%2F20%2F2022&endDate=10%2F23%2F2022",13744,0,0
+1663679837252,4002,MyStudent_GetinactiveStudentDetails,200,,Student Thread Group 1-1,text,true,,16321,1287,1,4,https://qa-api.mousiki.io/api/v1/students/inactive?page=1,4002,0,0
+1663679841030,527,MyClasses_DeactivateOneononeClass,200,,Schedules Thread Group 4-1,text,true,,2114,1359,1,4,https://qa-api.mousiki.io/api/v1/schedules/12568038,527,0,0
+1663679841396,789,MyCalender_dayschedules,200,,MyCalender Thread Group 2-1,text,true,,37193,1326,1,4,"https://qa-api.mousiki.io/api/v1/schedules/?eventTypes=class_schedule,availability&startDate=09%2F20%2F2022&endDate=09%2F21%2F2022",787,0,0
+1663679842272,510,MyClasses_activateOneonOneClass,200,,Schedules Thread Group 4-1,text,true,,2112,1358,1,4,https://qa-api.mousiki.io/api/v1/schedules/12568038,510,0,0
+1663679842782,667,MyClasses_DeleteOneonOneClass,200,,Schedules Thread Group 4-1,text,true,,2163,1335,1,4,https://qa-api.mousiki.io/api/v1/schedules/12568038,666,0,0
+1663679842423,1303,MyCalender_weekschedules,200,,MyCalender Thread Group 2-1,text,true,,142400,1326,1,3,"https://qa-api.mousiki.io/api/v1/schedules/?eventTypes=class_schedule,availability&startDate=09%2F20%2F2022&endDate=09%2F27%2F2022",1063,0,0
+1663679841743,3442,MyStudent_CreateNewStudent,201,,Student Thread Group 1-1,text,true,,1689,1845,1,3,https://qa-api.mousiki.io/api/v1/student,3442,0,0
+1663679845675,311,MyStudent_GetStudentDetails,200,,Student Thread Group 1-1,text,true,,1689,1307,1,3,https://qa-api.mousiki.io/api/v1/student/5789,311,0,0
+1663679846476,612,MyStudent_CreateNewEnrollment,201,,Student Thread Group 1-1,text,true,,1737,1589,1,3,https://qa-api.mousiki.io/api/v1/enrollments,612,0,0
+1663679843983,3367,MyCalender_monthschedules,200,,MyCalender Thread Group 2-1,text,true,,465126,1326,1,3,"https://qa-api.mousiki.io/api/v1/schedules/?eventTypes=class_schedule,availability&startDate=09%2F20%2F2022&endDate=10%2F23%2F2022",2179,0,0
+1663679847578,688,MyStudent_CreateNewSchedule,201,,Student Thread Group 1-1,text,true,,2238,1842,1,3,https://qa-api.mousiki.io/api/v1/classes/schedule,687,0,0
+1663679847588,764,MyCalender_dayschedules,200,,MyCalender Thread Group 2-1,text,true,,30789,1330,1,3,"https://qa-api.mousiki.io/api/v1/schedules/?eventTypes=class_schedule,availability&startDate=09%2F20%2F2022&endDate=09%2F21%2F2022",763,0,0
+1663679833324,15286,Dashboard_ChatroomUsers,200,,Dashboard Thread Group 8-1,text,true,,4850,1276,1,3,https://qa-api.mousiki.io/api/v1/chatrooms/users,15286,0,0
+1663679848610,392,Dashboard_ApplicationUser,200,,Dashboard Thread Group 8-1,text,true,,6016,1277,1,3,https://qa-api.mousiki.io/api/v1/application/user,392,0,0
+1663679849004,361,Dashboard_Current,200,,Dashboard Thread Group 8-1,text,true,,3222,1280,1,3,https://qa-api.mousiki.io/api/v1/profile/current,361,0,0
+1663679848999,547,Invoice_CreateNewInvoice,201,,Student Thread Group 1-1,text,true,,4901,1524,1,3,https://qa-api.mousiki.io/api/v1/accounts/invoice-classes,466,0,0
+1663679849366,253,Dashboard_Basic,200,,Dashboard Thread Group 8-1,text,true,,815,1282,1,3,https://qa-api.mousiki.io/api/v1/application/basic,253,0,0
+1663679848590,1098,MyCalender_weekschedules,200,,MyCalender Thread Group 2-1,text,true,,111999,1330,1,3,"https://qa-api.mousiki.io/api/v1/schedules/?eventTypes=class_schedule,availability&startDate=09%2F20%2F2022&endDate=09%2F27%2F2022",858,0,0
+1663679849620,264,Dashboard_Widget,200,OK,Dashboard Thread Group 8-1,text,true,,3230,1323,1,3,https://jsd-widget.atlassian.com/api/embeddable/5b65887d-915e-4a5d-8933-cccf3878dbaf/widget,264,0,0
+1663679849885,270,Dashboard_Notifications,200,,Dashboard Thread Group 8-1,text,true,,713,1284,1,3,https://qa-api.mousiki.io/api/v1/users/notifications,269,0,0
+1663679850038,453,Invoice_GetInvoiceDetails,200,,Student Thread Group 1-1,text,true,,4907,1312,1,3,https://qa-api.mousiki.io/api/v1/invoices/12568048,363,0,0
+1663679850156,394,Dashboard_Contacts,200,,Dashboard Thread Group 8-1,text,true,,2892,1273,1,3,https://qa-api.mousiki.io/api/v1/contacts,394,0,0
+1663679850551,328,Dashboard_InvoiceSummary,200,,Dashboard Thread Group 8-1,text,true,,885,1293,1,3,https://qa-api.mousiki.io/api/v1/report/trends/invoiceSummary,327,0,0
+1663679850879,529,Dashboard_FeesCollection,200,,Dashboard Thread Group 8-1,text,true,,1160,1293,1,3,https://qa-api.mousiki.io/api/v1/report/trends/feesCollection,529,0,0
+1663679851227,537,Invoice_UpdateInvoice,200,,Student Thread Group 1-1,text,true,,4908,1563,1,3,https://qa-api.mousiki.io/api/v1/accounts/invoice-classes,459,0,0
+1663679849927,2335,MyCalender_monthschedules,200,,MyCalender Thread Group 2-1,text,true,,332586,1330,1,3,"https://qa-api.mousiki.io/api/v1/schedules/?eventTypes=class_schedule,availability&startDate=09%2F20%2F2022&endDate=10%2F23%2F2022",1621,0,0
+1663679852254,509,Invoice_ReceivePaymentInvoice,201,,Student Thread Group 1-1,text,true,,5065,1446,1,2,https://qa-api.mousiki.io/api/v1/invoices/12568048/receive-payment,436,0,0
+1663679851408,1567,Dashboard_ClassTrends,200,,Dashboard Thread Group 8-1,text,true,,1101,1284,1,2,https://qa-api.mousiki.io/api/v1/report/trends/class,1567,0,0
+1663679853253,310,Invoice_SendInvoice,200,,Student Thread Group 1-1,text,true,,669,1345,1,2,https://qa-api.mousiki.io/api/v1/invoices/12568048/send-invoice,310,0,0
+1663679854055,240,Invoice_PrintInvoice,200,,Student Thread Group 1-1,,true,,305,1320,1,2,https://qa-api.mousiki.io/api/v1/invoices/12568048/pdf,240,0,0
+1663679852975,1613,Dashboard_ChatroomUsers,200,,Dashboard Thread Group 8-1,text,true,,4966,1280,1,2,https://qa-api.mousiki.io/api/v1/chatrooms/users,1613,0,0
+1663679854589,376,Dashboard_ApplicationUser,200,,Dashboard Thread Group 8-1,text,true,,6016,1281,1,2,https://qa-api.mousiki.io/api/v1/application/user,376,0,0
+1663679854785,562,MyStudent_DeleteSchedule,200,,Student Thread Group 1-1,text,true,,2229,1335,1,1,https://qa-api.mousiki.io/api/v1/schedules/12568046,562,0,0
+1663679855837,351,MyStudent_InactiveEnrollment,200,,Student Thread Group 1-1,text,true,,1572,1359,1,1,https://qa-api.mousiki.io/api/v1/enrollments/12568045,351,0,0
+1663679856678,333,MyStudent_activeEnrollment,200,,Student Thread Group 1-1,text,true,,1586,1358,1,1,https://qa-api.mousiki.io/api/v1/enrollments/12568045,333,0,0
+1663679857500,306,MyStudent_DeleteEnrollment,200,,Student Thread Group 1-1,,true,,611,1337,1,1,https://qa-api.mousiki.io/api/v1/enrollments/12568045,306,0,0
+1663679858296,3020,MyStudent_InactiveStudent,200,,Student Thread Group 1-1,text,true,,1691,1353,1,1,https://qa-api.mousiki.io/api/v1/student/5789,3020,0,0
+1663679861807,2886,MyStudent_activeStudent,200,,Student Thread Group 1-1,text,true,,1689,1352,1,1,https://qa-api.mousiki.io/api/v1/student/5789,2885,0,0
+1663679865185,2807,MyStudent_UpdateStudent,201,,Student Thread Group 1-1,text,true,,1699,1885,1,1,https://qa-api.mousiki.io/api/v1/student,2807,0,0
+1663679868484,1477,MyStudent_DeleteStudent,200,,Student Thread Group 1-1,text,true,,1698,1329,1,1,https://qa-api.mousiki.io/api/v1/student/5789,1477,0,1144
