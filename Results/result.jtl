@@ -1,0 +1,107 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1664368408150,11009,Dashboard_Current,504,Gateway Time-out,Dashboard Thread Group 4-1,text,false,,292,1304,5,8,https://qa-api.mousiki.io/api/v1/profile/current,11009,0,770
+1664368419159,237,Dashboard_Basic,503,Service Temporarily Unavailable,Dashboard Thread Group 4-1,text,false,,337,1306,5,8,https://qa-api.mousiki.io/api/v1/application/basic,237,0,0
+1664368408346,11053,Dashboard_Current,504,Gateway Time-out,Dashboard Thread Group 4-2,text,false,,292,1310,5,8,https://qa-api.mousiki.io/api/v1/profile/current,11053,0,810
+1664368408546,10882,Dashboard_Current,504,Gateway Time-out,Dashboard Thread Group 4-3,text,false,,292,1276,5,8,https://qa-api.mousiki.io/api/v1/profile/current,10882,0,664
+1664368419401,242,Dashboard_Basic,503,Service Temporarily Unavailable,Dashboard Thread Group 4-2,text,false,,337,1312,5,8,https://qa-api.mousiki.io/api/v1/application/basic,242,0,0
+1664368419428,216,Dashboard_Basic,503,Service Temporarily Unavailable,Dashboard Thread Group 4-3,text,false,,337,1278,5,8,https://qa-api.mousiki.io/api/v1/application/basic,216,0,0
+1664368408756,10928,Dashboard_Current,504,Gateway Time-out,Dashboard Thread Group 4-4,text,false,,292,1280,5,8,https://qa-api.mousiki.io/api/v1/profile/current,10928,0,698
+1664368419397,368,Dashboard_Widget,200,OK,Dashboard Thread Group 4-1,text,true,,3230,1347,5,8,https://jsd-widget.atlassian.com/api/embeddable/5b65887d-915e-4a5d-8933-cccf3878dbaf/widget,368,0,106
+1664368408945,10909,Dashboard_Current,504,Gateway Time-out,Dashboard Thread Group 4-5,text,false,,292,1304,5,8,https://qa-api.mousiki.io/api/v1/profile/current,10909,0,683
+1664368419685,227,Dashboard_Basic,503,Service Temporarily Unavailable,Dashboard Thread Group 4-4,text,false,,337,1282,5,8,https://qa-api.mousiki.io/api/v1/application/basic,227,0,0
+1664368419766,237,Dashboard_Notifications,503,Service Temporarily Unavailable,Dashboard Thread Group 4-1,text,false,,337,1308,5,8,https://qa-api.mousiki.io/api/v1/users/notifications,237,0,0
+1664368419645,358,Dashboard_Widget,200,OK,Dashboard Thread Group 4-3,text,true,,3230,1319,5,8,https://jsd-widget.atlassian.com/api/embeddable/5b65887d-915e-4a5d-8933-cccf3878dbaf/widget,358,0,91
+1664368419645,362,Dashboard_Widget,200,OK,Dashboard Thread Group 4-2,text,true,,3230,1353,5,8,https://jsd-widget.atlassian.com/api/embeddable/5b65887d-915e-4a5d-8933-cccf3878dbaf/widget,362,0,96
+1664368419854,222,Dashboard_Basic,503,Service Temporarily Unavailable,Dashboard Thread Group 4-5,text,false,,337,1306,5,8,https://qa-api.mousiki.io/api/v1/application/basic,222,0,0
+1664368420005,216,Dashboard_Notifications,503,Service Temporarily Unavailable,Dashboard Thread Group 4-3,text,false,,337,1280,5,8,https://qa-api.mousiki.io/api/v1/users/notifications,216,0,0
+1664368420005,235,Dashboard_Contacts,503,Service Temporarily Unavailable,Dashboard Thread Group 4-1,text,false,,337,1297,5,8,https://qa-api.mousiki.io/api/v1/contacts,235,0,0
+1664368420008,239,Dashboard_Notifications,503,Service Temporarily Unavailable,Dashboard Thread Group 4-2,text,false,,337,1314,5,8,https://qa-api.mousiki.io/api/v1/users/notifications,239,0,0
+1664368419912,353,Dashboard_Widget,200,OK,Dashboard Thread Group 4-4,text,true,,3230,1323,5,8,https://jsd-widget.atlassian.com/api/embeddable/5b65887d-915e-4a5d-8933-cccf3878dbaf/widget,353,0,93
+1664368420222,217,Dashboard_Contacts,503,Service Temporarily Unavailable,Dashboard Thread Group 4-3,text,false,,337,1269,5,8,https://qa-api.mousiki.io/api/v1/contacts,216,0,0
+1664368420240,244,Dashboard_InvoiceSummary,503,Service Temporarily Unavailable,Dashboard Thread Group 4-1,text,false,,337,1317,5,8,https://qa-api.mousiki.io/api/v1/report/trends/invoiceSummary,244,0,0
+1664368420076,409,Dashboard_Widget,200,OK,Dashboard Thread Group 4-5,text,true,,3230,1347,5,8,https://jsd-widget.atlassian.com/api/embeddable/5b65887d-915e-4a5d-8933-cccf3878dbaf/widget,409,0,96
+1664368420248,239,Dashboard_Contacts,503,Service Temporarily Unavailable,Dashboard Thread Group 4-2,text,false,,337,1303,5,8,https://qa-api.mousiki.io/api/v1/contacts,239,0,0
+1664368420266,227,Dashboard_Notifications,503,Service Temporarily Unavailable,Dashboard Thread Group 4-4,text,false,,337,1284,5,8,https://qa-api.mousiki.io/api/v1/users/notifications,227,0,0
+1664368420485,216,Dashboard_InvoiceSummary,503,Service Temporarily Unavailable,Dashboard Thread Group 4-3,text,false,,337,1289,5,8,https://qa-api.mousiki.io/api/v1/report/trends/invoiceSummary,216,0,0
+1664368420485,223,Dashboard_Notifications,503,Service Temporarily Unavailable,Dashboard Thread Group 4-5,text,false,,337,1308,5,8,https://qa-api.mousiki.io/api/v1/users/notifications,223,0,0
+1664368420493,227,Dashboard_Contacts,503,Service Temporarily Unavailable,Dashboard Thread Group 4-4,text,false,,337,1273,5,8,https://qa-api.mousiki.io/api/v1/contacts,227,0,0
+1664368420485,236,Dashboard_FeesCollection,503,Service Temporarily Unavailable,Dashboard Thread Group 4-1,text,false,,337,1317,5,8,https://qa-api.mousiki.io/api/v1/report/trends/feesCollection,236,0,0
+1664368420488,240,Dashboard_InvoiceSummary,503,Service Temporarily Unavailable,Dashboard Thread Group 4-2,text,false,,337,1323,5,8,https://qa-api.mousiki.io/api/v1/report/trends/invoiceSummary,240,0,0
+1664368420703,216,Dashboard_FeesCollection,503,Service Temporarily Unavailable,Dashboard Thread Group 4-3,text,false,,337,1289,5,8,https://qa-api.mousiki.io/api/v1/report/trends/feesCollection,216,0,0
+1664368420708,223,Dashboard_Contacts,503,Service Temporarily Unavailable,Dashboard Thread Group 4-5,text,false,,337,1297,5,8,https://qa-api.mousiki.io/api/v1/contacts,223,0,0
+1664368420721,227,Dashboard_InvoiceSummary,503,Service Temporarily Unavailable,Dashboard Thread Group 4-4,text,false,,337,1293,5,8,https://qa-api.mousiki.io/api/v1/report/trends/invoiceSummary,227,0,0
+1664368420721,235,Dashboard_ClassTrends,503,Service Temporarily Unavailable,Dashboard Thread Group 4-1,text,false,,337,1308,5,8,https://qa-api.mousiki.io/api/v1/report/trends/class,235,0,0
+1664368420729,240,Dashboard_FeesCollection,503,Service Temporarily Unavailable,Dashboard Thread Group 4-2,text,false,,337,1323,5,8,https://qa-api.mousiki.io/api/v1/report/trends/feesCollection,240,0,0
+1664368420921,216,Dashboard_ClassTrends,503,Service Temporarily Unavailable,Dashboard Thread Group 4-3,text,false,,337,1280,5,8,https://qa-api.mousiki.io/api/v1/report/trends/class,216,0,0
+1664368420931,223,Dashboard_InvoiceSummary,503,Service Temporarily Unavailable,Dashboard Thread Group 4-5,text,false,,337,1317,5,8,https://qa-api.mousiki.io/api/v1/report/trends/invoiceSummary,223,0,0
+1664368420948,227,Dashboard_FeesCollection,503,Service Temporarily Unavailable,Dashboard Thread Group 4-4,text,false,,337,1293,5,8,https://qa-api.mousiki.io/api/v1/report/trends/feesCollection,227,0,0
+1664368420957,236,Dashboard_ChatroomUsers,503,Service Temporarily Unavailable,Dashboard Thread Group 4-1,text,false,,337,1304,5,8,https://qa-api.mousiki.io/api/v1/chatrooms/users,236,0,0
+1664368420969,240,Dashboard_ClassTrends,503,Service Temporarily Unavailable,Dashboard Thread Group 4-2,text,false,,337,1314,5,8,https://qa-api.mousiki.io/api/v1/report/trends/class,240,0,0
+1664368421138,216,Dashboard_ChatroomUsers,503,Service Temporarily Unavailable,Dashboard Thread Group 4-3,text,false,,337,1276,5,8,https://qa-api.mousiki.io/api/v1/chatrooms/users,216,0,0
+1664368421154,223,Dashboard_FeesCollection,503,Service Temporarily Unavailable,Dashboard Thread Group 4-5,text,false,,337,1317,5,8,https://qa-api.mousiki.io/api/v1/report/trends/feesCollection,223,0,0
+1664368421175,227,Dashboard_ClassTrends,503,Service Temporarily Unavailable,Dashboard Thread Group 4-4,text,false,,337,1284,5,8,https://qa-api.mousiki.io/api/v1/report/trends/class,227,0,0
+1664368421193,235,Dashboard_ApplicationUser,503,Service Temporarily Unavailable,Dashboard Thread Group 4-1,text,false,,337,1305,5,8,https://qa-api.mousiki.io/api/v1/application/user,235,0,0
+1664368421210,240,Dashboard_ChatroomUsers,503,Service Temporarily Unavailable,Dashboard Thread Group 4-2,text,false,,337,1310,5,8,https://qa-api.mousiki.io/api/v1/chatrooms/users,240,0,0
+1664368421356,217,Dashboard_ApplicationUser,503,Service Temporarily Unavailable,Dashboard Thread Group 4-3,text,false,,337,1277,5,8,https://qa-api.mousiki.io/api/v1/application/user,217,0,0
+1664368421377,222,Dashboard_ClassTrends,503,Service Temporarily Unavailable,Dashboard Thread Group 4-5,text,false,,337,1308,5,8,https://qa-api.mousiki.io/api/v1/report/trends/class,222,0,0
+1664368421403,226,Dashboard_ChatroomUsers,503,Service Temporarily Unavailable,Dashboard Thread Group 4-4,text,false,,337,1280,5,8,https://qa-api.mousiki.io/api/v1/chatrooms/users,226,0,0
+1664368421450,241,Dashboard_ApplicationUser,503,Service Temporarily Unavailable,Dashboard Thread Group 4-2,text,false,,337,1311,5,8,https://qa-api.mousiki.io/api/v1/application/user,241,0,0
+1664368421599,223,Dashboard_ChatroomUsers,503,Service Temporarily Unavailable,Dashboard Thread Group 4-5,text,false,,337,1304,5,8,https://qa-api.mousiki.io/api/v1/chatrooms/users,223,0,0
+1664368421630,227,Dashboard_ApplicationUser,503,Service Temporarily Unavailable,Dashboard Thread Group 4-4,text,false,,337,1281,5,8,https://qa-api.mousiki.io/api/v1/application/user,227,0,0
+1664368421822,223,Dashboard_ApplicationUser,503,Service Temporarily Unavailable,Dashboard Thread Group 4-5,text,false,,337,1305,5,8,https://qa-api.mousiki.io/api/v1/application/user,223,0,0
+1664368421575,913,Dashboard_Current,503,Service Temporarily Unavailable,Dashboard Thread Group 4-3,text,false,,337,1310,5,8,https://qa-api.mousiki.io/api/v1/profile/current,913,0,688
+1664368421692,964,Dashboard_Current,503,Service Temporarily Unavailable,Dashboard Thread Group 4-2,text,false,,337,1310,5,8,https://qa-api.mousiki.io/api/v1/profile/current,964,0,725
+1664368422488,225,Dashboard_Basic,503,Service Temporarily Unavailable,Dashboard Thread Group 4-3,text,false,,337,1312,5,8,https://qa-api.mousiki.io/api/v1/application/basic,225,0,0
+1664368421858,983,Dashboard_Current,503,Service Temporarily Unavailable,Dashboard Thread Group 4-4,text,false,,337,1304,5,8,https://qa-api.mousiki.io/api/v1/profile/current,983,0,739
+1664368422657,237,Dashboard_Basic,503,Service Temporarily Unavailable,Dashboard Thread Group 4-2,text,false,,337,1312,5,8,https://qa-api.mousiki.io/api/v1/application/basic,237,0,0
+1664368422713,348,Dashboard_Widget,200,OK,Dashboard Thread Group 4-3,text,true,,3230,1353,5,8,https://jsd-widget.atlassian.com/api/embeddable/5b65887d-915e-4a5d-8933-cccf3878dbaf/widget,348,0,84
+1664368422841,243,Dashboard_Basic,503,Service Temporarily Unavailable,Dashboard Thread Group 4-4,text,false,,337,1306,5,8,https://qa-api.mousiki.io/api/v1/application/basic,243,0,0
+1664368422895,354,Dashboard_Widget,200,OK,Dashboard Thread Group 4-2,text,true,,3230,1353,5,8,https://jsd-widget.atlassian.com/api/embeddable/5b65887d-915e-4a5d-8933-cccf3878dbaf/widget,354,0,90
+1664368423061,225,Dashboard_Notifications,503,Service Temporarily Unavailable,Dashboard Thread Group 4-3,text,false,,337,1314,5,8,https://qa-api.mousiki.io/api/v1/users/notifications,225,0,0
+1664368423084,357,Dashboard_Widget,200,OK,Dashboard Thread Group 4-4,text,true,,3230,1347,5,8,https://jsd-widget.atlassian.com/api/embeddable/5b65887d-915e-4a5d-8933-cccf3878dbaf/widget,356,0,98
+1664368423249,237,Dashboard_Notifications,503,Service Temporarily Unavailable,Dashboard Thread Group 4-2,text,false,,337,1314,5,8,https://qa-api.mousiki.io/api/v1/users/notifications,237,0,0
+1664368423286,225,Dashboard_Contacts,503,Service Temporarily Unavailable,Dashboard Thread Group 4-3,text,false,,337,1303,5,8,https://qa-api.mousiki.io/api/v1/contacts,225,0,0
+1664368423441,242,Dashboard_Notifications,503,Service Temporarily Unavailable,Dashboard Thread Group 4-4,text,false,,337,1308,5,8,https://qa-api.mousiki.io/api/v1/users/notifications,242,0,0
+1664368423486,238,Dashboard_Contacts,503,Service Temporarily Unavailable,Dashboard Thread Group 4-2,text,false,,337,1303,5,8,https://qa-api.mousiki.io/api/v1/contacts,238,0,0
+1664368423511,224,Dashboard_InvoiceSummary,503,Service Temporarily Unavailable,Dashboard Thread Group 4-3,text,false,,337,1323,5,8,https://qa-api.mousiki.io/api/v1/report/trends/invoiceSummary,224,0,0
+1664368423683,243,Dashboard_Contacts,503,Service Temporarily Unavailable,Dashboard Thread Group 4-4,text,false,,337,1297,5,8,https://qa-api.mousiki.io/api/v1/contacts,243,0,0
+1664368423724,237,Dashboard_InvoiceSummary,503,Service Temporarily Unavailable,Dashboard Thread Group 4-2,text,false,,337,1323,5,8,https://qa-api.mousiki.io/api/v1/report/trends/invoiceSummary,237,0,0
+1664368423736,225,Dashboard_FeesCollection,503,Service Temporarily Unavailable,Dashboard Thread Group 4-3,text,false,,337,1323,5,8,https://qa-api.mousiki.io/api/v1/report/trends/feesCollection,225,0,0
+1664368423926,243,Dashboard_InvoiceSummary,503,Service Temporarily Unavailable,Dashboard Thread Group 4-4,text,false,,337,1317,5,8,https://qa-api.mousiki.io/api/v1/report/trends/invoiceSummary,243,0,0
+1664368423961,225,Dashboard_ClassTrends,503,Service Temporarily Unavailable,Dashboard Thread Group 4-3,text,false,,337,1314,5,8,https://qa-api.mousiki.io/api/v1/report/trends/class,225,0,0
+1664368423961,238,Dashboard_FeesCollection,503,Service Temporarily Unavailable,Dashboard Thread Group 4-2,text,false,,337,1323,5,8,https://qa-api.mousiki.io/api/v1/report/trends/feesCollection,238,0,0
+1664368424186,225,Dashboard_ChatroomUsers,503,Service Temporarily Unavailable,Dashboard Thread Group 4-3,text,false,,337,1310,5,8,https://qa-api.mousiki.io/api/v1/chatrooms/users,225,0,0
+1664368424169,242,Dashboard_FeesCollection,503,Service Temporarily Unavailable,Dashboard Thread Group 4-4,text,false,,337,1317,5,8,https://qa-api.mousiki.io/api/v1/report/trends/feesCollection,242,0,0
+1664368424199,237,Dashboard_ClassTrends,503,Service Temporarily Unavailable,Dashboard Thread Group 4-2,text,false,,337,1314,5,8,https://qa-api.mousiki.io/api/v1/report/trends/class,237,0,0
+1664368424412,224,Dashboard_ApplicationUser,503,Service Temporarily Unavailable,Dashboard Thread Group 4-3,text,false,,337,1311,5,8,https://qa-api.mousiki.io/api/v1/application/user,224,0,0
+1664368424412,243,Dashboard_ClassTrends,503,Service Temporarily Unavailable,Dashboard Thread Group 4-4,text,false,,337,1308,5,8,https://qa-api.mousiki.io/api/v1/report/trends/class,243,0,0
+1664368424436,238,Dashboard_ChatroomUsers,503,Service Temporarily Unavailable,Dashboard Thread Group 4-2,text,false,,337,1310,5,8,https://qa-api.mousiki.io/api/v1/chatrooms/users,238,0,0
+1664368424655,252,Dashboard_ChatroomUsers,503,Service Temporarily Unavailable,Dashboard Thread Group 4-4,text,false,,337,1304,5,8,https://qa-api.mousiki.io/api/v1/chatrooms/users,252,0,0
+1664368424674,267,Dashboard_ApplicationUser,503,Service Temporarily Unavailable,Dashboard Thread Group 4-2,text,false,,337,1311,5,8,https://qa-api.mousiki.io/api/v1/application/user,267,0,0
+1664368424907,271,Dashboard_ApplicationUser,503,Service Temporarily Unavailable,Dashboard Thread Group 4-4,text,false,,337,1305,5,8,https://qa-api.mousiki.io/api/v1/application/user,271,0,0
+1664368424638,1066,Dashboard_Current,503,Service Temporarily Unavailable,Dashboard Thread Group 4-3,text,false,,337,1310,5,8,https://qa-api.mousiki.io/api/v1/profile/current,1066,0,798
+1664368424942,957,Dashboard_Current,503,Service Temporarily Unavailable,Dashboard Thread Group 4-2,text,false,,337,1307,5,8,https://qa-api.mousiki.io/api/v1/profile/current,957,0,732
+1664368425704,240,Dashboard_Basic,503,Service Temporarily Unavailable,Dashboard Thread Group 4-3,text,false,,337,1312,5,8,https://qa-api.mousiki.io/api/v1/application/basic,240,0,0
+1664368425899,223,Dashboard_Basic,503,Service Temporarily Unavailable,Dashboard Thread Group 4-2,text,false,,337,1309,5,8,https://qa-api.mousiki.io/api/v1/application/basic,223,0,0
+1664368425944,355,Dashboard_Widget,200,OK,Dashboard Thread Group 4-3,text,true,,3230,1353,5,8,https://jsd-widget.atlassian.com/api/embeddable/5b65887d-915e-4a5d-8933-cccf3878dbaf/widget,355,0,87
+1664368426122,358,Dashboard_Widget,200,OK,Dashboard Thread Group 4-2,text,true,,3230,1350,5,8,https://jsd-widget.atlassian.com/api/embeddable/5b65887d-915e-4a5d-8933-cccf3878dbaf/widget,358,0,92
+1664368426299,239,Dashboard_Notifications,503,Service Temporarily Unavailable,Dashboard Thread Group 4-3,text,false,,337,1314,5,8,https://qa-api.mousiki.io/api/v1/users/notifications,239,0,0
+1664368426480,223,Dashboard_Notifications,503,Service Temporarily Unavailable,Dashboard Thread Group 4-2,text,false,,337,1311,5,8,https://qa-api.mousiki.io/api/v1/users/notifications,223,0,0
+1664368426538,239,Dashboard_Contacts,503,Service Temporarily Unavailable,Dashboard Thread Group 4-3,text,false,,337,1303,5,8,https://qa-api.mousiki.io/api/v1/contacts,239,0,0
+1664368426544,242,Dashboard_ClassSchedule,503,Service Temporarily Unavailable,Dashboard Thread Group 4-1,text,false,,337,1383,5,8,https://qa-api.mousiki.io/api/v1/schedules/12523320/teachers/?eventTypes=class_schedule&startDate=09/28/2022&endDate=09/29/2022,242,0,0
+1664368426703,223,Dashboard_Contacts,503,Service Temporarily Unavailable,Dashboard Thread Group 4-2,text,false,,337,1300,5,8,https://qa-api.mousiki.io/api/v1/contacts,223,0,0
+1664368426777,239,Dashboard_InvoiceSummary,503,Service Temporarily Unavailable,Dashboard Thread Group 4-3,text,false,,337,1323,5,8,https://qa-api.mousiki.io/api/v1/report/trends/invoiceSummary,239,0,0
+1664368426786,236,Dashboard_CourseTrends,503,Service Temporarily Unavailable,Dashboard Thread Group 4-1,text,false,,337,1309,5,8,https://qa-api.mousiki.io/api/v1/report/trends/course,236,0,0
+1664368426927,223,Dashboard_InvoiceSummary,503,Service Temporarily Unavailable,Dashboard Thread Group 4-2,text,false,,337,1320,4,7,https://qa-api.mousiki.io/api/v1/report/trends/invoiceSummary,223,0,0
+1664368427016,239,Dashboard_FeesCollection,503,Service Temporarily Unavailable,Dashboard Thread Group 4-3,text,false,,337,1323,4,7,https://qa-api.mousiki.io/api/v1/report/trends/feesCollection,239,0,0
+1664368427076,241,Dashboard_ClassSchedule,503,Service Temporarily Unavailable,Dashboard Thread Group 4-5,text,false,,337,1383,4,7,https://qa-api.mousiki.io/api/v1/schedules/12572727/teachers/?eventTypes=class_schedule&startDate=09/28/2022&endDate=09/29/2022,241,0,0
+1664368427150,224,Dashboard_FeesCollection,503,Service Temporarily Unavailable,Dashboard Thread Group 4-2,text,false,,337,1320,4,7,https://qa-api.mousiki.io/api/v1/report/trends/feesCollection,224,0,0
+1664368427255,239,Dashboard_ClassTrends,503,Service Temporarily Unavailable,Dashboard Thread Group 4-3,text,false,,337,1314,4,7,https://qa-api.mousiki.io/api/v1/report/trends/class,239,0,0
+1664368427318,222,Dashboard_CourseTrends,503,Service Temporarily Unavailable,Dashboard Thread Group 4-5,text,false,,337,1309,4,7,https://qa-api.mousiki.io/api/v1/report/trends/course,222,0,0
+1664368427374,224,Dashboard_ClassTrends,503,Service Temporarily Unavailable,Dashboard Thread Group 4-2,text,false,,337,1311,3,6,https://qa-api.mousiki.io/api/v1/report/trends/class,224,0,0
+1664368427494,240,Dashboard_ChatroomUsers,503,Service Temporarily Unavailable,Dashboard Thread Group 4-3,text,false,,337,1310,3,6,https://qa-api.mousiki.io/api/v1/chatrooms/users,240,0,0
+1664368427598,223,Dashboard_ChatroomUsers,503,Service Temporarily Unavailable,Dashboard Thread Group 4-2,text,false,,337,1307,3,6,https://qa-api.mousiki.io/api/v1/chatrooms/users,223,0,0
+1664368427734,252,Dashboard_ApplicationUser,503,Service Temporarily Unavailable,Dashboard Thread Group 4-3,text,false,,337,1311,3,6,https://qa-api.mousiki.io/api/v1/application/user,252,0,0
+1664368427821,254,Dashboard_ApplicationUser,503,Service Temporarily Unavailable,Dashboard Thread Group 4-2,text,false,,337,1308,2,5,https://qa-api.mousiki.io/api/v1/application/user,254,0,0
+1664368430478,269,Dashboard_ClassSchedule,503,Service Temporarily Unavailable,Dashboard Thread Group 4-4,text,false,,337,1383,1,4,https://qa-api.mousiki.io/api/v1/schedules/12582158/teachers/?eventTypes=class_schedule&startDate=09/28/2022&endDate=09/29/2022,269,0,0
+1664368430747,262,Dashboard_CourseTrends,503,Service Temporarily Unavailable,Dashboard Thread Group 4-4,text,false,,337,1309,1,4,https://qa-api.mousiki.io/api/v1/report/trends/course,262,0,0
