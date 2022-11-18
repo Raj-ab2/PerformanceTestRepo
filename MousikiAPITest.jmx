@@ -13484,7 +13484,7 @@ log.info(&quot;User id: &quot; + &quot;${__property(USER_ID_${counter_value})}&q
 		&quot;state&quot;: &quot;Washington&quot;,&#xd;
 		&quot;country&quot;: &quot;US&quot;&#xd;
 	},&#xd;
-	&quot;email&quot;: &quot;sdfsdfsd@gmail.com&quot;,&#xd;
+	&quot;email&quot;: &quot;${__RandomString(6,abcdefghijklmnopqrstuvwxyz, TEACHER_EMAIL)}@gmail.com&quot;,&#xd;
 	&quot;instruments&quot;: [&#xd;
 		{&#xd;
 			&quot;id&quot;: &quot;1&quot;&#xd;
@@ -13710,7 +13710,7 @@ log.info(&quot;User id: &quot; + &quot;${__property(USER_ID_${counter_value})}&q
 		&quot;state&quot;: &quot;Washington&quot;,&#xd;
 		&quot;country&quot;: &quot;US&quot;&#xd;
 	},&#xd;
-	&quot;email&quot;: &quot;sdfsdfsd@gmail.com&quot;,&#xd;
+	&quot;email&quot;: &quot;${__RandomString(6,abcdefghijklmnopqrstuvwxyz, TEACHER_EMAIL)}@gmail.com&quot;,&#xd;
 	&quot;instruments&quot;: [&#xd;
 		{&#xd;
 			&quot;id&quot;: &quot;1&quot;&#xd;
